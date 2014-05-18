@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/json2/20130526/json2.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<title>USER CRUD</title>
+</head>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#post').click(function(){
+			$postid 	= document.getElementById("postid").value;
+			$postpw		= document.getElementById("postpw").value;
+			$post		= "post";
+			var json = {"type":$post,"password":$postpw,"id":$postid};
+			console.log(json);
+			$.ajax({
+				url		:	"user.jsp",
+				type	:	"POST",
+				data	:	json,
+				datatype:	"json",
+				
+				success	: function(datapost){
+					alert(datapost);
+				},
+				error	: function(){
+					console.log('error from post');
+				},
+				complete: function(){
+					console.log('complete from post');
+				}
+			});
+		});
+	$('#get').click(function(){
+			$get		= "get";
+			var json = {"type" : $get};
+			$.ajax({
+				url		:	"user.jsp",
+				type	:	"POST",
+				data	:	json,
+				datatype:	"json",
+				
+				success	: 	function(dataget){
+					var jsonarray = JSON.parse(dataget);
+					console.log(jsonarray);
+					var item = [];
+					
+					$.each(jsonarray,function(idx, val){
+						item.push( "<li id='" + idx + "'>" 
+								+ val.id + "|"
+								+ val.password + "|"
+								+ "</li>"
+								+ "<input type = " + "'" + "button" + "'"
+								+ "name = " + "'" + "delete" + "'" 
+								+ "id =" + "'" + val.id +"'"
+								+ "value = " + "'" + "Delete user" + "'" 
+								+ "/>");
+					});
+					
+					$( "<ul/>", {
+					    "class": "my-new-list",
+					    html: item.join( "" )
+					  }).appendTo( "#get_user" );
+					
+					$("[name|='delete']").click(function(){
+						
+						var id = $(this).attr('id');
+						$delete		= "delete";
+						var json 	= {"type":$delete,"id":id};
+						$.ajax({
+							url		:	'user.jsp',
+							type	:	'POST',
+							datatype:	'json',
+							data	:	json,
+							success	:	function(data_delete){
+								alert(data_delete);
+							},error	: function(){
+								console.log('error from delete');
+							},
+							complete: function(){
+								console.log('complete from delete');
+							}
+						});
+					});
+				},
+				error : function(){
+					console.log('error from get');
+				},
+				complete: function(){
+					console.log('complete from get')
+				}
+			})
+	});
+});
+</script>
+<body>
+	<div id="post_user">회원가입</div>
+	<div>ID     	  : <input type="text" id = "postid"/></div>
+	<div>PW   	  : <input type="text" id = "postpw"/></div> 
+	
+	<input type="button" id="post" value="Post Data"/>
+	<br>
+	<hr>
+	<div id="get_user">회원정보</div>
+	
+	<input type="button" id="get" value="Get Data"/>
+	
+	
+</body>
+</html>
