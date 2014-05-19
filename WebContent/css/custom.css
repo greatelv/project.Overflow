@@ -30,6 +30,13 @@
 	border-color: #4cae4c;
 }
 
+.btn-register
+{
+	color: #ffffff;
+	background-color: rgb(66, 139, 202);
+	border-color: #357ebd;
+}
+
 .btn
 {
 	display: inline-block;
