@@ -11,52 +11,37 @@ var $url = {
 	search : 'https://api.twitter.com/1.1/search/tweets.json'
 }
 
-$req.getApi = function(keyword){};
-
-
-
 //키워드로부터 API 데이터 조회
-/*$req.getDataFromKeyword = function(keyword){
+$req.getDataFromKeyword = function(){
 
-	var keyword = keywrod;
+	//var keyword = keywrod;
 
-	jQuery.ajax($url.search, {
-		type : method,
-		dataType : "json",
+	jQuery.ajax($url.search+'?q=생명&callback=?', {
+		type : 'get',
+		dataType : "jsonp",
 		contentType : 'application/json; charset=utf-8',
 		cache : false,
 		headers: {
-			'apiKey': token,
-			'Accept' : "application/json",
-        	"Content-Type": "application/json"
+			"Authorization": "Bearer AAAAAAAAAAAAAAAAAAAAACO1XQAAAAAAGOCuiOmSA1f0G91jyti4MSgiVCU%3D2dT3lUmQpRUhjNHt84ToblIKTB1CgQpSf6WoeghFUyNTbXXTXG"
 		},
-		data : JSON.stringify(Param),
-		//timeout: 5000,
 		success: function(oRes, sStatus, oXHR){
-			LOG('success! : [Featured] post request apiUrl : ' + url+'?apiKey='+token);
-		    callback && callback(oRes);
 		},
 		error : function(xhr, status, error){
-			LOG('error! : [Featured] post request apiUrl : ' + url+'?apiKey='+token);
-			errorCallback && errorCallback();
-		},
-		complete : function(){
-			LOG('JSON.stringify(Param) : '+JSON.stringify(Param)); 
 		}
 	});
-};*/
+};
 
 
 $req.getBearerKey = function(){
 
 	jQuery.ajax($url.bearer, {
 		type : 'POST',
+		beforeSend : function(request){
+			request.setRequestHeader("Authorization", "Basic bWNTc1NqY0Y3M2tzVWtzaWd3eXoxd1N4ajpDb0V2ZFZpNjRjRzduZDk0MmVyZDZZNUdIOTd6OHVjTWxqcm1BSXNhdjZNMVB0REpZdw==");
+		},
 		dataType : "json",
 		contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
 		cache : false,
-		headers: {
-			'Authorization' : $key.apiKey
-		},
 		data : {grant_type : 'client_credentials'},
 		success: function(oRes, sStatus, oXHR){
 			LOG('success! : [Featured] post request apiUrl : ' + $url.bearer + 'oRes : '+oRes);
