@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height: 100%">
 
 <head>
     <meta charset="utf-8">
@@ -17,19 +17,25 @@
     <!-- Add custom CSS here -->
     <style>
     body {
-        margin-top: 60px;
+        margin-top: 40px;
         font-family: barungothic;
+        height: 100%;
     }
     </style>
     
+
     <script type="text/javascript">
-    
+    	var windowWidth = $( window ).width();
+   		var windowHeight = $( window ).height();
+    	 
+    	$( window ).resize(function() {
+    		$(body).css({"height":windowHeight-40});
+    	});
     </script>
 
 </head>
 
 <body>
-
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -44,6 +50,7 @@
 
             <!-- 헤더 내용 -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
+            	<!-- 헤더 메뉴 -->
                 <ul class="nav navbar-nav">
                     <li><a href="#about">소개</a>
                     </li>
@@ -75,8 +82,6 @@
             		</li>
                 </ul>
                 
-                
-            
                 <!-- 회원가입 및 로그인 -->
                 <form class="navbar-form navbar-right">
                 	<div class="form-group">
@@ -93,16 +98,18 @@
         </div>
         <!-- /.container -->
     </nav>
-
-    <div class="container">
-
-        <div class="row">
-            <!--  <div class="col-lg-12"></div> -->
-            <div class=""></div>
-        </div>
-
+	
+	<!-- 본문 내용 -->
+    <div class="container decktable">
+    	<div class="deck">1</div>
+    	<div class="deck">2</div>
+    	<div class="deck">3</div>
+    	<div class="deck">4</div>
+    	<div class="deck">5</div>
+    	<div class="deck">6</div>
     </div>
     <!-- /.container -->
+
 
     <!-- JavaScript -->
     <script src="js/ext/jquery-1.10.2.js"></script>

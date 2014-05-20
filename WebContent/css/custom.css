@@ -4,7 +4,6 @@
  * Copyright 2014
  * Based on Bootstrap
 */
-
 .form-control
 {
 	width: 100%;
@@ -58,3 +57,23 @@
 	user-select: none;
 }
 
+.decktable
+{
+	height: 100%;
+	padding: 0px;
+	margin: 0px;
+	width: 1920px;
+}
+
+.deck /* 덱 설정 */
+{
+	float: left;
+	background-color: #4e5d6c;
+	border-color: #fff;
+	border: 1px solid;
+	margin: 0px;
+	padding: 10px 10px 10px 10px;
+	width: 250px;
+	height: 100%;
+	postion
+}
