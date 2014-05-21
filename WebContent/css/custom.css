@@ -69,11 +69,48 @@
 {
 	float: left;
 	background-color: #4e5d6c;
-	border-color: #fff;
-	border: 1px solid;
-	margin: 0px;
-	padding: 10px 10px 10px 10px;
+
+	margin: 5px 0px 5px 5px;
+	padding: 0px;
 	width: 250px;
 	height: 100%;
-	postion
+}
+
+.deck-header
+{
+	background-color: #193046;
+
+	height: 50px;
+	width: 250px;
+}
+
+.deck-icon
+{
+	float: left;
+	background-color: white;
+	height: 40px;
+	width: 40px;
+	margin: 5px;
+}
+
+.deck-title
+{
+	position: absolute;
+	left: 55px;
+	background-color: white;
+	height: 40px;
+	width: 190px;
+	margin: 5px;
+}
+
+.deck-body
+{
+	clear: both;
+	border: 1px solid white;
+	height: auto;
+}
+
+.deck-article
+{
+	border: 1px solid yellow;
 }

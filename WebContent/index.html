@@ -20,18 +20,14 @@
     body {
         margin-top: 40px;
         font-family: barungothic;
-        height: 100%;
+        position: relative;
+        height: 90%;
+       	overflow-y: hidden;
     }
     </style>
     
 
     <script type="text/javascript">
-    	var windowWidth = $( window ).width();
-   		var windowHeight = $( window ).height();
-    	 
-    	$( window ).resize(function() {
-    		$(body).css({"height":windowHeight-40});
-    	});
     </script>
 
 </head>
@@ -102,12 +98,60 @@
 	
 	<!-- 본문 내용 -->
     <div class="container decktable">
-    	<div class="deck">1</div>
-    	<div class="deck">2</div>
-    	<div class="deck">3</div>
-    	<div class="deck">4</div>
-    	<div class="deck">5</div>
-    	<div class="deck">6</div>
+    	<div class="deck">
+    		<div class="deck-header">
+    			<div class="deck-icon">아이콘</div>
+    			<div class="deck-title">제목</div>
+
+    		</div>
+    		<div class="deck-body">
+    			<div class="deck-article">
+    				트위터 검색내용
+    			</div>
+    			<div class="deck-article">
+    				트위터 검색내용
+    			</div>
+    			<div class="deck-article">
+    				트위터 검색내용
+    			</div>
+    			<div class="deck-article">
+    				트위터 검색내용
+    			</div>
+    			<div class="deck-article">
+    				트위터 검색내용
+    			</div>
+    			<div class="deck-article">
+    				트위터 검색내용
+    			</div>
+    			<div class="deck-article">
+    				트위터 검색내용
+    			</div>
+    		</div>
+    	</div>
+    	<div class="deck">
+    		<div class="deck-header">
+    			헤더입니다.
+    		</div>
+    		<div class="deck-body">
+    			바디입니다.
+    		</div>
+    	</div>
+    	<div class="deck">
+    		<div class="deck-header">
+    			헤더입니다.
+    		</div>
+    		<div class="deck-body">
+    			바디입니다.
+    		</div>
+    	</div>
+    	<div class="deck">
+    		<div class="deck-header">
+    			헤더입니다.
+    		</div>
+    		<div class="deck-body">
+    			바디입니다.
+    		</div>
+    	</div>
     </div>
     <!-- /.container -->
 
