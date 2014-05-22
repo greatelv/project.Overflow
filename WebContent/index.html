@@ -24,7 +24,6 @@
         height: 90%;
        	overflow-y: hidden;
        	background-color: #4e5d6c;
-       	width: 1920px;
     }
     </style>
 </head>
@@ -232,6 +231,8 @@
     <script type="text/javascript">
     //덱이 늘어나더라도 아래로 float되지 않도록 하는 자바스크립트. 실시간으로 body의 width를 변경하여 줄바꿈이 되지 않도록 한다.
     $(document).ready(function(){
+    	var nodes = $("#deck_table").children();
+    	$("body").css({"width":nodes.length*255});
     	  $(window).resize(function(){
     		var nodes = $("#deck_table").children(); //덱 테이블의 현재 덱의 갯수를 구한다.
     	    $("body").css({"width":nodes.length*255}); //하나의 덱은 255의 width를 가진다.
