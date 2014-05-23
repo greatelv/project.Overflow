@@ -113,11 +113,43 @@
 .deck-body
 {
 	clear: both;
-	height: auto;
+	overflow: auto;
+	height: 500px;
+	overflow-x: hidden;
 }
 
 .deck-article
 {
 	background-color: #7d7161;
 	margin: 5px 5px 0px 5px;
+	color: white;
+}
+
+.deck-profile
+{
+	float:left;
+	background-color: #513c20;
+	padding: 5px 5px 5px 5px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	margin: 5px;
+}
+
+.deck-profile-picture
+{
+	background-color: yellow;
+	width: 50px;
+	height: 50px;
+}
+
+.deck-profile-nickname
+{
+	margin-top: 5px;
+	text-align: center;
+	width: 50px;
+}
+
+.deck-contents
+{
+	padding: 5px;
 }
