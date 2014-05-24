@@ -23,7 +23,7 @@
         position: relative;
         height: 90%;
        	overflow-y: hidden;
-       	background-color: #4e5d6c;
+       	background-color: #404951;
     }
     </style>
 </head>
@@ -55,9 +55,10 @@
               				<li><a href="#">로그인</a></li>
                 			<li><a href="#">로그아웃</a></li>
                 			<li class="divider"></li>
-                			<li><a href="#">새로운 덱 생성</a></li>
-                			<li><a href="#">덱 삭제</a></li>
-                			<li><a href="#">덱 모두 삭제</a></li>
+                			<li><a id="creat_deck" href="#">새로운 덱 생성</a></li>
+                			<li><a id="delete_deck" href="#">덱 삭제</a></li>
+                			<li><a id="drop_deck_table" href="#">덱 전체 삭제</a></li>
+                			<li><a id="add_contents" href="#">[테스트용]덱에 내용추가</a></li>
                 			<!-- <li class="dropdown-header">알림 설정</li> -->
               			</ul>
             		</li>
@@ -102,7 +103,7 @@
     			<div class="deck-title">검색단어</div>
     		</div>
     		<!-- 덱의 내용 -->
-    		<div id="deck_body" class="deck-body">
+    		<div class="deck-body">
     			<!-- 덱의 세부조각 -->
     			<div class="deck-article">
     				<div class="deck-profile">
@@ -141,96 +142,6 @@
     			</div>
     		</div>
     	</div>
-    	<div class="deck">
-    		<div class="deck-header">
-    			<div class="deck-order">2</div>
-    			<div class="deck-icon glyphicon glyphicon-search"></div>
-    			<div class="deck-title">검색단어</div>
-    		</div>
-    		<div class="deck-body">
-    			<div class="deck-article">
-    				트위터 검색내용
-    			</div>
-    			<div class="deck-article">
-    				트위터 검색내용
-    			</div>
-    			<div class="deck-article">
-    				트위터 검색내용
-    			</div>
-    			<div class="deck-article">
-    				트위터 검색내용
-    			</div>
-    			<div class="deck-article">
-    				트위터 검색내용
-    			</div>
-    			<div class="deck-article">
-    				트위터 검색내용
-    			</div>
-    			<div class="deck-article">
-    				트위터 검색내용
-    			</div>
-    		</div>
-    	</div>
-    	<div class="deck">
-    		<div class="deck-header">
-    			<div class="deck-order">3</div>
-    			<div class="deck-icon glyphicon glyphicon-search"></div>
-    			<div class="deck-title">검색단어</div>
-    		</div>
-    		<div class="deck-body">
-    			<div class="deck-article">
-    				트위터 검색내용
-    			</div>
-    			<div class="deck-article">
-    				트위터 검색내용
-    			</div>
-    			<div class="deck-article">
-    				트위터 검색내용
-    			</div>
-    			<div class="deck-article">
-    				트위터 검색내용
-    			</div>
-    			<div class="deck-article">
-    				트위터 검색내용
-    			</div>
-    			<div class="deck-article">
-    				트위터 검색내용
-    			</div>
-    			<div class="deck-article">
-    				트위터 검색내용
-    			</div>
-    		</div>
-    	</div>
-    	<div class="deck">
-    		<div class="deck-header">
-    			<div class="deck-order">4</div>
-    			<div class="deck-icon glyphicon glyphicon-search"></div>
-    			<div class="deck-title">검색단어</div>
-    		</div>
-    		<div class="deck-body">
-    			<div class="deck-article">
-    				트위터 검색내용
-    			</div>
-    			<div class="deck-article">
-    				트위터 검색내용
-    			</div>
-    			<div class="deck-article">
-    				트위터 검색내용
-    			</div>
-    			<div class="deck-article">
-    				트위터 검색내용
-    			</div>
-    			<div class="deck-article">
-    				트위터 검색내용
-    			</div>
-    			<div class="deck-article">
-    				트위터 검색내용
-    			</div>
-    			<div class="deck-article">
-    				트위터 검색내용
-    			</div>
-    		</div>
-    	</div>
     </div>
     <!-- /.container -->
 
@@ -243,6 +154,7 @@
 
     <script src="js/global.js"></script>
     <script src="js/request.js"></script>
+    <script src="js/deck.js"></script>
     
     <!-- Custom JavaScript -->
     <script type="text/javascript">
@@ -250,11 +162,11 @@
     $(document).ready(function(){
     	var nodes = $("#deck_table").children();
     	$("body").css({"width":nodes.length*255});
-    	  $(window).resize(function(){
+    	$(window).resize(function(){
     		var nodes = $("#deck_table").children(); //덱 테이블의 현재 덱의 갯수를 구한다.
     	    $("body").css({"width":nodes.length*255}); //하나의 덱은 255의 width를 가진다.
-    	  });
     	});
+    });
     </script>
 </body>
 
