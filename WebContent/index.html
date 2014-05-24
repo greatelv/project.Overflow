@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height: 100%">
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -13,14 +13,20 @@
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/font.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet"> 
-
+   <!--  <link href="css/non-responsive.css" rel="stylesheet"> 
+ -->
     <!-- Add custom CSS here -->
     <style>
     body {
-        margin-top: 60px;
+        margin-top: 40px;
         font-family: barungothic;
+        position: relative;
+        height: 90%;
+       	overflow-y: hidden;
+       	background-color: #4e5d6c;
     }
     </style>
+<<<<<<< HEAD
     
     <script type="text/javascript">
     	$(document).ready(function(){
@@ -30,10 +36,11 @@
     	});
     </script>
 
+=======
+>>>>>>> 63ccd7fa8f94fd774ff34462c851917981f85495
 </head>
 
 <body>
-
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -48,6 +55,7 @@
 
             <!-- 헤더 내용 -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
+            	<!-- 헤더 메뉴 -->
                 <ul class="nav navbar-nav">
                     <li><a href="#about">소개</a>
                     </li>
@@ -79,8 +87,6 @@
             		</li>
                 </ul>
                 
-                
-            
                 <!-- 회원가입 및 로그인 -->
                 <form class="navbar-form navbar-right">
                 	<div class="form-group">
@@ -100,28 +106,133 @@
         </div>
         <!-- /.container -->
     </nav>
-
-    <div class="container">
-
-        <div class="row">
-            <!--  <div class="col-lg-12"></div> -->
-            <div class="span4">
-            	<h2>각 덱을 표시합니다.</h2>
-            	<p>덱의 내용</p>
-            </div>
-            <div class="span4">
-            	<h2>각 덱을 표시합니다.</h2>
-            	<p>덱의 내용</p>
-            </div>
-            <div class="span4">
-                <h2>각 덱을 표시합니다.</h2>
-                <p>덱의 내용</p>
-            </div>
-        </div>
-
+	
+	<!-- 본문 내용 -->
+    <div id="deck_table" class="container decktable">
+    	<div class="deck">
+    		<div class="deck-header">
+    			<div class="deck-order">1</div>
+    			<div class="deck-icon glyphicon glyphicon-search"></div>
+    			<div class="deck-title">검색단어</div>
+    		</div>
+    		<div class="deck-body">
+    			<div class="deck-article">
+    				트위터 검색내용
+    			</div>
+    			<div class="deck-article">
+    				트위터 검색내용
+    			</div>
+    			<div class="deck-article">
+    				트위터 검색내용
+    			</div>
+    			<div class="deck-article">
+    				트위터 검색내용
+    			</div>
+    			<div class="deck-article">
+    				트위터 검색내용
+    			</div>
+    			<div class="deck-article">
+    				트위터 검색내용
+    			</div>
+    			<div class="deck-article">
+    				트위터 검색내용
+    			</div>
+    		</div>
+    	</div>
+    	<div class="deck">
+    		<div class="deck-header">
+    			<div class="deck-order">2</div>
+    			<div class="deck-icon glyphicon glyphicon-search"></div>
+    			<div class="deck-title">검색단어</div>
+    		</div>
+    		<div class="deck-body">
+    			<div class="deck-article">
+    				트위터 검색내용
+    			</div>
+    			<div class="deck-article">
+    				트위터 검색내용
+    			</div>
+    			<div class="deck-article">
+    				트위터 검색내용
+    			</div>
+    			<div class="deck-article">
+    				트위터 검색내용
+    			</div>
+    			<div class="deck-article">
+    				트위터 검색내용
+    			</div>
+    			<div class="deck-article">
+    				트위터 검색내용
+    			</div>
+    			<div class="deck-article">
+    				트위터 검색내용
+    			</div>
+    		</div>
+    	</div>
+    	<div class="deck">
+    		<div class="deck-header">
+    			<div class="deck-order">3</div>
+    			<div class="deck-icon glyphicon glyphicon-search"></div>
+    			<div class="deck-title">검색단어</div>
+    		</div>
+    		<div class="deck-body">
+    			<div class="deck-article">
+    				트위터 검색내용
+    			</div>
+    			<div class="deck-article">
+    				트위터 검색내용
+    			</div>
+    			<div class="deck-article">
+    				트위터 검색내용
+    			</div>
+    			<div class="deck-article">
+    				트위터 검색내용
+    			</div>
+    			<div class="deck-article">
+    				트위터 검색내용
+    			</div>
+    			<div class="deck-article">
+    				트위터 검색내용
+    			</div>
+    			<div class="deck-article">
+    				트위터 검색내용
+    			</div>
+    		</div>
+    	</div>
+    	<div class="deck">
+    		<div class="deck-header">
+    			<div class="deck-order">4</div>
+    			<div class="deck-icon glyphicon glyphicon-search"></div>
+    			<div class="deck-title">검색단어</div>
+    		</div>
+    		<div class="deck-body">
+    			<div class="deck-article">
+    				트위터 검색내용
+    			</div>
+    			<div class="deck-article">
+    				트위터 검색내용
+    			</div>
+    			<div class="deck-article">
+    				트위터 검색내용
+    			</div>
+    			<div class="deck-article">
+    				트위터 검색내용
+    			</div>
+    			<div class="deck-article">
+    				트위터 검색내용
+    			</div>
+    			<div class="deck-article">
+    				트위터 검색내용
+    			</div>
+    			<div class="deck-article">
+    				트위터 검색내용
+    			</div>
+    		</div>
+    	</div>
     </div>
     <!-- /.container -->
 
+<<<<<<< HEAD
 	<!-- 회원가입, 등록 모달-->
 	<div class="modal fade join-modal" id="register">
 	  <div class="modal-dialog modal-sm">
@@ -135,11 +246,19 @@
 	      	<form role="form">
 			  <div class="form-group">
 			    <label>학번</label>
-			    <input type="id" class="form-control" id="input-register-id" placeholder="학번을 입력하세요">
+			    <input type="text" class="form-control" id="input-register-id" placeholder="학번을 입력하세요">
+			  </div>
+			  <div class="form-group">
+			    <label>비밀번호</label>
+			    <input type="password" class="form-control" id="input-register-password" placeholder="비밀번호을 입력하세요">
 			  </div>
 			  <div class="form-group">
 			    <label>이름</label>
-			    <input type="password" class="form-control" id="input-register-password" placeholder="비밀번호을 입력하세요">
+			    <input type="text" class="form-control" id="input-register-name" placeholder="이름을 입력하세요">
+			  </div>
+			  <div class="form-group">
+			    <label>이메일</label>
+			    <input type="text" class="form-control" id="input-register-email" placeholder="이메일을 입력하세요">
 			  </div>
 			</form>
 
@@ -157,6 +276,31 @@
     <script src="js/bootstrap.js"></script>
     <script src="js/oauth.js"></script>
 	
+=======
+
+    <!-- JavaScript -->
+    <script src="js/ext/jquery-1.10.2.js"></script>
+    <script src="js/ext/jquery-dateFormat.js"></script>
+    <script src="js/ext/bootstrap.js"></script>
+    <script src="js/ext/oauth.js"></script>
+
+    <script src="js/global.js"></script>
+    <script src="js/request.js"></script>
+    <script src="js/crud.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script type="text/javascript">
+    //덱이 늘어나더라도 아래로 float되지 않도록 하는 자바스크립트. 실시간으로 body의 width를 변경하여 줄바꿈이 되지 않도록 한다.
+    $(document).ready(function(){
+    	var nodes = $("#deck_table").children();
+    	$("body").css({"width":nodes.length*255});
+    	  $(window).resize(function(){
+    		var nodes = $("#deck_table").children(); //덱 테이블의 현재 덱의 갯수를 구한다.
+    	    $("body").css({"width":nodes.length*255}); //하나의 덱은 255의 width를 가진다.
+    	  });
+    	});
+    </script>
+>>>>>>> 63ccd7fa8f94fd774ff34462c851917981f85495
 </body>
 
 </html>
