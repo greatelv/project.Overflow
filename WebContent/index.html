@@ -25,13 +25,6 @@
        	background-color: #404951;
     }
     </style>
-    <script type="text/javascript">
-    	$(document).ready(function(){
-    		$('#join_modal').click(function(){
-    			
-    		});
-    	});
-    </script>
 </head>
 
 <body>
@@ -61,12 +54,10 @@
               				<li><a href="#">로그인</a></li>
                 			<li><a href="#">로그아웃</a></li>
                 			<li class="divider"></li>
-                			<li><a id="creat_deck" href="#">새로운 덱 생성</a></li>
-                			<li><a id="delete_deck" href="#">덱 삭제</a></li>
+                			<li><a href="#" data-toggle="modal" data-target="#create_deck_modal">새로운 덱 생성</a></li>
                 			<li><a id="drop_deck_table" href="#">덱 전체 삭제</a></li>
                 			<li><a id="add_contents" href="#">[테스트용]덱에 내용추가</a></li>
-                			<!-- <li class="dropdown-header">알림 설정</li> -->
-              			</ul>
+                		</ul>
             		</li>
                 	<li class="dropdown">
               			<a href="#" class="dropdown-toggle" data-toggle="dropdown">설정<b class="caret"></b></a>
@@ -104,15 +95,15 @@
 	
 	<!-- 본문 내용 -->
     <div id="deck_table" class="container decktable">
-    	<div class="deck">
+    	<div class="deck" id="검색단어">
     		<!-- 덱의 헤더 -->
     		<div class="deck-header">
     			<div class="deck-order">1</div>
     			<div class="deck-icon glyphicon glyphicon-search"></div>
-    			<div class="deck-title">검색단어</div>
+    			<div class="deck-title">검색단어<button class="glyphicon glyphicon-trash"></button></div>
     		</div>
     		<!-- 덱의 내용 -->
-    		<div class="deck-body">
+    		<div class="deck-body" id="검색단어_body">
     			<!-- 덱의 세부조각 -->
     			<div class="deck-article">
     				<div class="deck-profile">
@@ -191,14 +182,28 @@
 	    </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
+	
+	<!-- 검색 모달 팝업 창 -->
+	<div class="modal fade" id="create_deck_modal">
+  		<div class="modal-dialog">
+    		<div class="modal-content">
+      			<div class="modal-header">
+        			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        			<h4 class="modal-title">생성할 덱 이름을 입력하세요.</h4>
+      			</div>
+      			<div class="modal-body">
+        			<input id="input_deck_title" placeholder="검색 할 단어" type="text" class="form-control">
+      			</div>
+      			<div class="modal-footer">
+        			<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+        			<button type="button" id="create_deck" class="btn btn-primary">덱 만들기</button>
+      			</div>
+    		</div><!-- /.modal-content -->
+  		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
 
     <!-- JavaScript -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/oauth.js"></script>
-
-
-    <!-- JavaScript -->
     <script src="js/ext/jquery-1.10.2.js"></script>
     <script src="js/ext/jquery-dateFormat.js"></script>
     <script src="js/ext/bootstrap.js"></script>
@@ -211,13 +216,13 @@
     
     <!-- Custom JavaScript -->
     <script type="text/javascript">
-    //덱이 늘어나더라도 아래로 float되지 않도록 하는 자바스크립트. 실시간으로 body의 width를 변경하여 줄바꿈이 되지 않도록 한다.
+    //덱이 늘어나더라도 아래로 float되지 않도록 하는 자바스크립트. 실시간으로 body의 width를 변경하여 줄바꿈이 되지 않도록 합니다.
     $(document).ready(function(){
     	var nodes = $("#deck_table").children();
     	$("body").css({"width":nodes.length*255});
     	$(window).resize(function(){
-    		var nodes = $("#deck_table").children(); //덱 테이블의 현재 덱의 갯수를 구한다.
-    	    $("body").css({"width":nodes.length*255}); //하나의 덱은 255의 width를 가진다.
+    		var nodes = $("#deck_table").children(); //덱 테이블의 현재 덱의 갯수를 구합니다.
+    	    $("body").css({"width":nodes.length*255}); //하나의 덱은 255의 width를 가집니다.
     	});
     });
     </script>

@@ -16,13 +16,13 @@ $req.getDataFromKeyword = function(){
 
 	//var keyword = keywrod;
 
-	jQuery.ajax($url.search+'?q=생명&callback=?', {
+	jQuery.ajax($url.search+'?q=생명', {
 		type : 'get',
-		dataType : "jsonp",
+		dataType : "json",
 		contentType : 'application/json; charset=utf-8',
 		cache : false,
-		headers: {
-			"Authorization": "Bearer AAAAAAAAAAAAAAAAAAAAACO1XQAAAAAAGOCuiOmSA1f0G91jyti4MSgiVCU%3D2dT3lUmQpRUhjNHt84ToblIKTB1CgQpSf6WoeghFUyNTbXXTXG"
+		beforeSend: function (xhr) {
+		    xhr.setRequestHeader ("Authorization", "Bearer AAAAAAAAAAAAAAAAAAAAACO1XQAAAAAAGOCuiOmSA1f0G91jyti4MSgiVCU%3D2dT3lUmQpRUhjNHt84ToblIKTB1CgQpSf6WoeghFUyNTbXXTXG");
 		},
 		success: function(oRes, sStatus, oXHR){
 		},
