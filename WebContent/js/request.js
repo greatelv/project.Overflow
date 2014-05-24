@@ -4,23 +4,26 @@ var $req = {};
 var $key = {
 	bearer : '',
 	apiKey : 'Basic bWNTc1NqY0Y3M2tzVWtzaWd3eXoxd1N4ajpDb0V2ZFZpNjRjRzduZDk0MmVyZDZZNUdIOTd6OHVjTWxqcm1BSXNhdjZNMVB0REpZdw=='
-}
+};
 
 var $url = {
 	bearer : 'https://api.twitter.com/oauth2/token',
 	search : 'https://api.twitter.com/1.1/search/tweets.json'
-}
+};
 
 //키워드로부터 API 데이터 조회
 $req.getDataFromKeyword = function(){
 
 	//var keyword = keywrod;
 
-	jQuery.ajax($url.search+'?q=생명', {
-		type : 'get',
-		dataType : "json",
-		contentType : 'application/json; charset=utf-8',
+	jQuery.ajax($url.search, {
+		type: 'GET',
+		dataType : "jsonp",
 		cache : false,
+		data: {
+			q : "jQuery",
+			callback : 'getAPI'
+		},
 		beforeSend: function (xhr) {
 		    xhr.setRequestHeader ("Authorization", "Bearer AAAAAAAAAAAAAAAAAAAAACO1XQAAAAAAGOCuiOmSA1f0G91jyti4MSgiVCU%3D2dT3lUmQpRUhjNHt84ToblIKTB1CgQpSf6WoeghFUyNTbXXTXG");
 		},
@@ -30,6 +33,10 @@ $req.getDataFromKeyword = function(){
 		}
 	});
 };
+
+function getAPI(a){
+	alert('egwg');
+}
 
 
 $req.getBearerKey = function(){
