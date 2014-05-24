@@ -30,10 +30,8 @@ $(document).ready(function(){
 	  		
 	  		"</div>" +
 	  		"</div>";
-	  
 	  //덱을 실제로 추가합니다.
     $("#deck_table").append(deck);
-    
     //내용이 추가되면 기존의 내용 아래 부분에 추가되기 때문에 제대로 나오도록 레이아웃을 새로고침합니다.
     var nodes = $("#deck_table").children(); //덱 테이블의 현재 덱의 갯수를 구한다.
     $("body").css({"width":nodes.length*255}); //하나의 덱은 255의 width를 가진다.
@@ -57,7 +55,6 @@ $(document).ready(function(){
 	  var deck_profile_picture = "사진";
 	  var deck_profile_nickname = "아이디";
 	  var deck_contents = "검색내용검색내용검색내용검색내용검색내용검색내용검색내용검색내용검색내용검색내용검색내용검색내용검색내용검색내용검색내용검색내용검색내용검색내용검색내용검색내용검색내용검색내용검색내용검색내용검색내용검색내용검색내용검색내용검색내용검색내용검색내용검색내용검색내용검색내용검색내용검색내용검색내용";
-	  
 	  var article =
 		  "<div class='deck-article'>" +
 	  		"<div class='deck-profile'>" +
@@ -72,10 +69,7 @@ $(document).ready(function(){
 	  		deck_contents +
 	  		"</div>" +
 	  		"</div>";
-	  
-	  
 	  var deck_body_id = "#새검색단어";
 	  $(deck_body_id).append(article);
-	  
   });
 });

@@ -25,13 +25,6 @@
        	background-color: #404951;
     }
     </style>
-    <script type="text/javascript">
-    	$(document).ready(function(){
-    		$('#join_modal').click(function(){
-    			
-    		});
-    	});
-    </script>
 </head>
 
 <body>
@@ -194,11 +187,6 @@
 
     <!-- JavaScript -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/oauth.js"></script>
-
-
-    <!-- JavaScript -->
     <script src="js/ext/jquery-1.10.2.js"></script>
     <script src="js/ext/jquery-dateFormat.js"></script>
     <script src="js/ext/bootstrap.js"></script>
@@ -211,13 +199,13 @@
     
     <!-- Custom JavaScript -->
     <script type="text/javascript">
-    //덱이 늘어나더라도 아래로 float되지 않도록 하는 자바스크립트. 실시간으로 body의 width를 변경하여 줄바꿈이 되지 않도록 한다.
+    //덱이 늘어나더라도 아래로 float되지 않도록 하는 자바스크립트. 실시간으로 body의 width를 변경하여 줄바꿈이 되지 않도록 합니다.
     $(document).ready(function(){
     	var nodes = $("#deck_table").children();
     	$("body").css({"width":nodes.length*255});
     	$(window).resize(function(){
-    		var nodes = $("#deck_table").children(); //덱 테이블의 현재 덱의 갯수를 구한다.
-    	    $("body").css({"width":nodes.length*255}); //하나의 덱은 255의 width를 가진다.
+    		var nodes = $("#deck_table").children(); //덱 테이블의 현재 덱의 갯수를 구합니다.
+    	    $("body").css({"width":nodes.length*255}); //하나의 덱은 255의 width를 가집니다.
     	});
     });
     </script>
