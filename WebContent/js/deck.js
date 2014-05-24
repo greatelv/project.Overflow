@@ -6,7 +6,7 @@ $(document).ready(function(){
 	  var deck_icon = "glyphicon glyphicon-search"; // 아이콘 css 입력
 	  var deck_title = "새검색단어"; // 덱의 식별자로 사용됩니다.
 	  var deck_id = "새검색단어"; // 덱의 식별자로 사용됩니다.
-	  var deck_body_id = "새검색단어"; // 덱의 식별자로 사용됩니다.
+	  var deck_body_id = "새검색단어_body"; // 덱의 식별자로 사용됩니다.
 	  
 	  //미리 설정된 내용으로 덱을 구성합니다.
 	  var deck = 
@@ -69,7 +69,7 @@ $(document).ready(function(){
 	  		deck_contents +
 	  		"</div>" +
 	  		"</div>";
-	  var deck_body_id = "#새검색단어";
+	  var deck_body_id = "#새검색단어_body";
 	  $(deck_body_id).append(article);
   });
 });

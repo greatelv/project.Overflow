@@ -68,7 +68,6 @@
 .deck /* 덱 설정 */
 {
 	float: left;
-	background-color: #a69274;
 	margin: 5px 0px 5px 5px;
 	padding: 0px;
 	width: 250px;
@@ -112,6 +111,7 @@
 
 .deck-body
 {
+	background-color: #a69274;
 	clear: both;
 	overflow: auto;
 	height: 500px;
