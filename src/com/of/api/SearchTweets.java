@@ -22,7 +22,9 @@ import java.util.List;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import com.google.gson.Gson;
 
@@ -30,7 +32,7 @@ import com.google.gson.Gson;
  * @author Yusuke Yamamoto - yusuke at mac.com
  * @since Twitter4J 2.1.7
  */
-@Path("/score")
+@Path("/search")
 public class SearchTweets {
     /**
      * Usage: java twitter4j.examples.search.SearchTweets [query]
@@ -38,20 +40,22 @@ public class SearchTweets {
      * @param args search query
      */
 	@GET
-	@Produces("application/json")
-    public String getSearch(String keyword) {
+	@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
+	@Path("/{keyword}")
+    public String getSearch(@PathParam("keyword")final String keyword) {
         if (keyword == null) {
             System.out.println("java twitter4j.examples.search.SearchTweets [query]");
             System.exit(-1);
         }
         Twitter twitter = new TwitterFactory().getInstance();
+        String json = "";
         try {
             Query query = new Query(keyword);
             QueryResult result;
-            String json;
             
+            //Gson json = new Gson();
             
-            do {
+            //do {
                 result = twitter.search(query);
                 List<Status> tweets = result.getTweets();
                 json = new Gson().toJson(tweets);
@@ -60,13 +64,13 @@ public class SearchTweets {
                 }*/
                 
                 System.out.println(json);
-            } while ((query = result.nextQuery()) != null);
-            System.exit(0);
+            //} while ((query = result.nextQuery()) != null);
+            //System.exit(0);
         } catch (TwitterException te) {
             te.printStackTrace();
             System.out.println("Failed to search tweets: " + te.getMessage());
-            System.exit(-1);
+            //System.exit(-1);
         }
-		return keyword;
+		return json;
     }
 }
