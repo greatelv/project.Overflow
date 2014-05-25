@@ -33,7 +33,7 @@ function load_deck(order, icon, title)
   $("#deck_table").append(deck);
   //내용이 추가되면 기존의 내용 아래 부분에 추가되기 때문에 제대로 나오도록 레이아웃을 새로고침합니다.
   var nodes = $("#deck_table").children(); //덱 테이블의 현재 덱의 갯수를 구한다.
-  $("body").css({"width":nodes.length*255}); //하나의 덱은 255의 width를 가진다.
+  //$(".deck").css({"width":nodes.length*255}); //하나의 덱은 255의 width를 가진다.
 }
 
 function load_deck_article(picture, nickname, contents, title)

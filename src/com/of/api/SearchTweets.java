@@ -53,19 +53,10 @@ public class SearchTweets {
             Query query = new Query(keyword);
             QueryResult result;
             
-            //Gson json = new Gson();
-            
-            //do {
-                result = twitter.search(query);
-                List<Status> tweets = result.getTweets();
-                json = new Gson().toJson(tweets);
-                /*for (Status tweet : tweets) {
-                   System.out.println("@" + tweet.getUser().getScreenName() + " - " + tweet.getText());
-                }*/
-                
-                System.out.println(json);
-            //} while ((query = result.nextQuery()) != null);
-            //System.exit(0);
+            result = twitter.search(query);
+            List<Status> tweets = result.getTweets();
+            json = new Gson().toJson(tweets);
+        
         } catch (TwitterException te) {
             te.printStackTrace();
             System.out.println("Failed to search tweets: " + te.getMessage());
