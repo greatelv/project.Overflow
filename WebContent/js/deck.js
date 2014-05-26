@@ -126,5 +126,3 @@ load_deck(2, "glyphicon glyphicon-search", '대학교');
 load_deck(3, "glyphicon glyphicon-search", '지갑');
 load_deck(4, "glyphicon glyphicon-search", '지갑');
 load_deck(5, "glyphicon glyphicon-search", '지갑');
-load_deck(6, "glyphicon glyphicon-search", '지갑');
-load_deck(7, "glyphicon glyphicon-search", '지갑');
