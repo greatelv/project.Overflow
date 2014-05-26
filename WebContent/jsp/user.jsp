@@ -114,6 +114,7 @@
 		String pw  = request.getParameter("password");
 		String message = "";
 		String correct_id = "";
+		String correct_pw = "";
 		String name = "";
 		int result = 0;
 		int rowCnt = 0;
@@ -131,7 +132,7 @@
 							"overflow","overflow");
 			PreparedStatement ps;
 			Statement stat = con.createStatement();
-			ResultSet rs = stat.executeQuery("select user_id, user_name from user where user_id = '"+ id + "'");
+			ResultSet rs = stat.executeQuery("select user_id,user_pw,user_name from user where user_id = '"+ id + "'" + "and user_pw = '" + pw + "'");
 
 			while (rs.next()) {
 				name = rs.getString("user_name");
@@ -139,7 +140,7 @@
 			}
 
 			if ( correct_id.equals(null)) {
-				message = "해당 아이디가 존재하지 않습니다.";
+				message = "해당 아이디가 존재하지 않거나 패스워드가 틀렸습니다.";
 				result = 0;
 			} else {
 				result = 1;
