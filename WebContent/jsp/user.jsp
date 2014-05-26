@@ -90,7 +90,9 @@
 			String driverName = "com.mysql.jdbc.Driver";
 			
 			Class.forName(driverName);
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/overflow_dev?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8","overflow","overflow");
+			Connection con = DriverManager
+					.getConnection("jdbc:mysql://localhost:3306/overflow_dev?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8",
+					"overflow","overflow");
 			Statement stmt = con.createStatement();
 			
 			sql = "delete from user where user_id = " + "'" + id + "'";
@@ -104,6 +106,60 @@
 			e.printStackTrace();
 		}finally{
 			out.println(sql);	
+		}
+	}
+	
+	else if(type.equals("login")){
+		String id  = request.getParameter("id");
+		String pw  = request.getParameter("password");
+		String message = "";
+		String correct_id = "";
+		String name = "";
+		int result = 0;
+		int rowCnt = 0;
+
+		JSONObject jsono = new JSONObject();
+		
+		try {
+
+			String driverName = "com.mysql.jdbc.Driver";
+
+			Class.forName(driverName);
+			Connection con = DriverManager
+					.getConnection(
+							"jdbc:mysql://localhost:3306/overflow_dev?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8",
+							"overflow","overflow");
+			PreparedStatement ps;
+			Statement stat = con.createStatement();
+			ResultSet rs = stat.executeQuery("select user_id, user_name from user where user_id = '"+ id + "'");
+
+			while (rs.next()) {
+				name = rs.getString("user_name");
+				correct_id = rs.getString("user_id");
+			}
+
+			if ( correct_id.equals(null)) {
+				message = "해당 아이디가 존재하지 않습니다.";
+				result = 0;
+			} else {
+				result = 1;
+				correct_id = id;
+				jsono.put("id",correct_id);
+				jsono.put("name",name);
+			}
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			result = 0;
+			message = e.getMessage().toString();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			result = 0;
+			message = e.getMessage().toString();
+		} finally {
+			jsono.put("result", result);
+			jsono.put("message", message);
+			out.println(jsono);
 		}
 	}
 %>

@@ -16,6 +16,7 @@ $(function User_CRUD_Handler() {
 			
 			success	: function(datapost){
 				alert(datapost);
+				$('#register').modal('hide');
 			},
 			error	: function(){
 				console.log('error from post');
@@ -28,27 +29,41 @@ $(function User_CRUD_Handler() {
 	
 	//로그인
 	$('#login').click(function(){
-		$loginid	= document.getElementById("login_id");
-		$loginpw	= document.getElementById("login_password");
+
+		$loginid	= document.getElementById("login_id").value;
+		$loginpw	= document.getElementById("login_password").value;
 		$login		= "login";
 		
-		var json = {"type":$login, "id":$loginid, "password":$loginpw};
-		
+		var json = {"type":$login,"id":$loginid,"password":$loginpw};
 		console.log(json);
+		
 		$.ajax({
 			url		:	"jsp/user.jsp",
 			type	:	"POST",
 			data	:	json,
 			datatype:	"json",
-			
-			success	: function(datalogin){
-				alert(datalogin);
+			success	: function(res){
+				
+				alert(res);
+				var jsonr = JSON.parse(res);
+				
+				if(jsonr.result == 1){
+					alert(jsonr.name+'님 환영합니다.');
+
+					sessionStorage.removeItem('id');
+					sessionStorage.removeItem('name');
+					
+					sessionStorage.setItem("id", $loginid);
+					sessionStorage.setItem("name", jsonr.name);
+
+					onSession();
+					
+				}else{
+					alert('로그인에 실패하였습니다.');
+				}
 			},
 			error	: function(){
-				console.log('error from login');
-			},
-			complete: function(){
-				console.log('complete from login');
+				console.log('error from get');
 			}
 		});
 	});
