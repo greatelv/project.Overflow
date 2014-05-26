@@ -12,7 +12,7 @@ var load_deck = function(order, icon, title){
 	//미리 설정된 내용으로 덱을 구성합니다.
 	var deck = 
 	  "<div id='"+deck_title+
-	  "' class='deck'>" +
+	  "' class='deck' order='"+deck_order+"'>" +
 			"<div class='deck-header'>" +
 			"<div class='deck-order'>" +
 			deck_order +
@@ -47,7 +47,9 @@ var load_deck = function(order, icon, title){
 			    				'<div class="deck-contents">'+item.text+'</div>'+
 			    			'</div>';
 
-			$("#deck_table").find('.deck').last().find('.deck-body').append(itemElem);
+			$("#deck_table").find('.deck[order="'+deck_order+'"]')
+							.find('.deck-body')
+							.append(itemElem);
   		});
 
 	})
@@ -117,3 +119,7 @@ $(document).on("click", "#drop_deck_table", function(){
 $(document).on("click", "#add_contents", function(){
 	load_deck_article("사진", "아이디", "여기에 본문내용이 표시됩니다.여기에 본문내용이 표시됩니다.여기에 본문내용이 표시됩니다.여기에 본문내용이 표시됩니다.여기에 본문내용이 표시됩니다.여기에 본문내용이 표시됩니다.", "검색단어");
 });
+
+//기본 데크 초기화
+load_deck(1, "glyphicon glyphicon-search", '세월호');
+load_deck(2, "glyphicon glyphicon-search", '대학교');
