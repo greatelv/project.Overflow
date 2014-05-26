@@ -5,3 +5,5 @@ window.LOG = function(sMsg, sKey, nLevel) {
 	window.console && window.console.log(sMsg);
 // 	jQuery('#debug').prepend('<p>' + sMsg + '</p>');
 };
+
+window.DEV = true;
