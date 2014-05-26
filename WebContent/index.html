@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="height: 100%">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -11,24 +11,12 @@
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/font.css" rel="stylesheet">
-    <link href="css/custom.css" rel="stylesheet"> 
-   <!--  <link href="css/non-responsive.css" rel="stylesheet"> -->
-    <!-- Add custom CSS here -->
-    <style>
-    body {
-        margin-top: 40px;
-        font-family: barungothic;
-        position: relative;
-        height: 90%;
-       	overflow-y: hidden;
-       	background-color: #404951;
-    }
-    </style>
+    <link href="css/font.css" rel="stylesheet">   
+    <link href="css/custom.css" rel="stylesheet">
 </head>
 
 <body>
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="nav_container">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -93,56 +81,10 @@
     </nav>
 	
 	<!-- 본문 내용 -->
-    <div id="deck_table" class="container decktable">
-    	<div class="deck" id="검색단어">
-    		<!-- 덱의 헤더 -->
-    		<div class="deck-header">
-    			<div class="deck-order">1</div>
-    			<div class="deck-icon glyphicon glyphicon-search"></div>
-    			<div class="deck-title">검색단어<button class="glyphicon glyphicon-trash"></button></div>
-    		</div>
-    		<!-- 덱의 내용 -->
-    		<div class="deck-body" id="검색단어_body">
-    			<!-- 덱의 세부조각 -->
-    			<div class="deck-article">
-    				<div class="deck-profile">
-    					<div class="deck-profile-picture">사진</div>
-    					<div class="deck-profile-nickname">아이디</div>
-    				</div>
-    				<div class="deck-contents">본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용</div>
-    			</div>
-    			<div class="deck-article">
-    				<div class="deck-profile">
-    					<div class="deck-profile-picture">사진</div>
-    					<div class="deck-profile-nickname">아이디</div>
-    				</div>
-    				<div class="deck-contents">본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용</div>
-    			</div>
-    			<div class="deck-article">
-    				<div class="deck-profile">
-    					<div class="deck-profile-picture">사진</div>
-    					<div class="deck-profile-nickname">아이디</div>
-    				</div>
-    				<div class="deck-contents">본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용</div>
-    			</div>
-    			<div class="deck-article">
-    				<div class="deck-profile">
-    					<div class="deck-profile-picture">사진</div>
-    					<div class="deck-profile-nickname">아이디</div>
-    				</div>
-    				<div class="deck-contents">본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용</div>
-    			</div>
-    			<div class="deck-article">
-    				<div class="deck-profile">
-    					<div class="deck-profile-picture">사진</div>
-    					<div class="deck-profile-nickname">아이디</div>
-    				</div>
-    				<div class="deck-contents">본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용본문내용</div>
-    			</div>
-    		</div>
-    	</div>
-    </div>
+    <div id="deck_table" class="container decktable"></div>
     <!-- /.container -->
+
+    <div id="footer" class=""></div>
 
 	<!-- 회원가입, 등록 모달-->
 	<div class="modal fade join-modal" id="register">
@@ -218,11 +160,11 @@
     //덱이 늘어나더라도 아래로 float되지 않도록 하는 자바스크립트. 실시간으로 body의 width를 변경하여 줄바꿈이 되지 않도록 합니다.
     $(document).ready(function(){
     	var nodes = $("#deck_table").children();
-    	$("body").css({"width":nodes.length*255});
+    	/*$(".deck").css({"width":nodes.length*255});
     	$(window).resize(function(){
     		var nodes = $("#deck_table").children(); //덱 테이블의 현재 덱의 갯수를 구합니다.
-    	    $("body").css({"width":nodes.length*255}); //하나의 덱은 255의 width를 가집니다.
-    	});
+    	    $(".deck").css({"width":nodes.length*255}); //하나의 덱은 255의 width를 가집니다.
+    	});*/
     });
     </script>
 </body>

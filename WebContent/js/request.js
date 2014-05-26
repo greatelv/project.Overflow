@@ -8,36 +8,25 @@ var $key = {
 
 var $url = {
 	bearer : 'https://api.twitter.com/oauth2/token',
-	search : 'https://api.twitter.com/1.1/search/tweets.json'
+	search : 'http://ec2-54-199-180-105.ap-northeast-1.compute.amazonaws.com:8080/o/api/search/'
 };
 
 //키워드로부터 API 데이터 조회
-$req.getDataFromKeyword = function(){
+$req.getDataFromKeyword = function(keyword, callback){
 
-	//var keyword = keywrod;
-
-	jQuery.ajax($url.search, {
+	jQuery.ajax($url.search+keyword, {
 		type: 'GET',
-		dataType : "jsonp",
+		dataType : "json",
 		cache : false,
-		data: {
-			q : "jQuery",
-			callback : 'getAPI'
-		},
-		beforeSend: function (xhr) {
-		    xhr.setRequestHeader ("Authorization", "Bearer AAAAAAAAAAAAAAAAAAAAACO1XQAAAAAAGOCuiOmSA1f0G91jyti4MSgiVCU%3D2dT3lUmQpRUhjNHt84ToblIKTB1CgQpSf6WoeghFUyNTbXXTXG");
-		},
 		success: function(oRes, sStatus, oXHR){
+			LOG(JSON.stringify(oRes));
+			callback && callback(oRes);
 		},
 		error : function(xhr, status, error){
 		}
 	});
+
 };
-
-function getAPI(a){
-	alert('egwg');
-}
-
 
 $req.getBearerKey = function(){
 

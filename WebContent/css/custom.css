@@ -59,26 +59,27 @@
 
 .decktable
 {
-	height: 100%;
 	padding: 0px;
-	margin: 0px;
-	width: auto;
+	width: 100%;
+	position: absolute;
+	bottom: 20px;
+	top: 50px;
 }
 
 .deck /* 덱 설정 */
 {
 	float: left;
-	margin: 5px 0px 5px 5px;
 	padding: 0px;
-	width: 250px;
 	height: 100%;
+	position: relative;
 }
 
 .deck-header
 {
 	background-color: #193046;
 	height: 50px;
-	width: 250px;
+	position: absolute;
+	width: 100%;
 }
 
 .deck-order
@@ -95,18 +96,17 @@
 {
 	font-size: 40px;
 	float: left;
-	height: 40px;
-	width: 40px;
-	margin: 5px;
+	position: absolute;
+	top: 6px;
+	left: 25px;
 }
 
 .deck-title
 {
 	font-size: 30px;
-	float: left;
-	height: 40px;
-	width: 170px;
-	margin: 5px;
+	position: absolute;
+	top: 5px;
+	left: 77px;
 }
 
 .deck-body
@@ -114,8 +114,11 @@
 	background-color: #a69274;
 	clear: both;
 	overflow: auto;
-	height: 500px;
 	overflow-x: hidden;
+	position: absolute;
+	top: 50px;
+	bottom: 0px;
+	width: 100%;
 }
 
 .deck-article
@@ -123,6 +126,7 @@
 	background-color: #7d7161;
 	margin: 5px 5px 0px 5px;
 	color: white;
+	min-height: 100px;
 }
 
 .deck-profile
@@ -152,4 +156,44 @@
 .deck-contents
 {
 	padding: 5px;
+}
+
+
+#nav_container{
+	position: initial;
+	display: block;
+	width: 100%;
+	margin-bottom: 0px;
+	position: absolute;
+}
+
+body, html {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+body{
+	font-family: barungothic;
+	overflow-y: hidden;
+	background-color: #404951;
+	display: block;
+}
+
+
+#footer{
+    position: absolute;
+	
+    background: #eee;
+    width: 100%;
+    height: 10px;
+    bottom: 0px;
+}
+
+#deck_table > .deck{
+    width: 255px;
+	
+    margin: 0px 5px;
 }
