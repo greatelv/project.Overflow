@@ -27,8 +27,8 @@ $(function User_CRUD_Handler() {
 		});
 	});
 	
-	//로그인
-	$('#login').click(function(){
+	
+	/*$('#login').click(function(){
 
 		$loginid	= document.getElementById("login_id").value;
 		$loginpw	= document.getElementById("login_password").value;
@@ -38,13 +38,13 @@ $(function User_CRUD_Handler() {
 		console.log(json);
 		
 		$.ajax({
-			url		:	"jsp/user.jsp",
+			url		:	"jsp/login.jsp",
 			type	:	"POST",
 			data	:	json,
 			datatype:	"json",
 			success	: function(res){
 				var jsonr = JSON.parse(res);
-				
+				alert(res);
 				if(jsonr.result == 1){
 					alert(jsonr.name+'님 환영합니다.');
 					
@@ -56,5 +56,5 @@ $(function User_CRUD_Handler() {
 				console.log('error from get');
 			}
 		});
-	});
+	});*/
 });

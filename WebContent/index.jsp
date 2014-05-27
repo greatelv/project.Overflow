@@ -1,12 +1,11 @@
-<%@ page language="java" contentType="text/plain; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="java.sql.*"%>
 <%@page import="java.io.*"%>
 <%@page import="org.json.JSONArray"%>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
@@ -20,7 +19,6 @@
     <link href="css/font.css" rel="stylesheet">   
     <link href="css/custom.css" rel="stylesheet">
 </head>
-
 <body>
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="nav_container">
         <div class="container">
@@ -31,7 +29,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Overflow</a>
+                <a class="navbar-brand" href="index.jsp">Overflow</a>
             </div>
 
             <!-- 헤더 내용 -->
@@ -68,14 +66,16 @@
                 </ul>
                 
                 <!-- 회원가입 및 로그인 -->
-                <form class="navbar-form navbar-right" id="login_join">
+                
+                <form class="navbar-form navbar-right" type="post" id="login_join" action="jsp/login.jsp">
                 	<div class="form-group">
-                		<input type="text" placeholder="아이디" id="login_id" class="form-control">
+                		<input type="text" placeholder="아이디" name="login_id" id="login_id" class="form-control">
                 	</div>
                     <div class="form-group">
-                    	<input type="password" placeholder="비밀번호" id="login_password" class="form-control">
+                    	<input type="password" placeholder="비밀번호" name="login_password" id="login_password" class="form-control">
                     </div>
-                    <input type="button" id="login" class="btn btn-success" value="로그인"/>
+                    <input type="submit" id="login" class="btn btn-success" value="로그인"/>
+                    <!-- 이 버튼을 누르면 login.jsp로 id랑 pw를 전송한다. -->
                 	<button type="button" data-toggle="modal" data-target=".join-modal" class="btn btn-register">회원가입</button>
                 </form>
                 
@@ -84,14 +84,14 @@
         </div>
         <!-- /.container -->
     </nav>
-	
-	<!-- 본문 내용 -->
+    
+    <!-- 본문 내용 -->
     <div id="deck_table" class="container decktable"></div>
     <!-- /.container -->
 
     <div id="footer" class=""></div>
-
-	<!-- 회원가입, 등록 모달-->
+    
+    	<!-- 회원가입, 등록 모달-->
 	<div class="modal fade join-modal" id="register">
 	  <div class="modal-dialog modal-sm">
 	    <div class="modal-content">
@@ -147,8 +147,8 @@
     		</div><!-- /.modal-content -->
   		</div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
-
-    <!-- JavaScript -->
+	
+	    <!-- JavaScript -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="js/ext/jquery-1.10.2.js"></script>
     <script src="js/ext/jquery-dateFormat.js"></script>
@@ -170,8 +170,17 @@
     		var nodes = $("#deck_table").children(); //덱 테이블의 현재 덱의 갯수를 구합니다.
     	    $(".deck").css({"width":nodes.length*255}); //하나의 덱은 255의 width를 가집니다.
     	});*/
+    	
+    	var login_check = <%= (String)session.getAttribute("id")%>;
+    	var message = <%= (String)session.getAttribute("message")%>;
+    	if(login_check == null){
+    		alert('login하세요');
+    	}
+    	else{
+    			$("#login_join").hide();
+    			$(".dropdown").append("<div>"+login_check+"님 환영합니다."+"</div>");
+    	}
     });
     </script>
 </body>
-
 </html>
