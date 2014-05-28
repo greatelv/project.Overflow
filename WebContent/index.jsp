@@ -172,14 +172,14 @@
     	    $(".deck").css({"width":nodes.length*255}); //하나의 덱은 255의 width를 가집니다.
     	});*/	
     	
-    	//login이 정상적으로 수행되었나 안되었나 sessino에서 값을 불러와서 확인하고 로그인되어있으면 양식을 바꾼다.
+    	
     	var login_check_id = <%= (String)session.getAttribute("id")%>;
     	var login_check_name = '<%= (String)session.getAttribute("name")%>';
-    	//login_check_id가 null인경우 즉 login이 안된경우 특별히 건드리지 않는다.
+    	
     	if(login_check_id == null){
     		//alert('login하세요');
     	}
-    	//login_check_id가 null이 아닌경우 즉 login이 성공한 경우 특별히 로그인, 회원가입의 폼을 삭제하고 거기에 새로운 양식과 함계 logout으로 넘어갈수 있는 form과 input을 생성한다.
+    	
     	else{
     			$("#login_join").hide();
     			$(".navbar-collapse").append('<div class="navbar-right">'+login_check_name+'('+login_check_id

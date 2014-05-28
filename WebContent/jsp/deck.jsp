@@ -16,7 +16,7 @@
 		String driverName = "com.mysql.jdbc.Driver";
  		Class.forName(driverName);
 		Connection con = DriverManager
-				.getConnection("jdbc:mysql://localhost:3306/overflow_dev?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8",
+				.getConnection("jdbc:mysql://ec2-54-199-180-105.ap-northeast-1.compute.amazonaws.com:3306/overflow_dev?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8",
 				"overflow","overflow");
 		
 		String sql = "insert into deck(user_id, deck_keyword) VALUES(?,?)";

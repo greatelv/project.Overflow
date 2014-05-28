@@ -6,10 +6,10 @@
 <%@page import="java.sql.*"%>
 <%@page import="java.io.*"%>
 <%
-	//json의 type에서 변수의 형태를 확인한다.
+
 	String type = request.getParameter("type");
 	
-	//type이 post인 경우, 즉 횡원정보를 입력하는 경우
+
 	if(type.equals("post")){
 		String id 	 = request.getParameter("id");
 		String pw 	 = request.getParameter("password");
@@ -23,7 +23,7 @@
 			String driverName = "com.mysql.jdbc.Driver";
 			
 			Class.forName(driverName);
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/overflow_dev?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8","overflow","overflow");
+			Connection con = DriverManager.getConnection("jdbc:mysql://ec2-54-199-180-105.ap-northeast-1.compute.amazonaws.com:3306/overflow_dev?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8","overflow","overflow");
 			String sql = "INSERT INTO user(user_id, user_pw, user_name, user_email, register_date) VALUES(?,?,?,?,now())";
 			PreparedStatement ps;
 			
@@ -60,7 +60,7 @@
 			String driverName = "com.mysql.jdbc.Driver";
 			
 			Class.forName(driverName);
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/overflow_dev","overflow","overflow");
+			Connection con = DriverManager.getConnection("jdbc:mysql://ec2-54-199-180-105.ap-northeast-1.compute.amazonaws.com:3306/overflow_dev","overflow","overflow");
 			PreparedStatement ps;
 			ResultSet rs;
 			Statement stat = con.createStatement();
@@ -91,7 +91,7 @@
 			
 			Class.forName(driverName);
 			Connection con = DriverManager
-					.getConnection("jdbc:mysql://localhost:3306/overflow_dev?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8",
+					.getConnection("jdbc:mysql://ec2-54-199-180-105.ap-northeast-1.compute.amazonaws.com:3306/overflow_dev?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8",
 					"overflow","overflow");
 			Statement stmt = con.createStatement();
 			
