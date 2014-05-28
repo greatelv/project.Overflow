@@ -75,7 +75,7 @@
                     	<input type="password" placeholder="비밀번호" name="login_password" id="login_password" class="form-control">
                     </div>
                     <input type="submit" id="login" class="btn btn-success" value="로그인"/>
-                    <!-- 이 버튼을 누르면 login.jsp로 id랑 pw를 전송한다. -->
+                    <!-- 이 버튼을 누르면 login.jsp로 id랑 pw를 전송한다. (login.jsp확인)-->
                 	<button type="button" data-toggle="modal" data-target=".join-modal" class="btn btn-register">회원가입</button>
                 </form>
                 
@@ -172,16 +172,19 @@
     	    $(".deck").css({"width":nodes.length*255}); //하나의 덱은 255의 width를 가집니다.
     	});*/	
     	
+    	//login이 정상적으로 수행되었나 안되었나 sessino에서 값을 불러와서 확인하고 로그인되어있으면 양식을 바꾼다.
     	var login_check_id = <%= (String)session.getAttribute("id")%>;
     	var login_check_name = '<%= (String)session.getAttribute("name")%>';
+    	//login_check_id가 null인경우 즉 login이 안된경우 특별히 건드리지 않는다.
     	if(login_check_id == null){
     		//alert('login하세요');
     	}
+    	//login_check_id가 null이 아닌경우 즉 login이 성공한 경우 특별히 로그인, 회원가입의 폼을 삭제하고 거기에 새로운 양식과 함계 logout으로 넘어갈수 있는 form과 input을 생성한다.
     	else{
     			$("#login_join").hide();
     			$(".navbar-collapse").append('<div class="navbar-right">'+login_check_name+'('+login_check_id
     					+')님 환영합니다.</div><form class="navbar-form navbar-right" type="post" id="login_join" action="jsp/logout.jsp">'
-    					+ '<input type="submit" id="login" class="btn btn-success" value="로그아웃"/></form>');
+    					+ '<input type="submit" id="logout" class="btn btn-success" value="로그아웃"/></form>');
     	}
     	
     });
