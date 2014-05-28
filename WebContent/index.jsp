@@ -35,7 +35,7 @@
             <!-- 헤더 내용 -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
             	<!-- 헤더 메뉴 -->
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav" id="menubar">
                     <li><a href="#about">소개</a>
                     </li>
                     <li><a href="#howuse">사용방법</a>
@@ -157,7 +157,7 @@
 
     <script src="js/global.js"></script>
     <script src="js/request.js"></script>
-    <script src="js/deck.js"></script>
+    <script src="js/deck.js"></script>	
     <script src="js/crud.js"></script>
     
     <!-- Custom JavaScript -->
@@ -169,16 +169,18 @@
     	$(window).resize(function(){
     		var nodes = $("#deck_table").children(); //덱 테이블의 현재 덱의 갯수를 구합니다.
     	    $(".deck").css({"width":nodes.length*255}); //하나의 덱은 255의 width를 가집니다.
-    	});*/
+    	});*/	
     	
-    	var login_check = <%= (String)session.getAttribute("id")%>;
-    	var message = <%= (String)session.getAttribute("message")%>;
-    	if(login_check == null){
-    		alert('login하세요');
+    	var login_check_id = <%= (String)session.getAttribute("id")%>;
+    	var login_check_name = '<%= (String)session.getAttribute("name")%>';
+    	if(login_check_id == null){
+    		//alert('login하세요');
     	}
     	else{
     			$("#login_join").hide();
-    			$(".dropdown").append("<div>"+login_check+"님 환영합니다."+"</div>");
+    			$(".navbar-collapse").append('<div class="navbar-right">'+login_check_name+'('+login_check_id
+    					+')님 환영합니다.</div><form class="navbar-form navbar-right" type="post" id="login_join" action="jsp/logout.jsp">'
+    					+ '<input type="submit" id="login" class="btn btn-success" value="로그아웃"/></form>');
     	}
     });
     </script>

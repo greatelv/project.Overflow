@@ -14,7 +14,7 @@
 	String correct_id = "";
 	String correct_pw = "";
 	String name = "";
-	String message = "";
+	int message = 0;
 	
 	JSONObject jsono = new JSONObject();
 	
@@ -25,7 +25,6 @@
 				.getConnection("jdbc:mysql://localhost:3306/overflow_dev?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8",
 				"overflow","overflow");
 		
-		PreparedStatement ps;
 		Statement stat = con.createStatement();
 		ResultSet rs = stat.executeQuery("select user_id, user_name, user_pw from user where user_id = '"+ id + "' and user_pw = '" + pw + "'");
 		while (rs.next()) {
@@ -34,35 +33,60 @@
 			correct_pw = rs.getString("user_pw");
 		}
 		
-		if(correct_id.equals(null)){
-			message = "login failed(wrong id or password)";
+		if(correct_id.equals("")){
+			message = 1;
 		}
 		else {
 			correct_id = id;
-			message = "login success";
+			message = 0;
 			session.setAttribute("id", id);
 			session.setAttribute("name", name);
 			session.setAttribute("message",message);
+			stat.close();
+			con.close();
+			rs.close();
+			con = DriverManager.getConnection
+					("jdbc:mysql://localhost:3306/overflow_dev?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8",
+					"overflow","overflow");
+			PreparedStatement ps;
+			ps = con.prepareStatement("insert into login(user_id,login_time)values(?,now())");
+			ps.setString(1, id);
+			
+			ps.executeUpdate();
+			
 		}
+		stat.close();
+		con.close();
+		rs.close();
  	}catch (ClassNotFoundException e){
 		e.printStackTrace();
 	}catch (SQLException e){
 		e.printStackTrace();
 	}finally{
-		out.print(message);
+		
 	}
  %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 </head>
 <body>
-	<form action=" /o/index.jsp" method="post">
-			<input type = "submit" id="submit" value="확인">
+	<form action="/o/" method="post">
+			<input type = "submit" id="submit_value" value="확인" style="visibility:hidden">
 	</form>
-	<script type="text/javascript">
-			//document.getElementById("submit").click();
+	
+	 <script>
+		var login_check = <%= message%>;
+		if(login_check == 1){
+			alert('login failed');
+			document.location.href = "/o/";
+		}
+		else{
+			alert('login success');
+			document.getElementById("submit_value").click();
+		}		
 	</script>
 </body>
 </html>
