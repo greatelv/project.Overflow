@@ -139,6 +139,7 @@
       			</div>
       			<div class="modal-body">
         			<input id="input_deck_title" placeholder="검색 할 단어" type="text" class="form-control">
+        			<input id="input_deck_user_id" type="text" value='<%= session.getAttribute("id")%>' class="form-control" style="visibility:hidden" >
       			</div>
       			<div class="modal-footer">
         			<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
@@ -182,6 +183,7 @@
     					+')님 환영합니다.</div><form class="navbar-form navbar-right" type="post" id="login_join" action="jsp/logout.jsp">'
     					+ '<input type="submit" id="login" class="btn btn-success" value="로그아웃"/></form>');
     	}
+    	
     });
     </script>
 </body>

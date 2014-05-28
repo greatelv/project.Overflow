@@ -27,7 +27,34 @@ $(function User_CRUD_Handler() {
 		});
 	});
 	
+	//deck 검색기록 저장
 	$('#create_deck').click(function(){
-		
+		/*var login_check = $('#input_deck_user_id').val();
+		alert(login_check);
+		if( login_check == "null"){
+			alert('login please~');
+			//deck 검색 중지
+		}
+		else{
+			$user_id	= '';
+			$deck_name	= $('#input_deck_title').val();
+			$deck_id	= $('#input_deck_user_id').val();
+			var json = {"type":"post","name":$deck_name,"id":$deck_id};
+			$.ajax({
+				url		 :	"jsp/deck.jsp",
+				type	 :	"POST",
+				data	 :	json,
+				datatype :	"json",
+			
+				success	 :	function(data){
+					alert(data);
+				},error	: function(){
+					console.log('error from deck');
+				},
+				complete: function(){
+					console.log('complete from deck');
+				}
+			});
+		}*/
 	});
 });
