@@ -17,6 +17,16 @@
 	String name = "";
 	int message = 0;
 	
+	/*
+	//회원가입 후 자동으로 로그인 될경우 사용되는 조건문입니다.
+	String type = request.getParameter("type");
+	if(type.equals("after_join"))
+	{
+		id = request.getParameter("id");
+		pw = request.getParameter("password");
+	}
+	*/
+		
 	JSONObject jsono = new JSONObject();
 	
  	try{

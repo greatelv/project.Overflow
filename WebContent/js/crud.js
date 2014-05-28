@@ -17,8 +17,19 @@ $(function User_CRUD_Handler() {
 			success	: function(datapost){
 				alert(datapost);
 				$('#register').modal('hide');
-				var json = JSON.parse(datapost);
-				alert(json.pw);
+				
+				//회원가입 후 받은 데이터를 이용하여 바로 로그인을 시도합니다.
+				var autologin = JSON.parse(datapost);
+				$.ajax({
+					url : "jsp/login.jsp",
+					type: "POST",
+					data: autologin,
+					datatype: "json",
+					success : function(){console.log('success from post');},
+					error : function(){console.log('error from post');},
+					complete : function(){console.log('complete from post');}
+					
+				});
 				
 			},
 			error	: function(){

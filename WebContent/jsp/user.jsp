@@ -62,6 +62,7 @@
 			message = e.getMessage().toString();
 		}finally{
 			JSONObject 	jsono = new JSONObject();
+			jsono.put("type", "after_join");
 			jsono.put("result", result);
 			jsono.put("message", message);
 			jsono.put("id", id);
