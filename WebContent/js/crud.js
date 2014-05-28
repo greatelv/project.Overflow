@@ -17,6 +17,9 @@ $(function User_CRUD_Handler() {
 			success	: function(datapost){
 				alert(datapost);
 				$('#register').modal('hide');
+				var json = JSON.parse(datapost);
+				alert(json.pw);
+				
 			},
 			error	: function(){
 				console.log('error from post');

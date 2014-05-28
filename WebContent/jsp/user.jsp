@@ -37,6 +37,21 @@
 			
 			message = "회원가입이 정상적으로 완료되었습니다.";
 			
+			// 회원가입시 자동으로 저장될 덱 값을 설정합니다.
+			sql = "INSERT INTO deck(sequence, user_id, deck_keyword) values(?,?,?)";
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, 1);
+			ps.setString(2, id);
+			ps.setString(3, "세월호");
+			ps.executeUpdate();
+			
+			ps.setInt(1, 2);
+			ps.setString(2, id);
+			ps.setString(3, "서울과학기술대학교");
+			ps.executeUpdate();
+			
+			//response.sendRedirect("login.jsp?login_id="+id+"&login_password="+pw);
+			
 		}catch (ClassNotFoundException e){
 			e.printStackTrace();
 			result = 0;
@@ -49,6 +64,8 @@
 			JSONObject 	jsono = new JSONObject();
 			jsono.put("result", result);
 			jsono.put("message", message);
+			jsono.put("id", id);
+			jsono.put("pw", pw);
 			out.println(jsono);
 		}
 	}
