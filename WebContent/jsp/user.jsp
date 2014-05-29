@@ -38,15 +38,17 @@
 			message = "회원가입이 정상적으로 완료되었습니다.";
 			
 			// 회원가입시 자동으로 저장될 덱 값을 설정합니다.
-			sql = "INSERT INTO deck(user_id, deck_keyword) values(?,?)";
+			/*sql = "INSERT INTO deck(sequence, user_id, deck_keyword) values(?,?,?)";
 			ps = con.prepareStatement(sql);
-			ps.setString(1, id);
-			ps.setString(2, "세월호");
+			ps.setInt(1, 1);
+			ps.setString(2, id);
+			ps.setString(3, "세월호");
 			ps.executeUpdate();
 			
-			ps.setString(1, id);
-			ps.setString(2, "서울과학기술대학교");
-			ps.executeUpdate();
+			ps.setInt(1, 2);
+			ps.setString(2, id);
+			ps.setString(3, "서울과학기술대학교");
+			ps.executeUpdate();*/
 			
 			//response.sendRedirect("login.jsp?login_id="+id+"&login_password="+pw);
 			
