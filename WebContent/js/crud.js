@@ -25,9 +25,14 @@ $(function User_CRUD_Handler() {
 					type: "POST",
 					data: autologin,
 					datatype: "json",
-					success : function(){console.log('success from post');},
-					error : function(){console.log('error from post');},
-					complete : function(){console.log('complete from post');}
+					success : function(data){
+						console.log('success from post');
+						},error : function(){
+							console.log('error from post');
+						},complete : function()
+						{
+							console.log('complete from post');
+						}
 					
 				});
 				

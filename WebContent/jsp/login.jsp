@@ -67,7 +67,6 @@
 	}catch (SQLException e){
 		e.printStackTrace();
 	}finally{
-		
 	}
  %>
 <html>

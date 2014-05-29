@@ -38,7 +38,7 @@
 			message = "회원가입이 정상적으로 완료되었습니다.";
 			
 			// 회원가입시 자동으로 저장될 덱 값을 설정합니다.
-			sql = "INSERT INTO deck(sequence, user_id, deck_keyword) values(?,?,?)";
+			/*sql = "INSERT INTO deck(sequence, user_id, deck_keyword) values(?,?,?)";
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, 1);
 			ps.setString(2, id);
@@ -48,7 +48,7 @@
 			ps.setInt(1, 2);
 			ps.setString(2, id);
 			ps.setString(3, "서울과학기술대학교");
-			ps.executeUpdate();
+			ps.executeUpdate();*/
 			
 			//response.sendRedirect("login.jsp?login_id="+id+"&login_password="+pw);
 			
@@ -62,11 +62,16 @@
 			message = e.getMessage().toString();
 		}finally{
 			JSONObject 	jsono = new JSONObject();
-			jsono.put("type", "after_join");
+			
 			jsono.put("result", result);
 			jsono.put("message", message);
-			jsono.put("login_id", id);
-			jsono.put("login_password", pw);
+			if(result == 1){
+				jsono.put("login_id", id);
+				jsono.put("login_password", pw);
+			}
+			else{
+				
+			}
 			out.println(jsono);
 		}
 	}
