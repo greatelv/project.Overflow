@@ -5,7 +5,7 @@ $(function User_CRUD_Handler() {
 		$postpw		= document.getElementById("input-register-password").value;
 		$postname	= document.getElementById("input-register-name").value;
 		$postemail	= document.getElementById("input-register-email").value;
-		$postbrith	= document.getElementById("input-register-birth").value;
+		$postbirth	= document.getElementById("input-register-birth").value;
 		$post		= "post";
 		var json = {"type":$post,"id":$postid,"password":$postpw,"name":$postname,"email":$postemail,"birth":$postbirth};
 		console.log(json);
