@@ -18,6 +18,8 @@
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/font.css" rel="stylesheet">   
     <link href="css/custom.css" rel="stylesheet">
+    <!-- Calendar core CSS -->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" media="all" />
 </head>
 <body>
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="nav_container">
@@ -115,8 +117,12 @@
 			    <input type="text" class="form-control" id="input-register-name" placeholder="이름을 입력하세요">
 			  </div>
 			  <div class="form-group">
-			    <label>이메일</label>
+			    <label>이메일(작성 안해도 됩니다.)</label>
 			    <input type="text" class="form-control" id="input-register-email" placeholder="이메일을 입력하세요">
+			  </div>
+			  <div class="form-group">
+			    <label>생년월일</label>
+			    <input type="text" class="form-control" id="input-register-birth" placeholder="생일을 입력하세요">
 			  </div>
 			</form>
 
@@ -149,8 +155,9 @@
   		</div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
 	
-	    <!-- JavaScript -->
+	<!-- JavaScript -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <scirpt src="//code.jquery.com/ui/1.10.0/jquery-ui.js"></scirpt>
     <script src="js/ext/jquery-1.10.2.js"></script>
     <script src="js/ext/jquery-dateFormat.js"></script>
     <script src="js/ext/bootstrap.js"></script>
@@ -172,7 +179,7 @@
     	    $(".deck").css({"width":nodes.length*255}); //하나의 덱은 255의 width를 가집니다.
     	});*/	
     	
-    	
+    	//session에서 로그인 여부확인
     	var login_check_id = <%= (String)session.getAttribute("id")%>;
     	var login_check_name = '<%= (String)session.getAttribute("name")%>';
     	
@@ -187,7 +194,9 @@
     					+ '<input type="submit" id="logout" class="btn btn-success" value="로그아웃"/></form>');
     	}
     	
+    	$('#login-register-id').datepicker();
     });
     </script>
+    
 </body>
 </html>

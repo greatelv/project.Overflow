@@ -11,8 +11,11 @@ $(document).ready(function(){
 	$('#post').click(function(){
 			$postid 	= document.getElementById("postid").value;
 			$postpw		= document.getElementById("postpw").value;
+			$postname	= document.getElementById("postname").value;
+			$postemail  = document.getElementById("postemail").value;
+			$postbirth  = document.getElementById("postbirth").value;
 			$post		= "post";
-			var json = {"type":$post,"password":$postpw,"id":$postid};
+			var json = {"type":$post,"password":$postpw,"id":$postid,"name":$postname,"email":$postemail,"birth":$postbirth};
 			console.log(json);
 			$.ajax({
 				url		:	"user.jsp",
@@ -96,7 +99,10 @@ $(document).ready(function(){
 <body>
 	<div id="post_user">회원가입</div>
 	<div>ID     	  : <input type="text" id = "postid"/></div>
-	<div>PW   	  : <input type="text" id = "postpw"/></div> 
+	<div>PW   	  : <input type="password" id = "postpw"/></div>
+	<div>NAME	: <input type="text" id = "postname"/></div>
+	<div>EMAIL	: <input type="text" id = "postemail"/></div>
+	<div>BIRTH	: <input type="text" id = "postbirth"/></div>
 	
 	<input type="button" id="post" value="Post Data"/>
 	<br>

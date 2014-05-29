@@ -15,6 +15,7 @@
 		String pw 	 = request.getParameter("password");
 		String name  = request.getParameter("name");
 		String email = request.getParameter("email");
+		String birth = request.getParameter("birth");
 		
 		String message = "";
 		int result = 1;
@@ -24,7 +25,7 @@
 			
 			Class.forName(driverName);
 			Connection con = DriverManager.getConnection("jdbc:mysql://ec2-54-199-180-105.ap-northeast-1.compute.amazonaws.com:3306/overflow_dev?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8","overflow","overflow");
-			String sql = "INSERT INTO user(user_id, user_pw, user_name, user_email, register_date) VALUES(?,?,?,?,now())";
+			String sql = "INSERT INTO user(user_id, user_pw, user_name, user_birth,user_email, register_date, config_thema, config_font_size, config_auto_stream) VALUES(?,?,?,now(),?,now(),?,?,?)";
 			PreparedStatement ps;
 			
 			ps = con.prepareStatement(sql);
@@ -32,6 +33,9 @@
 			ps.setString(2, pw);
 			ps.setString(3, name);
 			ps.setString(4,	email);
+			ps.setInt(5, 1);
+			ps.setInt(6, 1);
+			ps.setInt(7, 1);
 
 			ps.executeUpdate();
 			
