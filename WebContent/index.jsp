@@ -137,8 +137,9 @@
 	</div><!-- /.modal -->
 	
 	<!-- JavaScript -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <scirpt src="//code.jquery.com/ui/1.10.0/jquery-ui.js"></scirpt>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+    <scirpt src="http://code.jquery.com/ui/1.10.0/jquery-ui.js" type="text/css" media="all"></scirpt>
+    <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js" type="text/javascript"></script>
     <script src="js/ext/jquery-1.10.2.js"></script>
     <script src="js/ext/jquery-dateFormat.js"></script>
     <script src="js/ext/bootstrap.js"></script>
@@ -174,8 +175,7 @@
     					+')님 환영합니다.</div><form class="navbar-form navbar-right" type="post" id="login_join" action="jsp/logout.jsp">'
     					+ '<input type="submit" id="logout" class="btn btn-success" value="로그아웃"/></form>');
     	}
-    	
-    	$('#login-register-id').datepicker();
+    	$()
     });
     </script>
     
