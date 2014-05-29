@@ -175,7 +175,6 @@
     					+ '<input type="submit" id="logout" class="btn btn-success" value="로그아웃"/></form>');
     	}
     	
-    	$('#login-register-id').datepicker();
     });
     </script>
     
