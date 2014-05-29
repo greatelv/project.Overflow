@@ -36,33 +36,14 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
             	<!-- 헤더 메뉴 -->
                 <ul class="nav navbar-nav" id="menubar">
-                    <li><a href="#about">소개</a>
+                    <li><a href="#home"><span class="glyphicon glyphicon-home"></span> 홈</a>
                     </li>
-                    <li><a href="#howuse">사용방법</a>
+                    <li><a href="#config"><span class="glyphicon glyphicon-cog"></span> 설정</a>
                     </li>
-                    <li class="dropdown">
-              			<a href="#" class="dropdown-toggle" data-toggle="dropdown">작업<b class="caret"></b></a>
-              			<ul class="dropdown-menu">
-              				<li><a href="#">로그인</a></li>
-                			<li><a href="#">로그아웃</a></li>
-                			<li class="divider"></li>
-                			<li><a href="#" data-toggle="modal" data-target="#create_deck_modal">새로운 덱 생성</a></li>
-                			<li><a id="drop_deck_table" href="#">덱 전체 삭제</a></li>
-                			<li><a id="add_contents" href="#">[테스트용]덱에 내용추가</a></li>
-                		</ul>
-            		</li>
-                	<li class="dropdown">
-              			<a href="#" class="dropdown-toggle" data-toggle="dropdown">설정<b class="caret"></b></a>
-              			<ul class="dropdown-menu">
-                			<li><a href="#">테마 설정</a></li>
-                			<li><a href="#">폰트 사이즈 설정 </a></li>
-                			<li class="divider"></li>
-                			<li><a href="#">알림 설정</a></li>
-                			<li><a href="#">자동스트림 설정</a></li>
-                			<li><a href="#">소리 설정</a></li>
-                			<!-- <li class="dropdown-header">알림 설정</li> -->
-              			</ul>
-            		</li>
+                    <li><a href="#" data-toggle="modal" data-target="#create_deck_modal"><span class="glyphicon glyphicon-plus"></span> 새로운 덱 추가</a>
+                    </li>
+                    <li><a id="drop_deck_table" href="#"><span class="glyphicon glyphicon-remove"></span> 덱 전체 삭제</a>
+                    </li>        
                 </ul>
                 
                 <!-- 회원가입 및 로그인 -->
