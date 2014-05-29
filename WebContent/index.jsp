@@ -40,9 +40,9 @@
                     </li>
                     <li><a href="#config"><span class="glyphicon glyphicon-cog"></span> 설정</a>
                     </li>
-                    <li><a href="#" data-toggle="modal" data-target="#create_deck_modal"><span class="glyphicon glyphicon-plus"></span> 새로운 덱 추가</a>
+                    <li><a href="#" data-toggle="modal" data-target="#create_deck_modal"><span class="glyphicon glyphicon-plus"></span> 새로운 덱</a>
                     </li>
-                    <li><a id="drop_deck_table" href="#"><span class="glyphicon glyphicon-remove"></span> 덱 전체 삭제</a>
+                    <li><a id="drop_deck_table" href="#"><span class="glyphicon glyphicon-remove"></span> 전체 삭제</a>
                     </li>        
                 </ul>
                 

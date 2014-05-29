@@ -3,6 +3,7 @@
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="java.sql.*"%>
 <%@page import="java.io.*"%>
+<%@page import="java.util.HashMap"%>
 <%@page import="org.json.JSONArray"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "www.w3.org/TR/html4/loose.dtd">
 <!-- index.jsp에서 login_id랑 login_password를 받아서 서버에서 존재 유무를 파악한다. -->
@@ -16,10 +17,6 @@
 	String correct_pw = "";
 	String name = "";
 	int message = 0;
-	
-
-		
-	JSONObject jsono = new JSONObject();
 	
  	try{
  		String driverName = "com.mysql.jdbc.Driver";
@@ -58,6 +55,19 @@
 			
 			ps.executeUpdate();
 			
+			
+			//로그인 완료 후 덱 목록을 받아와서 표시합니다.
+			JSONArray deck_data = new JSONArray();
+			//deck_data.put();
+			rs = stat.executeQuery("select sequence, deck_keyword from deck where user_id = '" + id +"' order by sequence asc");
+			while (rs.next())
+			{
+				HashMap<String, Object> map = new HashMap<String, Object>();
+				map.put("sequence",  rs.getInt("sequence"));
+				map.put("deck_keyword",  rs.getInt("deck_keyword"));
+				deck_data.put(map);
+			}
+			out.println(deck_data);
 		}
 		stat.close();
 		con.close();
