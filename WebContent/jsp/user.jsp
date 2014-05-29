@@ -65,8 +65,8 @@
 			jsono.put("type", "after_join");
 			jsono.put("result", result);
 			jsono.put("message", message);
-			jsono.put("id", id);
-			jsono.put("pw", pw);
+			jsono.put("login_id", id);
+			jsono.put("login_password", pw);
 			out.println(jsono);
 		}
 	}
