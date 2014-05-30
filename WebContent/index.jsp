@@ -103,7 +103,7 @@
 			  </div>
 			  <div class="form-group">
 			    <label>생년월일</label>
-			    <input type="text" class="form-control" id="input-register-birth" placeholder="생일을 입력하세요">
+			    <input type="text" class="form-control" id="input-register-birth" placeholder="생일을 입력하세요" readonly="true">
 			  </div>
 			</form>
 
@@ -138,7 +138,7 @@
 	
 	<!-- JavaScript -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
-    <scirpt src="http://code.jquery.com/ui/1.10.0/jquery-ui.js" type="text/css" media="all"></scirpt>
+    <scirpt src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></scirpt>
     <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js" type="text/javascript"></script>
     <script src="js/ext/jquery-1.10.2.js"></script>
     <script src="js/ext/jquery-dateFormat.js"></script>
@@ -150,6 +150,8 @@
     <script src="js/deck.js"></script>	
     <script src="js/crud.js"></script>
     
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+  	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <!-- Custom JavaScript -->
     <script type="text/javascript">
     //덱이 늘어나더라도 아래로 float되지 않도록 하는 자바스크립트. 실시간으로 body의 width를 변경하여 줄바꿈이 되지 않도록 합니다.
@@ -174,9 +176,26 @@
     			$(".navbar-collapse").append('<div class="navbar-right">'+login_check_name+'('+login_check_id
     					+')님 환영합니다.</div><form class="navbar-form navbar-right" type="post" id="login_join" action="jsp/logout.jsp">'
     					+ '<input type="submit" id="logout" class="btn btn-success" value="로그아웃"/></form>');
+    	//여기서 ajax로 deck keyword 호출한다.
+    	
     	}
-    	$()
     });
+    $(function() {
+        $( "#input-register-birth" ).datepicker({
+            dateFormat: 'yy-mm-dd',
+            prevText: '이전 달',
+            nextText: '다음 달',
+            monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+            monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+            dayNames: ['일','월','화','수','목','금','토'],
+            dayNamesShort: ['일','월','화','수','목','금','토'],
+            dayNamesMin: ['일','월','화','수','목','금','토'],
+            showMonthAfterYear: true,
+            yearSuffix: '년',
+            changeMonth: true,
+            changeYear: true
+          });
+      });
     </script>
     
 </body>
