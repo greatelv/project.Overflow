@@ -6,6 +6,7 @@ $(function User_CRUD_Handler() {
 		$postname	= document.getElementById("input-register-name").value;
 		$postemail	= document.getElementById("input-register-email").value;
 		$postbirth	= document.getElementById("input-register-birth").value;
+		
 		$post		= "post";
 		var json = {"type":$post,"id":$postid,"password":$postpw,"name":$postname,"email":$postemail,"birth":$postbirth};
 		$.ajax({
@@ -23,7 +24,7 @@ $(function User_CRUD_Handler() {
 				$.ajax({
 					url : "jsp/login.jsp",
 					type: "POST",
-					data: autologin,
+					data: autologin,	
 					datatype: "json",
 					success : function(data){
 							document.location.href = "/o/";

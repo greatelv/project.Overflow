@@ -18,10 +18,10 @@
 		String email = request.getParameter("email");
 		String getbirth = request.getParameter("birth");
 		
-		SimpleDateFormat formater = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
 		Date birth =formater.parse(getbirth);
 		
-		out.println(id+"||"+pw+"||"+name+"||"+email+"||"+birth);
+		out.println(getbirth);
 		String message = "";
 		int result = 1;
 
@@ -38,7 +38,7 @@
 			ps.setString(2, pw);
 			ps.setString(3, name);
 			ps.setString(4,	email);
-			ps.setDate(5, birth);
+			ps.setString(5, getbirth);
 			ps.setInt(6, 1);
 			ps.setInt(7, 1);
 			ps.setInt(8, 1);
