@@ -89,6 +89,12 @@ body{
 	float: left;
 }
 
+.navbar-brand{
+    font-size: 25px;
+	
+    font-weight: 900;
+}
+
 /* 데크 스타일 정의 */
 
 #deck_table{
