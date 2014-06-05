@@ -22,8 +22,8 @@ var load_deck = function(order, icon, title){
 			"'></div>" +
 			"<div class='deck-title'>" +
 			deck_title +
-			"<button class='glyphicon glyphicon-trash'></button>" +
 			"</div>" +
+			"<div class='glyphicon glyphicon-trash deck_del'></div>" +
 			"</div>" +
 			"<div id='" +
 			deck_body_id +
@@ -119,9 +119,8 @@ $(document).on("click", "#create_deck", function(){
 });
 
 //덱 삭제 버튼을 누르면 실행 됩니다.
-$(document).on("click", "button.glyphicon", function(){
-	var deck_id = $(this).parent().parent().parent().attr('id');
-	  $("#" + deck_id).remove();
+$(document).on("click", "div.deck_del", function(){
+	$(this).parent().parent().remove();
 });
 
 //덱 전체 삭제 버튼을 누르면 실행 됩니다.
