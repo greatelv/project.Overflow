@@ -5,7 +5,6 @@
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="java.sql.*"%>
 <%@page import="java.io.*"%>
-<%@ page import = "java.util.Date,java.text.SimpleDateFormat,java.text.ParseException"%>
 <%
 
 	String type = request.getParameter("type");
@@ -16,12 +15,15 @@
 		String pw 	 = request.getParameter("password");
 		String name  = request.getParameter("name");
 		String email = request.getParameter("email");
-		String getbirth = request.getParameter("birth");
+		String birth = request.getParameter("birth");
 		
+<<<<<<< HEAD
 		SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
 		Date birth =formater.parse(getbirth);
 		
 		out.println(getbirth);
+=======
+>>>>>>> 1c6f766be3bb87c922f16bc541a745113f826a83
 		String message = "";
 		int result = 1;
 
@@ -30,7 +32,7 @@
 			
 			Class.forName(driverName);
 			Connection con = DriverManager.getConnection("jdbc:mysql://ec2-54-199-180-105.ap-northeast-1.compute.amazonaws.com:3306/overflow_dev?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8","overflow","overflow");
-			String sql = "INSERT INTO user(user_id, user_pw, user_name, user_birth,user_email, register_date, config_thema, config_font_size, config_auto_stream) VALUES(?,?,?,?,?,now(),?,?,?)";
+			String sql = "INSERT INTO user(user_id, user_pw, user_name, user_birth,user_email, register_date, config_thema, config_font_size, config_auto_stream) VALUES(?,?,?,now(),?,now(),?,?,?)";
 			PreparedStatement ps;
 			
 			ps = con.prepareStatement(sql);
@@ -38,10 +40,13 @@
 			ps.setString(2, pw);
 			ps.setString(3, name);
 			ps.setString(4,	email);
+<<<<<<< HEAD
 			ps.setString(5, getbirth);
+=======
+			ps.setInt(5, 1);
+>>>>>>> 1c6f766be3bb87c922f16bc541a745113f826a83
 			ps.setInt(6, 1);
 			ps.setInt(7, 1);
-			ps.setInt(8, 1);
 
 			ps.executeUpdate();
 			

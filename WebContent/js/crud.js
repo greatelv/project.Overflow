@@ -9,6 +9,7 @@ $(function User_CRUD_Handler() {
 		
 		$post		= "post";
 		var json = {"type":$post,"id":$postid,"password":$postpw,"name":$postname,"email":$postemail,"birth":$postbirth};
+		console.log(json);
 		$.ajax({
 			url		:	"jsp/user.jsp",
 			type	:	"POST",

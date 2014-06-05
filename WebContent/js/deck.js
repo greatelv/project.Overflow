@@ -81,6 +81,8 @@ var load_deck_article = function(picture, nickname, contents, title){
 	  $(deck_body_id).append(article);
 }
 
+
+
 // 동적할당된 요소를 컨트롤 하려면 on메소드를 사용해야 합니다.
 $(document).on("click", "#create_deck", function(){
 		//덱 생성 버튼을 누르면 실행 됩니다.
