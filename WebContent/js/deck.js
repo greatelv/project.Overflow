@@ -135,8 +135,5 @@ $(document).on("click", "#add_contents", function(){
 });
 
 //기본 데크 초기화
-load_deck(1, "glyphicon glyphicon-search", '세월호');
-load_deck(2, "glyphicon glyphicon-search", '대학교');
-load_deck(3, "glyphicon glyphicon-search", '지갑');
-load_deck(4, "glyphicon glyphicon-search", '지갑');
-load_deck(5, "glyphicon glyphicon-search", '지갑');
+load_deck(1, "glyphicon glyphicon-search", '지방선거');
+load_deck(2, "glyphicon glyphicon-search", '걸그룹');
