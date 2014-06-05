@@ -224,14 +224,7 @@ body{
 /*Login Dropdown Menu*/
 
 .dropdown-menu {
-
+    padding: 15px;
+	width: 200px;
+    border: solid;
 }
-
-#login_join{
-
-}
-
-#login_join{
-
-}
-
