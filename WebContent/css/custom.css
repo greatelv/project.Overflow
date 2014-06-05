@@ -159,7 +159,7 @@ body{
 
 .deck-body
 {
-	background-color: #a69274;
+	background-color: #4e5d6c;
 	clear: both;
 	overflow: auto;
 	overflow-x: hidden;
@@ -175,7 +175,7 @@ body{
 	margin: 0px 5px 0px 5px;
 	color: white;
 	min-height: 120px;
-	border-bottom: solid 1px #fff;
+	border-bottom: solid 1px darkgrey;
 	padding: 5px 0px;
 }
 
