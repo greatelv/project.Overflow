@@ -262,5 +262,40 @@ body{
 
 /*통계 페이지 스타일*/
 #stats_page{
+    overflow: auto;
 	
+}
+
+#stats_page .row{
+    margin: 20px;
+	
+}
+
+#stats_page .row div{
+    padding: 40px;
+	
+}
+
+#stats_page .total-v{
+    text-align: center;
+	
+}
+
+#stats_page .my-v{
+	text-align: center;
+}
+
+#stats_page .stats-v{
+    font-size: 30px;
+
+}
+
+#stats_page .stats-v .row > div > div{
+
+}
+
+#stats_page .stats-v > div > div > b{
+    font-size: 50px;
+
+    color: darksalmon;
 }

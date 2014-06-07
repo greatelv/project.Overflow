@@ -43,16 +43,16 @@
 
     		<!-- 헤더 메뉴 -->
     		<ul class="nav navbar-nav" id="menubar">
-    			<li><a href="#home"><span class="glyphicon glyphicon-home"></span>
+    			<li class="home"><a href="#home"><span class="glyphicon glyphicon-home"></span>
     					홈</a></li>
-    			<li><a href="#home"><span class="glyphicon glyphicon-stats"></span>
+    			<li class="stats"><a href="#stats"><span class="glyphicon glyphicon-stats"></span>
     					통계</a></li>
-    			<li><a href="#config"><span class="glyphicon glyphicon-cog"></span>
+    			<li class="config"><a href="#config"><span class="glyphicon glyphicon-cog"></span>
     					설정</a></li>
-    			<li><a href="#" data-toggle="modal"
+    			<li class="add-deck"><a href="#" data-toggle="modal"
     				data-target="#create_deck_modal"><span
     					class="glyphicon glyphicon-plus"></span> 새로운 덱</a></li>
-    			<li><a id="drop_deck_table" href="#"><span
+    			<li class="del-deck"><a id="drop_deck_table" href="#"><span
     					class="glyphicon glyphicon-remove"></span> 전체 삭제</a></li>
     		</ul>
 
@@ -94,9 +94,122 @@
 
 	<div id="border_top" class="border-container"></div>
 
-	<!-- 본문 내용 -->
+	<!-- 홈 (데크) -->
 	<div id="deck_table" class="container context"></div>
-	<div id="stats_page" class="container context"></div>
+	
+    <!-- 통계 -->
+    <div id="stats_page" class="container context">
+        <div class="row">
+            <div class="col-xs-6">
+                <h3>전체 키워드 순위</h3>
+                <p>Overflow에서 가장 많이 검색된 키워드 순위를 제공합니다.</p>
+                <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>순위</th>
+                          <th>키워드명</th>
+                          <th>검색횟수</th>
+                          <th>최종검색일자</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1</td>
+                          <td>세월호</td>
+                          <td>200</td>
+                          <td>2014-05-11</td>
+                        </tr>
+                        <tr>
+                          <td>2</td>
+                          <td>걸그룹</td>
+                          <td>200</td>
+                          <td>2014-05-11</td>
+                        </tr>
+                        <tr>
+                          <td>3</td>
+                          <td>Larry</td>
+                          <td>500</td>
+                          <td>2014-05-11</td>
+                        </tr>
+                        <tr>
+                          <td>3</td>
+                          <td>Larry</td>
+                          <td>500</td>
+                          <td>2014-05-11</td>
+                        </tr>
+                        <tr>
+                          <td>3</td>
+                          <td>Larry</td>
+                          <td>500</td>
+                          <td>2014-05-11</td>
+                        </tr>
+                        <tr>
+                          <td>3</td>
+                          <td>Larry</td>
+                          <td>500</td>
+                          <td>2014-05-11</td>
+                        </tr>
+                        <tr>
+                          <td>3</td>
+                          <td>Larry</td>
+                          <td>500</td>
+                          <td>2014-05-11</td>
+                        </tr>
+                      </tbody>
+                </table>
+            </div>
+            <div class="col-xs-6">
+                <h3>나의 키워드</h3>
+                <p>자신이 최근에 검색한 키워드 리스트를 제공합니다.</p>
+                <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>First Name</th>
+                          <th>Last Name</th>
+                          <th>Username</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1</td>
+                          <td>Mark</td>
+                          <td>Otto</td>
+                          <td>@mdo</td>
+                        </tr>
+                        <tr>
+                          <td>2</td>
+                          <td>Jacob</td>
+                          <td>Thornton</td>
+                          <td>@fat</td>
+                        </tr>
+                        <tr>
+                          <td>3</td>
+                          <td>Larry</td>
+                          <td>the Bird</td>
+                          <td>@twitter</td>
+                        </tr>
+                      </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row stats-v">
+            <div class="col-xs-6">
+                <div class="total-v">
+                    <span class="glyphicon glyphicon-thumbs-up"></span>
+                    Total Access Count : <b>1200</b>
+
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="my-v">
+                    <span class="glyphicon glyphicon-user"></span>
+                
+                    My Access Count : <b>300</b>
+                </div>
+            </div>
+        </div>
+    </div>
 	<!-- /.container -->
 
 	<div id="border_bottom" class="border-container"></div>
@@ -120,12 +233,22 @@
     //덱이 늘어나더라도 아래로 float되지 않도록 하는 자바스크립트. 실시간으로 body의 width를 변경하여 줄바꿈이 되지 않도록 합니다.
     $(document).ready(function(){
     	$('#deck_table').show();
+
+        //홈과 통게 메뉴 핸들링
+        $('#menubar li.home, #menubar li.stats').click(function(){
+            $('.context').hide();
+            var menu = jQuery(this);
+
+            if(menu.attr('class') == 'home'){
+                $('#deck_table').show();
+            }else if(menu.attr('class') == 'stats'){
+                $('#stats_page').show();
+            }
+        })
     	
     	$('#logout_btn').click(function(){
     		location.href = "/o/jsp/logout.jsp";
     	});
-    	
-    	
     });
     </script>
 
