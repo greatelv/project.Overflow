@@ -1,9 +1,16 @@
+<%@page import="org.apache.catalina.Session"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="java.sql.*"%>
 <%@page import="java.io.*"%>
 <%@page import="org.json.JSONArray"%>
+<%
+	//세션 데이터
+	String id = (String)session.getAttribute("id");
+	String name = (String)session.getAttribute("name");
+%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -38,6 +45,8 @@
     		<ul class="nav navbar-nav" id="menubar">
     			<li><a href="#home"><span class="glyphicon glyphicon-home"></span>
     					홈</a></li>
+    			<li><a href="#home"><span class="glyphicon glyphicon-stats"></span>
+    					통계</a></li>
     			<li><a href="#config"><span class="glyphicon glyphicon-cog"></span>
     					설정</a></li>
     			<li><a href="#" data-toggle="modal"
@@ -48,6 +57,7 @@
     		</ul>
 
 
+<%if(id==null) {%>
     		<ul class="nav pull-right">
     			<li class="dropdown" id="menuLogin">
     				<!-- <a class="dropdown-toggle" href="#"  id="navLogin">Login</a> -->
@@ -69,13 +79,24 @@
     				</div>
     			</li>
     		</ul>
+    		
+<%}else {%>
+			<div class="pull-right user-info">
+				<b><%=name%></b>님 환영합니다.
+				<button type="button" class="btn btn-warning" id="logout_btn">로그아웃</button>
+    		</div>
+
+<%}%>
+
+    		
     	</div>
     </nav>
 
 	<div id="border_top" class="border-container"></div>
 
 	<!-- 본문 내용 -->
-	<div id="deck_table" class="container decktable"></div>
+	<div id="deck_table" class="container context"></div>
+	<div id="stats_page" class="container context"></div>
 	<!-- /.container -->
 
 	<div id="border_bottom" class="border-container"></div>
@@ -98,36 +119,15 @@
 	<script type="text/javascript">
     //덱이 늘어나더라도 아래로 float되지 않도록 하는 자바스크립트. 실시간으로 body의 width를 변경하여 줄바꿈이 되지 않도록 합니다.
     $(document).ready(function(){
-    	var nodes = $("#deck_table").children();
-    	/*$(".deck").css({"width":nodes.length*255});
-    	$(window).resize(function(){
-    		var nodes = $("#deck_table").children(); //덱 테이블의 현재 덱의 갯수를 구합니다.
-    	    $(".deck").css({"width":nodes.length*255}); //하나의 덱은 255의 width를 가집니다.
-    	});*/	
+    	$('#deck_table').show();
     	
-    	//session에서 로그인 여부확인
-    	var login_check_id = <%= (String)session.getAttribute("id")%>;
-    	var login_check_name = '<%= (String)session.getAttribute("name")%>';
+    	$('#logout_btn').click(function(){
+    		location.href = "/o/jsp/logout.jsp";
+    	});
     	
-    	if(login_check_id == null){
-    		//alert('login하세요');
-    	}
-    	
-    	else{
-    			$("#login_join").hide();
-    			$(".navbar-collapse").append('<div class="navbar-right">'+login_check_name+'('+login_check_id
-    					+')님 환영합니다.</div><form class="navbar-form navbar-right" type="post" id="login_join" action="jsp/logout.jsp">'
-    					+ '<input type="submit" id="logout" class="btn btn-success" value="로그아웃"/></form>');
-    	}
     	
     });
     </script>
-
-
-
-
-
-
 
     <!-- 회원가입, 등록 모달-->
     <div class="modal fade join-modal" id="register">

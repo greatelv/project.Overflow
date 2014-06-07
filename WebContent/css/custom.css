@@ -22,6 +22,15 @@ body{
 
 .container { width:970px !important; }
 
+.context{
+	padding: 0px;
+	width: 100% !important;
+	position: absolute;
+	bottom: 5px;
+	top: 65px;
+	display: none;
+}
+
 .btn-success
 {
 	color: #ffffff;
@@ -96,16 +105,19 @@ body{
     color: darkseagreen !important;
 }
 
+.user-info{
+	
+}
+
+#logout_btn{
+    margin-left: 10px;
+	
+}
+
 /* 데크 스타일 정의 */
 
 #deck_table{
-	background: /* * 커스텀 CSS 설정 페이지 * Homepage: http://localhost:8080\o\ * Copyright 2014 * Based on Bootstrap*/body, html { height: 100%; width: 100%; margin: 0; padding: 0; border: 0;}body{ font-family: barungothic; overflow-y: hidden; background-color: #404951; display: block;}.container { width:970px !important; }.btn-success{ color: #ffffff; background-color: #5cb85c; border-color: #4cae4c;}.btn-register{ color: #ffffff; background-color: rgb(66, 139, 202); border-color: #357ebd;}.btn{ display: inline-block; padding: 6px 12px; margin-bottom: 0; font-size: 14px; font-weight: normal; line-height: 1.428571429; text-align: center; white-space: nowrap; vertical-align: middle; cursor: pointer; border: 1px solid transparent; border-radius: 4px; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; -o-user-select: none; user-select: none;}/* GNB 스타일 정의 */#nav_container{ position: initial; display: block; width: 100%; margin-bottom: 0px; position: absolute;}#nav_container > .container { padding : 10px 0px 10px 0px;}#menubar{ float: left; margin: 0;}#menubar li { float: left;}#nav_container .navbar-header{ margin-right: 0px; margin-left:  0px; float: left;}/* 데크 스타일 정의 */#deck_table{ padding: 0px; width: 100% !important; position: absolute; bottom: 5px; top: 65px; background: #2b3e50;}#deck_table > .deck{    width: 20%;    float: left; padding: 0px; height: 100%; position: relative; }.deck-header{ background-color: #193046; height: 50px; position: absolute; width: 98%; left: 0px; right: 0px; margin-right: auto; margin-left: auto;}.deck-order{ font-size: 35px; font-weight: bold; background-color: #1b2835; float: left; height: 50px; width: 20px;}.deck-icon{ font-size: 40px; float: left; position: absolute; top: 6px; left: 25px;}.deck-title{ font-size: 30px; position: absolute; top: 5px; left: 77px;}.deck-body{ background-color: #a69274; clear: both; overflow: auto; overflow-x: hidden; position: absolute; top: 50px; bottom: 0px; width: 98%; left: 0px;  right: 0px;  margin-right: auto;  margin-left: auto;}.deck-article{ background-color: #7d7161; margin: 5px 5px 0px 5px; color: white; min-height: 100px;}.deck-profile{ float:left; background-color: #513c20; padding: 7px; margin: 5px 7px 5px 5px;}.deck-profile-picture{ width: 50px; height: 50px;}.deck-profile-nickname{ margin-top: 5px; text-align: center; width: 50px; text-overflow: ellipsis; overflow: hidden;}.deck-contents{ padding: 5px;}/*Login Dropdown Menu*/s.dropdown-menu {    padding: 15px; width: 200px;    border: solid;}/* 상 하단 컨테이너 테두리 */.border-container{    position: absolute; background: #eee;    width: 100%;    height: 5px;    }#border_bottom {  bottom: 0px;}#border_top {    top: 60px;};
-	padding: 0px;
-	width: 100% !important;
-	position: absolute;
-	bottom: 5px;
 	background: #2b3e50;
-	top: 65px;
 }
 
 
@@ -245,4 +257,10 @@ body{
 #border_top {
     top: 60px;
 
+}
+
+
+/*통계 페이지 스타일*/
+#stats_page{
+	
 }
