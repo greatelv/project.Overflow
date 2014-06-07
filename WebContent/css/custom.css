@@ -66,6 +66,10 @@ body{
 	user-select: none;
 }
 
+.disable{
+	color: gray;
+}
+
 
 /* GNB 스타일 정의 */
 
