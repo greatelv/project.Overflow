@@ -90,9 +90,10 @@ body{
 }
 
 .navbar-brand{
-    font-size: 25px;
+    font-size: 27px;
 	
     font-weight: 900;
+    color: darkseagreen !important;
 }
 
 /* 데크 스타일 정의 */
