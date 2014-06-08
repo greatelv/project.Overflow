@@ -233,7 +233,17 @@
     //덱이 늘어나더라도 아래로 float되지 않도록 하는 자바스크립트. 실시간으로 body의 width를 변경하여 줄바꿈이 되지 않도록 합니다.
     $(document).ready(function(){
     	$('#deck_table').show();
-
+    	
+    	//로그인을 안했을 경우 추가삭제버튼 비활성화
+        if(<%=session.getAttribute("id")%>==null)
+        {
+        	$('.add-deck').hide();
+        	$('.del-deck').hide();
+        	var start_html="<div style='position:absolute; left:100px; top:100px;'><h2>안녕하세요.</h2><p>Overflow는 트위터 상의 글을 키워드 단위로 검색하는 웹사이트입니다.</p><p>이용을 위해서는 로그인부터 해야 합니다.<br>오른쪽 상단을 클릭하여 회원가입 또는 로그인 부터 먼저 해주세요.</p></div>";
+        	$('#deck_table').html(start_html);
+        	
+        }
+        
         //홈과 통게 메뉴 핸들링
         $('#menubar li.home, #menubar li.stats').click(function(){
             $('.context').hide();
@@ -249,6 +259,7 @@
     	$('#logout_btn').click(function(){
     		location.href = "/o/jsp/logout.jsp";
     	});
+
     });
     </script>
 
