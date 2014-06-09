@@ -5,6 +5,10 @@
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="java.sql.*"%>
 <%@page import="java.io.*"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Calendar"%>
+<%@page import="java.util.Date"%>
+
 <%
 
 	String type = request.getParameter("type");
@@ -15,19 +19,16 @@
 		String pw 	 = request.getParameter("password");
 		String name  = request.getParameter("name");
 		String email = request.getParameter("email");
-		String birth = request.getParameter("birth");
+		String getbirth = request.getParameter("birth");
 		
-<<<<<<< HEAD
-		SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
-		Date birth =formater.parse(getbirth);
+		java.text.SimpleDateFormat format = new java.text.SimpleDateFormat("yyyy-MM-dd");
+		Date birth = format.parse(getbirth);
 		
-		out.println(getbirth);
-=======
->>>>>>> 1c6f766be3bb87c922f16bc541a745113f826a83
+		out.println(getbirth + "||" + birth);
 		String message = "";
 		int result = 1;
 
-		try{
+		/*try{
 			String driverName = "com.mysql.jdbc.Driver";
 			
 			Class.forName(driverName);
@@ -40,11 +41,11 @@
 			ps.setString(2, pw);
 			ps.setString(3, name);
 			ps.setString(4,	email);
-<<<<<<< HEAD
-			ps.setString(5, getbirth);
-=======
+
+			ps.setDate(5, birth);
+
 			ps.setInt(5, 1);
->>>>>>> 1c6f766be3bb87c922f16bc541a745113f826a83
+
 			ps.setInt(6, 1);
 			ps.setInt(7, 1);
 
@@ -86,7 +87,7 @@
 				
 			}
 			out.println(jsono);
-		}
+		}*/
 	}
 	else if(type.equals("get")){
 		JSONArray 	jsona = new JSONArray();
