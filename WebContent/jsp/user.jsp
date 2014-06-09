@@ -1,3 +1,4 @@
+<%@page import="java.sql.Date"%>
 <%@page import="org.json.JSONArray"%>
 
 <%@ page language="java" contentType="text/plain; charset=utf-8"
@@ -7,7 +8,7 @@
 <%@page import="java.io.*"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Calendar"%>
-<%@page import="java.util.Date"%>
+<%@page import="java.util.*"%>
 
 <%
 
@@ -22,35 +23,34 @@
 		String getbirth = request.getParameter("birth");
 		
 		SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
-		Date birth =formater.parse(getbirth);
 		
-		out.println(getbirth + "||" + birth);
-
+		java.util.Date birth =formater.parse(getbirth);
+		
+		java.sql.Date birth2 = new java.sql.Date(birth.getTime());
+		
 		String message = "";
 		int result = 1;
 
-		/*try{
+		try{
 			String driverName = "com.mysql.jdbc.Driver";
 			
 			Class.forName(driverName);
 			Connection con = DriverManager.getConnection("jdbc:mysql://ec2-54-199-180-105.ap-northeast-1.compute.amazonaws.com:3306/overflow_dev?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8","overflow","overflow");
-			String sql = "INSERT INTO user(user_id, user_pw, user_name, user_birth,user_email, register_date, config_thema, config_font_size, config_auto_stream) VALUES(?,?,?,now(),?,now(),?,?,?)";
+			String sql = "INSERT INTO user(user_id, user_pw, user_name, user_birth,user_email, register_date, config_thema, config_font_size, config_auto_stream) VALUES(?,?,?,?,?,now(),?,?,?)";
 			PreparedStatement ps;
 			
 			ps = con.prepareStatement(sql);
 			ps.setString(1, id);
 			ps.setString(2, pw);
 			ps.setString(3, name);
-			ps.setString(4,	email);
+			
+			ps.setDate(4, birth2);
 
-			ps.setDate(5, birth);
-
-			ps.setInt(5, 1);
-
-			ps.setString(5, getbirth);
-
+			ps.setString(5,	email);
+			
 			ps.setInt(6, 1);
 			ps.setInt(7, 1);
+			ps.setInt(8, 1);
 
 			ps.executeUpdate();
 			
@@ -90,7 +90,7 @@
 				
 			}
 			out.println(jsono);
-		}*/
+		}
 	}
 	else if(type.equals("get")){
 		JSONArray 	jsona = new JSONArray();
@@ -110,6 +110,16 @@
 				
 				jsono.put("id", rs.getString("user_id"));
 				jsono.put("password", rs.getString("user_pw"));
+				jsono.put("name", rs.getString("user_name"));
+				
+				jsono.put("birth", rs.getDate("user_birth").toString());
+				jsono.put("register", rs.getTime("register_date").toString());
+				
+				jsono.put("email", rs.getString("user_email"));
+				
+				jsono.put("thema", rs.getInt("config_thema"));
+				jsono.put("font", rs.getInt("config_font_size"));
+				jsono.put("auto", rs.getInt("config_auto_stream"));
 				
 				jsona.put(jsono); 	 	
 			}

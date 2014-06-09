@@ -217,17 +217,18 @@
 	<!-- JavaScript -->
 	<script
 		src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<scirpt src="//code.jquery.com/ui/1.10.0/jquery-ui.js"></scirpt>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></scirpt>
 	<script src="js/ext/jquery-1.10.2.js"></script>
 	<script src="js/ext/jquery-dateFormat.js"></script>
 	<script src="js/ext/bootstrap.js"></script>
 	<script src="js/ext/oauth.js"></script>
-
+	
 	<script src="js/global.js"></script>
 	<script src="js/request.js"></script>
 	<script src="js/deck.js"></script>
 	<script src="js/crud.js"></script>
-
+	
 	<!-- Custom JavaScript -->
 	<script type="text/javascript">
     //덱이 늘어나더라도 아래로 float되지 않도록 하는 자바스크립트. 실시간으로 body의 width를 변경하여 줄바꿈이 되지 않도록 합니다.
@@ -259,7 +260,6 @@
     	$('#logout_btn').click(function(){
     		location.href = "/o/jsp/logout.jsp";
     	});
-
     });
     </script>
 
@@ -294,8 +294,8 @@
                         </div>
                         <div class="form-group">
                             <label>생년월일</label> <input type="text" class="form-control"
-                                id="input-register-birth" placeholder="생일을 입력하세요">
-                        </div>
+                                id="input-register-birth" placeholder="생일을 입력하세요" readonly="readonly"><script src="js/calendar.js"></script>
+                        </div>      
                     </form>
 
                 </div>

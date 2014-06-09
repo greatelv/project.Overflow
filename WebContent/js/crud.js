@@ -19,7 +19,7 @@ $(function User_CRUD_Handler() {
 			success	: function(datapost){
 				alert(datapost);
 				$('#register').modal('hide');
-				/*
+				
 				//회원가입 후 받은 데이터를 이용하여 바로 로그인을 시도합니다.
 				var autologin = JSON.parse(datapost);
 				$.ajax({
@@ -36,7 +36,7 @@ $(function User_CRUD_Handler() {
 							console.log('complete from post');
 						}
 					
-				});*/
+				});
 				
 			},
 			error	: function(){
