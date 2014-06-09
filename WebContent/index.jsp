@@ -1,9 +1,16 @@
+<%@page import="org.apache.catalina.Session"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="java.sql.*"%>
 <%@page import="java.io.*"%>
 <%@page import="org.json.JSONArray"%>
+<%
+	//세션 데이터
+	String id = (String)session.getAttribute("id");
+	String name = (String)session.getAttribute("name");
+%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -36,18 +43,21 @@
 
     		<!-- 헤더 메뉴 -->
     		<ul class="nav navbar-nav" id="menubar">
-    			<li><a href="#home"><span class="glyphicon glyphicon-home"></span>
+    			<li class="home"><a href="#home"><span class="glyphicon glyphicon-home"></span>
     					홈</a></li>
-    			<li><a href="#config"><span class="glyphicon glyphicon-cog"></span>
+    			<li class="stats"><a href="#stats"><span class="glyphicon glyphicon-stats"></span>
+    					통계</a></li>
+    			<li class="config"><a href="#config"><span class="glyphicon glyphicon-cog"></span>
     					설정</a></li>
-    			<li><a href="#" data-toggle="modal"
+    			<li class="add-deck"><a href="#" data-toggle="modal"
     				data-target="#create_deck_modal"><span
     					class="glyphicon glyphicon-plus"></span> 새로운 덱</a></li>
-    			<li><a id="drop_deck_table" href="#"><span
+    			<li class="del-deck"><a id="drop_deck_table" href="#"><span
     					class="glyphicon glyphicon-remove"></span> 전체 삭제</a></li>
     		</ul>
 
 
+<%if(id==null) {%>
     		<ul class="nav pull-right">
     			<li class="dropdown" id="menuLogin">
     				<!-- <a class="dropdown-toggle" href="#"  id="navLogin">Login</a> -->
@@ -69,13 +79,137 @@
     				</div>
     			</li>
     		</ul>
+    		
+<%}else {%>
+			<div class="pull-right user-info">
+				<b><%=name%></b>님 환영합니다.
+				<button type="button" class="btn btn-warning" id="logout_btn">로그아웃</button>
+    		</div>
+
+<%}%>
+
+    		
     	</div>
     </nav>
 
 	<div id="border_top" class="border-container"></div>
 
-	<!-- 본문 내용 -->
-	<div id="deck_table" class="container decktable"></div>
+	<!-- 홈 (데크) -->
+	<div id="deck_table" class="container context"></div>
+	
+    <!-- 통계 -->
+    <div id="stats_page" class="container context">
+        <div class="row">
+            <div class="col-xs-6">
+                <h3>전체 키워드 순위</h3>
+                <p>Overflow에서 가장 많이 검색된 키워드 순위를 제공합니다.</p>
+                <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>순위</th>
+                          <th>키워드명</th>
+                          <th>검색횟수</th>
+                          <th>최종검색일자</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1</td>
+                          <td>세월호</td>
+                          <td>200</td>
+                          <td>2014-05-11</td>
+                        </tr>
+                        <tr>
+                          <td>2</td>
+                          <td>걸그룹</td>
+                          <td>200</td>
+                          <td>2014-05-11</td>
+                        </tr>
+                        <tr>
+                          <td>3</td>
+                          <td>Larry</td>
+                          <td>500</td>
+                          <td>2014-05-11</td>
+                        </tr>
+                        <tr>
+                          <td>3</td>
+                          <td>Larry</td>
+                          <td>500</td>
+                          <td>2014-05-11</td>
+                        </tr>
+                        <tr>
+                          <td>3</td>
+                          <td>Larry</td>
+                          <td>500</td>
+                          <td>2014-05-11</td>
+                        </tr>
+                        <tr>
+                          <td>3</td>
+                          <td>Larry</td>
+                          <td>500</td>
+                          <td>2014-05-11</td>
+                        </tr>
+                        <tr>
+                          <td>3</td>
+                          <td>Larry</td>
+                          <td>500</td>
+                          <td>2014-05-11</td>
+                        </tr>
+                      </tbody>
+                </table>
+            </div>
+            <div class="col-xs-6">
+                <h3>나의 키워드</h3>
+                <p>자신이 최근에 검색한 키워드 리스트를 제공합니다.</p>
+                <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>First Name</th>
+                          <th>Last Name</th>
+                          <th>Username</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1</td>
+                          <td>Mark</td>
+                          <td>Otto</td>
+                          <td>@mdo</td>
+                        </tr>
+                        <tr>
+                          <td>2</td>
+                          <td>Jacob</td>
+                          <td>Thornton</td>
+                          <td>@fat</td>
+                        </tr>
+                        <tr>
+                          <td>3</td>
+                          <td>Larry</td>
+                          <td>the Bird</td>
+                          <td>@twitter</td>
+                        </tr>
+                      </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row stats-v">
+            <div class="col-xs-6">
+                <div class="total-v">
+                    <span class="glyphicon glyphicon-thumbs-up"></span>
+                    Total Access Count : <b>1200</b>
+
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="my-v">
+                    <span class="glyphicon glyphicon-user"></span>
+                
+                    My Access Count : <b>300</b>
+                </div>
+            </div>
+        </div>
+    </div>
 	<!-- /.container -->
 
 	<div id="border_bottom" class="border-container"></div>
@@ -98,36 +232,36 @@
 	<script type="text/javascript">
     //덱이 늘어나더라도 아래로 float되지 않도록 하는 자바스크립트. 실시간으로 body의 width를 변경하여 줄바꿈이 되지 않도록 합니다.
     $(document).ready(function(){
-    	var nodes = $("#deck_table").children();
-    	/*$(".deck").css({"width":nodes.length*255});
-    	$(window).resize(function(){
-    		var nodes = $("#deck_table").children(); //덱 테이블의 현재 덱의 갯수를 구합니다.
-    	    $(".deck").css({"width":nodes.length*255}); //하나의 덱은 255의 width를 가집니다.
-    	});*/	
+    	$('#deck_table').show();
     	
-    	//session에서 로그인 여부확인
-    	var login_check_id = <%= (String)session.getAttribute("id")%>;
-    	var login_check_name = '<%= (String)session.getAttribute("name")%>';
+    	//로그인을 안했을 경우 추가삭제버튼 비활성화
+        if(<%=session.getAttribute("id")%>==null)
+        {
+        	$('.add-deck').hide();
+        	$('.del-deck').hide();
+        	var start_html="<div style='position:absolute; left:100px; top:100px;'><h2>안녕하세요.</h2><p>Overflow는 트위터 상의 글을 키워드 단위로 검색하는 웹사이트입니다.</p><p>이용을 위해서는 로그인부터 해야 합니다.<br>오른쪽 상단을 클릭하여 회원가입 또는 로그인 부터 먼저 해주세요.</p></div>";
+        	$('#deck_table').html(start_html);
+        	
+        }
+        
+        //홈과 통게 메뉴 핸들링
+        $('#menubar li.home, #menubar li.stats').click(function(){
+            $('.context').hide();
+            var menu = jQuery(this);
+
+            if(menu.attr('class') == 'home'){
+                $('#deck_table').show();
+            }else if(menu.attr('class') == 'stats'){
+                $('#stats_page').show();
+            }
+        })
     	
-    	if(login_check_id == null){
-    		//alert('login하세요');
-    	}
-    	
-    	else{
-    			$("#login_join").hide();
-    			$(".navbar-collapse").append('<div class="navbar-right">'+login_check_name+'('+login_check_id
-    					+')님 환영합니다.</div><form class="navbar-form navbar-right" type="post" id="login_join" action="jsp/logout.jsp">'
-    					+ '<input type="submit" id="logout" class="btn btn-success" value="로그아웃"/></form>');
-    	}
-    	
+    	$('#logout_btn').click(function(){
+    		location.href = "/o/jsp/logout.jsp";
+    	});
+
     });
     </script>
-
-
-
-
-
-
 
     <!-- 회원가입, 등록 모달-->
     <div class="modal fade join-modal" id="register">
