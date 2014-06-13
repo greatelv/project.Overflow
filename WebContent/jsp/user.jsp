@@ -100,7 +100,9 @@
 			String driverName = "com.mysql.jdbc.Driver";
 			
 			Class.forName(driverName);
-			Connection con = DriverManager.getConnection("jdbc:mysql://ec2-54-199-180-105.ap-northeast-1.compute.amazonaws.com:3306/overflow_dev","overflow","overflow");
+			Connection con = DriverManager
+					.getConnection("jdbc:mysql://ec2-54-199-180-105.ap-northeast-1.compute.amazonaws.com:3306/overflow_dev?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8",
+					"overflow","overflow");
 			PreparedStatement ps;
 			ResultSet rs;
 			Statement stat = con.createStatement();
