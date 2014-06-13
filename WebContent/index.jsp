@@ -168,8 +168,8 @@
             </div>
             <div class="col-xs-6">
                 <h3>나의 키워드</h3>
-                <p>자신이 최근에 검색한 키워드 리스트를 제공합니다.</p>
-                <table class="table table-striped">
+                <p id="my_keyword">자신이 최근에 검색한 키워드 리스트를 제공합니다.</p>
+                <table class="table table-striped my_keyword">
                       <thead>
                         <tr>
                           <th>#</th>
@@ -209,7 +209,7 @@
 
                 </div>
             </div>
-            <div class="col-xs-6">
+            <div class="col-xs-6 my_keyword">
                 <div class="my-v">
                     <span class="glyphicon glyphicon-user"></span>
                 
@@ -251,9 +251,13 @@
         {
         	$('.add-deck').hide();
         	$('.del-deck').hide();
+        	$('.my_keyword').hide();
+        	
 
         	var start_html="<div style='position:absolute; left:100px; top:100px;'><h2>안녕하세요.</h2><p>Overflow는 트위터 상의 글을 키워드 단위로 검색하는 웹사이트입니다.</p><p>현재 로그인이 되어있지 않습니다. <br>이용을 위해서는 로그인부터 해야 합니다.<br>오른쪽 상단을 클릭하여 회원가입 또는 로그인 부터 먼저 해주세요.</p></div>";
-        	$('#deck_table').html(start_html);
+        	$('#deck_table').html(start_html); 
+        	var my_keyword_html="로그인을 하면 내가 검색한 키워드를 확인 할 수 있습니다.<br />오른쪽 상단에서 로그인을 먼저 해주세요.";
+        	$('#my_keyword').html(my_keyword_html); 
 
             $('#login_guide').show();
         	/*var start_html="<div style='position:absolute; left:100px; top:100px;'><h2>안녕하세요.</h2><p>Overflow는 트위터 상의 글을 키워드 단위로 검색하는 웹사이트입니다.</p><p>이용을 위해서는 로그인부터 해야 합니다.<br>오른쪽 상단을 클릭하여 회원가입 또는 로그인 부터 먼저 해주세요.</p></div>";
