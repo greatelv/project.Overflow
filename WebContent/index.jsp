@@ -47,7 +47,7 @@
     					홈</a></li>
     			<li class="stats"><a href="#stats"><span class="glyphicon glyphicon-stats"></span>
     					통계</a></li>
-    			<li class="config"><a href="#config"><span class="glyphicon glyphicon-cog"></span>
+    			<li class="config"><a href="#config" data-toggle="modal" data-target="#config_modal"><span class="glyphicon glyphicon-cog"></span>
     					설정</a></li>
     			<li class="add-deck"><a href="#" data-toggle="modal"
     				data-target="#create_deck_modal"><span
@@ -341,6 +341,62 @@
                     <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
                     <button type="button" id="create_deck" class="btn btn-primary">덱
                         만들기</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+
+
+    <!-- 설정 모달 -->
+    <div class="modal fade" id="config_modal">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true">×</button>
+                    <h4 class="modal-title">Overflow 설정</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">테마</label>
+                            <div class="btn-group col-sm-8" data-toggle="buttons">
+                              <label class="btn btn-primary active">
+                                <input type="radio" name="theme" value="dart" > Dark
+                              </label>
+                              <label class="btn btn-primary">
+                                <input type="radio" name="theme" value="light"> Light
+                              </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">글자크기</label>
+                            <div class="selectbox col-sm-8">
+                                <select class="form-control">
+                                  <option>10</option>
+                                  <option>11</option>
+                                  <option>12</option>
+                                  <option>13</option>
+                                  <option>14</option>
+                                </select>
+                            </div>
+                            
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">자동업데이트</label>
+                            <div class="btn-group col-sm-8" data-toggle="buttons">
+                              <label class="btn btn-primary">
+                                <input type="radio" name="auto_update" value="On"> On
+                              </label>
+                              <label class="btn btn-primary active">
+                                <input type="radio" name="auto_update" value="Off" > Off
+                              </label>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
             <!-- /.modal-content -->
