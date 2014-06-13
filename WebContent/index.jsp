@@ -95,7 +95,15 @@
 	<div id="border_top" class="border-container"></div>
 
 	<!-- 홈 (데크) -->
-	<div id="deck_table" class="container context"></div>
+	<div id="deck_table" class="container context">
+        <div id="login_guide">
+            <h2>안녕하세요.</h2>
+            <p>Overflow는 트위터 상의 글을 키워드 단위로 검색하는 웹사이트입니다.</p>
+            <p>이용을 위해서는 로그인부터 해야 합니다.<br>오른쪽 상단을 클릭하여 회원가입 또는 로그인 부터 먼저 해주세요.</p>
+        </div>
+    </div>
+
+    
 	
     <!-- 통계 -->
     <div id="stats_page" class="container context">
@@ -236,12 +244,16 @@
     	$('#deck_table').show();
     	
     	//로그인을 안했을 경우 추가삭제버튼 비활성화
+        //기본 데크 초기화
+        load_deck(1, "glyphicon glyphicon-search", '안드로이드');
+        load_deck(2, "glyphicon glyphicon-search", '걸그룹');
         if(<%=session.getAttribute("id")%>==null)
         {
         	$('.add-deck').hide();
         	$('.del-deck').hide();
-        	var start_html="<div style='position:absolute; left:100px; top:100px;'><h2>안녕하세요.</h2><p>Overflow는 트위터 상의 글을 키워드 단위로 검색하는 웹사이트입니다.</p><p>이용을 위해서는 로그인부터 해야 합니다.<br>오른쪽 상단을 클릭하여 회원가입 또는 로그인 부터 먼저 해주세요.</p></div>";
-        	$('#deck_table').html(start_html);
+            $('#login_guide').show();
+        	/*var start_html="<div style='position:absolute; left:100px; top:100px;'><h2>안녕하세요.</h2><p>Overflow는 트위터 상의 글을 키워드 단위로 검색하는 웹사이트입니다.</p><p>이용을 위해서는 로그인부터 해야 합니다.<br>오른쪽 상단을 클릭하여 회원가입 또는 로그인 부터 먼저 해주세요.</p></div>";
+        	$('#deck_table').append(start_html);*/
         	
         }
         
