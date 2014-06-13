@@ -303,3 +303,12 @@ body{
 
     color: darksalmon;
 }
+
+
+
+#login_guide{
+    position: absolute;
+  	display: none;
+    left: 50%;
+    top: 150px;
+}
