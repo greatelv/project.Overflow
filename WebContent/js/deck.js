@@ -132,7 +132,3 @@ $(document).on("click", "#drop_deck_table", function(){
 $(document).on("click", "#add_contents", function(){
 	load_deck_article("사진", "아이디", "여기에 본문내용이 표시됩니다.여기에 본문내용이 표시됩니다.여기에 본문내용이 표시됩니다.여기에 본문내용이 표시됩니다.여기에 본문내용이 표시됩니다.여기에 본문내용이 표시됩니다.", "검색단어");
 });
-
-//기본 데크 초기화
-load_deck(1, "glyphicon glyphicon-search", '지방선거');
-load_deck(2, "glyphicon glyphicon-search", '걸그룹');

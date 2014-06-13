@@ -47,10 +47,10 @@
     					홈</a></li>
     			<li class="stats"><a href="#stats"><span class="glyphicon glyphicon-stats"></span>
     					통계</a></li>
-    			<li class="config"><a href="#config"><span class="glyphicon glyphicon-cog"></span>
+    			<li class="config"><a href="#config" data-toggle="modal" data-target="#config_modal"><span class="glyphicon glyphicon-cog"></span>
     					설정</a></li>
     			<li class="add-deck"><a href="#" data-toggle="modal"
-    				data-target="#create_deck_modal"><span
+    				data-target="#create_deck_modal" id="create_deck"><span
     					class="glyphicon glyphicon-plus"></span> 새로운 덱</a></li>
     			<li class="del-deck"><a id="drop_deck_table" href="#"><span
     					class="glyphicon glyphicon-remove"></span> 전체 삭제</a></li>
@@ -95,7 +95,15 @@
 	<div id="border_top" class="border-container"></div>
 
 	<!-- 홈 (데크) -->
-	<div id="deck_table" class="container context"></div>
+	<div id="deck_table" class="container context">
+        <div id="login_guide">
+            <h2>안녕하세요.</h2>
+            <p>Overflow는 트위터 상의 글을 키워드 단위로 검색하는 웹사이트입니다.</p>
+            <p>이용을 위해서는 로그인부터 해야 합니다.<br>오른쪽 상단을 클릭하여 회원가입 또는 로그인 부터 먼저 해주세요.</p>
+        </div>
+    </div>
+
+    
 	
     <!-- 통계 -->
     <div id="stats_page" class="container context">
@@ -217,17 +225,18 @@
 	<!-- JavaScript -->
 	<script
 		src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<scirpt src="//code.jquery.com/ui/1.10.0/jquery-ui.js"></scirpt>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></scirpt>
 	<script src="js/ext/jquery-1.10.2.js"></script>
 	<script src="js/ext/jquery-dateFormat.js"></script>
 	<script src="js/ext/bootstrap.js"></script>
 	<script src="js/ext/oauth.js"></script>
-
+	
 	<script src="js/global.js"></script>
 	<script src="js/request.js"></script>
 	<script src="js/deck.js"></script>
 	<script src="js/crud.js"></script>
-
+	
 	<!-- Custom JavaScript -->
 	<script type="text/javascript">
     //덱이 늘어나더라도 아래로 float되지 않도록 하는 자바스크립트. 실시간으로 body의 width를 변경하여 줄바꿈이 되지 않도록 합니다.
@@ -235,12 +244,21 @@
     	$('#deck_table').show();
     	
     	//로그인을 안했을 경우 추가삭제버튼 비활성화
+        //기본 데크 초기화
+        load_deck(1, "glyphicon glyphicon-search", '안드로이드');
+        load_deck(2, "glyphicon glyphicon-search", '걸그룹');
         if(<%=session.getAttribute("id")%>==null)
         {
         	$('.add-deck').hide();
         	$('.del-deck').hide();
+
         	var start_html="<div style='position:absolute; left:100px; top:100px;'><h2>안녕하세요.</h2><p>Overflow는 트위터 상의 글을 키워드 단위로 검색하는 웹사이트입니다.</p><p>현재 로그인이 되어있지 않습니다. <br>이용을 위해서는 로그인부터 해야 합니다.<br>오른쪽 상단을 클릭하여 회원가입 또는 로그인 부터 먼저 해주세요.</p></div>";
         	$('#deck_table').html(start_html);
+
+            $('#login_guide').show();
+        	/*var start_html="<div style='position:absolute; left:100px; top:100px;'><h2>안녕하세요.</h2><p>Overflow는 트위터 상의 글을 키워드 단위로 검색하는 웹사이트입니다.</p><p>이용을 위해서는 로그인부터 해야 합니다.<br>오른쪽 상단을 클릭하여 회원가입 또는 로그인 부터 먼저 해주세요.</p></div>";
+        	$('#deck_table').append(start_html);*/
+
         	
         }
         
@@ -259,7 +277,6 @@
     	$('#logout_btn').click(function(){
     		location.href = "/o/jsp/logout.jsp";
     	});
-
     });
     </script>
 
@@ -294,8 +311,8 @@
                         </div>
                         <div class="form-group">
                             <label>생년월일</label> <input type="text" class="form-control"
-                                id="input-register-birth" placeholder="생일을 입력하세요">
-                        </div>
+                                id="input-register-birth" placeholder="생일을 입력하세요" readonly="readonly"><script src="js/calendar.js"></script>
+                        </div>      
                     </form>
 
                 </div>
@@ -329,6 +346,62 @@
                     <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
                     <button type="button" id="create_deck" class="btn btn-primary">덱
                         만들기</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+
+
+    <!-- 설정 모달 -->
+    <div class="modal fade" id="config_modal">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true">×</button>
+                    <h4 class="modal-title">Overflow 설정</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">테마</label>
+                            <div class="btn-group col-sm-8" data-toggle="buttons">
+                              <label class="btn btn-primary active">
+                                <input type="radio" name="theme" value="dart" > Dark
+                              </label>
+                              <label class="btn btn-primary">
+                                <input type="radio" name="theme" value="light"> Light
+                              </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">글자크기</label>
+                            <div class="selectbox col-sm-8">
+                                <select class="form-control">
+                                  <option>10</option>
+                                  <option>11</option>
+                                  <option>12</option>
+                                  <option>13</option>
+                                  <option>14</option>
+                                </select>
+                            </div>
+                            
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">자동업데이트</label>
+                            <div class="btn-group col-sm-8" data-toggle="buttons">
+                              <label class="btn btn-primary">
+                                <input type="radio" name="auto_update" value="On"> On
+                              </label>
+                              <label class="btn btn-primary active">
+                                <input type="radio" name="auto_update" value="Off" > Off
+                              </label>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
             <!-- /.modal-content -->

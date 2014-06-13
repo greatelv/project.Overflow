@@ -300,6 +300,25 @@ body{
 
 #stats_page .stats-v > div > div > b{
     font-size: 50px;
-
     color: darksalmon;
+}
+
+
+
+#login_guide{
+    position: absolute;
+  	display: none;
+    left: 50%;
+    top: 150px;
+    font-size: 20px;
+}
+
+
+#config_modal{
+
+}
+
+
+#config_modal .modal-body{
+	
 }

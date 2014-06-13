@@ -50,11 +50,12 @@
 					("jdbc:mysql://ec2-54-199-180-105.ap-northeast-1.compute.amazonaws.com:3306/overflow_dev?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8",
 					"overflow","overflow");
 			PreparedStatement ps;
-			ps = con.prepareStatement("insert into login(user_id,login_time)values(?,now())");
-			ps.setString(1, id);
+			ps = con.prepareStatement("insert into login(user_id,login_time) values (?,now())");
+			ps.setString(1, correct_id);
 			
 			ps.executeUpdate();
-			
+			ps.close();
+			con.close();
 			
 			//로그인 완료 후 덱 목록을 받아와서 표시합니다.
 			JSONArray deck_data = new JSONArray();
