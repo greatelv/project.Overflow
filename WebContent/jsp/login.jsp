@@ -46,8 +46,8 @@
 			stat.close();
 			con.close();
 			rs.close();
-			con = DriverManager.getConnection
-					("jdbc:mysql://ec2-54-199-180-105.ap-northeast-1.compute.amazonaws.com:3306/overflow_dev?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8",
+			con = DriverManager
+					.getConnection("jdbc:mysql://ec2-54-199-180-105.ap-northeast-1.compute.amazonaws.com:3306/overflow_dev?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8",
 					"overflow","overflow");
 			PreparedStatement ps;
 			ps = con.prepareStatement("insert into login(user_id,login_time) values (?,now())");
@@ -55,8 +55,7 @@
 			
 			ps.executeUpdate();
 			ps.close();
-			con.close();
-			
+			/*
 			//로그인 완료 후 덱 목록을 받아와서 표시합니다.
 			JSONArray deck_data = new JSONArray();
 			//deck_data.put();
@@ -69,6 +68,13 @@
 				deck_data.put(map);
 			}
 			out.println(deck_data);
+			*/
+			
+			JSONArray jsona_deck = new JSONArray();
+			JSONObject 	jsono_deck = new JSONObject();
+			
+			Statement stat1 = con.createStatement();
+			//ReseultSet rs1 = stat.executeQuery(arg0);
 		}
 		stat.close();
 		con.close();

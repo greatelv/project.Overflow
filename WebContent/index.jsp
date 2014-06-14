@@ -374,7 +374,7 @@
                             <label class="col-sm-4 control-label">테마</label>
                             <div class="btn-group col-sm-8" data-toggle="buttons">
                               <label class="btn btn-primary active">
-                                <input type="radio" name="theme" value="dart" > Dark
+                                <input type="radio" name="theme" value="dark" > Dark
                               </label>
                               <label class="btn btn-primary">
                                 <input type="radio" name="theme" value="light"> Light
@@ -404,7 +404,7 @@
                                 <input type="radio" name="auto_update" value="Off" > Off
                               </label>
                             </div>
-                        </div>
+                        </div><script src="js/modify.js"></script>
                     </form>
                 </div>
             </div>

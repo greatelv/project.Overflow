@@ -150,14 +150,62 @@
 			sql = "delete from user where user_id = " + "'" + id + "'";
 
 			stmt.executeUpdate(sql);
-			
-			
+
 		}catch (ClassNotFoundException e){
 			e.printStackTrace();
 		}catch (SQLException e){
 			e.printStackTrace();
 		}finally{
 			out.println(sql);	
+		}
+	}
+	else if(type.equals("update")){
+		String thema = request.getParameter("thema");
+		String font = request.getParameter("font");
+		String auto = request.getParameter("auto");
+		String id = request.getParameter("id");
+		int thema_set;
+		int font_size;
+		int auto_set;
+		
+		if(thema.equals("dark")){
+			thema_set = 1;
+		}
+		else
+			thema_set = 0;
+		
+		if(auto.equals("On")){
+			auto_set = 1;
+		}
+		else
+			auto_set = 0;
+		
+		font_size = Integer.parseInt(font);
+		
+		out.println(thema_set + "||" + auto_set + "||" + font_size + "||" + id);
+		
+		try{
+			String driverName = "com.mysql.jdbc.Driver";
+			
+			Class.forName(driverName);
+			Connection con = DriverManager
+					.getConnection("jdbc:mysql://ec2-54-199-180-105.ap-northeast-1.compute.amazonaws.com:3306/overflow_dev?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8",
+					"overflow","overflow");
+			Statement stmt = con.createStatement();
+			
+			String sql  = "update user set \n";
+				   sql += "config_thema = " + "'" + thema_set + "',";
+				   sql += "config_font_size = " + "'" + font_size + "',";
+				   sql += "config_auto_stream = " + "'" + auto_set + "' \n";
+				   sql += "where user_id = " + "'" + id + "'";
+				   
+			stmt.executeUpdate(sql);
+		}catch (ClassNotFoundException e){
+			e.printStackTrace();
+		}catch (SQLException e){
+			e.printStackTrace();
+		}finally{
+				
 		}
 	}
 %>
