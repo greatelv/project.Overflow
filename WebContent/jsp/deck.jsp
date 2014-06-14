@@ -52,11 +52,10 @@
 			Connection con = DriverManager
 					.getConnection("jdbc:mysql://ec2-54-199-180-105.ap-northeast-1.compute.amazonaws.com:3306/overflow_dev?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8",
 					"overflow","overflow");
-			String sql = "delete from deck where user_id = '" + id + "' and ' deck_keyword = '" + title + "'";
+			String sql = "delete from deck where user_id = '" + id + "' and deck_keyword = '" + title + "'";
 			
-			PreparedStatement ps;
-			ps = con.prepareStatement(sql);
-			ps.executeQuery();
+			Statement stmt = con.createStatement();
+			stmt.executeUpdate(sql);
 		}catch (ClassNotFoundException e){
 			e.printStackTrace();
 			result = 0;

@@ -50,7 +50,7 @@
     			<li class="config"><a href="#config" data-toggle="modal" data-target="#config_modal"><span class="glyphicon glyphicon-cog"></span>
     					설정</a></li>
     			<li class="add-deck"><a href="#" data-toggle="modal"
-    				data-target="#create_deck_modal" id="create_deck"><span
+    				data-target="#create_deck_modal" id="create_new_deck"><span
     					class="glyphicon glyphicon-plus"></span> 새로운 덱</a></li>
     			<li class="del-deck"><a id="drop_deck_table" href="#"><span
     					class="glyphicon glyphicon-remove"></span> 전체 삭제</a></li>

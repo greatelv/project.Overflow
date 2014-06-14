@@ -106,7 +106,7 @@ $(document).on("click", "#create_deck", function(){
 					datatype :	"json",
 				
 					success	 :	function(data){
-						alert(data);
+						//alert(data);
 						$('#create_deck_modal').modal('hide'); //모달을 닫습니다.
 						//추가한 덱의 정보를 통계에 넣습니다.
 						$.ajax({
@@ -116,7 +116,7 @@ $(document).on("click", "#create_deck", function(){
 							datatype : "json",
 							
 							success	 : function(data){
-								alert(data);
+								//alert(data);
 							},error	: function(){
 								console.log('error from search');
 							},
@@ -136,7 +136,7 @@ $(document).on("click", "#create_deck", function(){
 
 //덱 삭제 버튼을 누르면 실행 됩니다.
 $(document).on("click", "div.deck_del", function(){
-	var delete_deck_title = $("div.deck_del").attr("id");
+	var delete_deck_title = $(this).attr("id");
 	var id = document.getElementById("deck_id").value;
 	alert('삭제한 keyword : ' + delete_deck_title + '||ID : ' + id);
 	$delete		= "delete";
@@ -155,9 +155,10 @@ $(document).on("click", "div.deck_del", function(){
 		},
 		complete: function(){
 			console.log('complete from deck');
+			
 		}
 	});
-	//$(this).parent().parent().remove();
+	$(this).parent().parent().remove();
 });
 
 //덱 전체 삭제 버튼을 누르면 실행 됩니다.
