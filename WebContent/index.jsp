@@ -101,6 +101,7 @@
             <p>Overflow는 트위터 상의 글을 키워드 단위로 검색하는 웹사이트입니다.</p>
             <p>이용을 위해서는 로그인부터 해야 합니다.<br>오른쪽 상단을 클릭하여 회원가입 또는 로그인 부터 먼저 해주세요.</p>
         </div>
+        <input type="text" value="<%= id%>" id="deck_id" style="visibility: hidden">
     </div>
 
     

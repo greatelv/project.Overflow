@@ -55,27 +55,19 @@
 			
 			ps.executeUpdate();
 			ps.close();
-			/*
+			
 			//로그인 완료 후 덱 목록을 받아와서 표시합니다.
 			JSONArray deck_data = new JSONArray();
+			JSONObject 	jsono_deck = new JSONObject();
 			//deck_data.put();
 			rs = stat.executeQuery("select sequence, deck_keyword from deck where user_id = '" + id +"' order by sequence asc");
 			while (rs.next())
 			{
-				HashMap<String, Object> map = new HashMap<String, Object>();
-				map.put("sequence",  rs.getInt("sequence"));
-				map.put("deck_keyword",  rs.getInt("deck_keyword"));
-				deck_data.put(map);
+				jsono_deck.put("order",rs.getInt("sequence"));
+				jsono_deck.put("deck_title",rs.getString("deck_keyword"));
+				deck_data.put(jsono_deck);
 			}
 			out.println(deck_data);
-			*/
-			
-			JSONArray jsona_deck = new JSONArray();
-			JSONObject 	jsono_deck = new JSONObject();
-			
-			Statement stat1 = con.createStatement();
-			
-			//ReseultSet rs1 = stat.executeQuery("select deck_keyword from deck where use");
 		}
 		stat.close();
 		con.close();
