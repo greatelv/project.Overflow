@@ -348,8 +348,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-                    <button type="button" id="create_deck" class="btn btn-primary">덱
-                        만들기</button>
+                    <button type="button" id="create_deck" class="btn btn-primary">덱만들기</button>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -404,7 +403,9 @@
                                 <input type="radio" name="auto_update" value="Off" > Off
                               </label>
                             </div>
-                        </div><script src="js/modify.js"></script>
+                        </div>
+                        <input type="text" id="user_id" value="<%= session.getAttribute("id") %>">
+                        <script src="js/modify.js"></script>
                     </form>
                 </div>
             </div>

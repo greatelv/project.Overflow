@@ -74,7 +74,8 @@
 			JSONObject 	jsono_deck = new JSONObject();
 			
 			Statement stat1 = con.createStatement();
-			//ReseultSet rs1 = stat.executeQuery(arg0);
+			
+			//ReseultSet rs1 = stat.executeQuery("select deck_keyword from deck where use");
 		}
 		stat.close();
 		con.close();

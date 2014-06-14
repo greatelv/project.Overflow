@@ -1,4 +1,8 @@
 $(function modify_Handler() {
-	var var_name = $("input[name='auto_update']:checked").val();
-	alert('설정 : ' + var_name);
+	$thema 		= $("input[name='theme']:checked").val();
+	$auto 		= $("input[name='auto_update']:checked").val();
+	$font		= $(".form-control option:selected").text();
+	$id			= document.getElementById("id");
+	
+	alert($id);
 });
