@@ -322,3 +322,10 @@ body{
 #config_modal .modal-body{
 	
 }
+
+#stats_dim{
+    width: 100%;
+	
+    height: 100%;
+    background: gray;
+}
