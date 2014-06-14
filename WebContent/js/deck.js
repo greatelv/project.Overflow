@@ -108,6 +108,22 @@ $(document).on("click", "#create_deck", function(){
 					success	 :	function(data){
 						alert(data);
 						$('#create_deck_modal').modal('hide'); //모달을 닫습니다.
+						//추가한 덱의 정보를 통계에 넣습니다.
+						$.ajax({
+							url		 : "jsp/search.jsp",
+							type	 : "POST",
+							data	 : json,
+							datatype : "json",
+							
+							success	 : function(data){
+								alert(data);
+							},error	: function(){
+								console.log('error from search');
+							},
+							complete: function(){
+								console.log('complete from search');
+							}
+						});
 					},error	: function(){
 						console.log('error from deck');
 					},
