@@ -401,6 +401,10 @@
                         <script src="js/modify.js"></script>
                     </form>
                 </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+                    <button type="button" id="config_submit" class="btn btn-primary">설정</button>
+                </div>
             </div>
             <!-- /.modal-content -->
         </div>
