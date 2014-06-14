@@ -404,7 +404,7 @@
                               </label>
                             </div>
                         </div>
-                        <input type="text" id="user_id" value="<%= session.getAttribute("id") %>">
+                        <input type="text" id="user_id" value="<%= session.getAttribute("id") %>" style="display:none;">
                         <script src="js/modify.js"></script>
                     </form>
                 </div>
