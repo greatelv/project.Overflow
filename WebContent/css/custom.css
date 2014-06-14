@@ -325,7 +325,7 @@ body{
 
 #stats_dim{
     width: 100%;
-	
+	display: none;	
     height: 100%;
     background: gray;
 }
