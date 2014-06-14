@@ -8,7 +8,7 @@ $(function modify_Handler() {
 		var json = {"type":$update,"thema":$thema,"font":$font,"auto":$auto,"id":$id};
 		alert(json);
 		$.ajax({
-			url		:	"user.jsp",
+			url		:	"jsp/user.jsp",
 			type	:	"POST",
 			data	:	json,
 			datatype:	"json",

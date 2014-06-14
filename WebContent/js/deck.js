@@ -23,7 +23,7 @@ var load_deck = function(order, icon, title){
 			"<div class='deck-title'>" +
 			deck_title +
 			"</div>" +
-			"<div class='glyphicon glyphicon-trash deck_del'></div>" +
+			"<div class='glyphicon glyphicon-trash deck_del' id='" + deck_title + "'></div>" +
 			"</div>" +
 			"<div id='" +
 			deck_body_id +
@@ -120,7 +120,28 @@ $(document).on("click", "#create_deck", function(){
 
 //덱 삭제 버튼을 누르면 실행 됩니다.
 $(document).on("click", "div.deck_del", function(){
-	$(this).parent().parent().remove();
+	var delete_deck_title = $("div.deck_del").attr("id");
+	var id = document.getElementById("deck_id").value;
+	alert('삭제한 keyword : ' + delete_deck_title + '||ID : ' + id);
+	$delete		= "delete";
+	var json = {"type" : $delete,"deck_title" : delete_deck_title, "user_id" : id};
+	
+	$.ajax({
+		url		 : "jsp/deck.jsp",
+		type	 : "POST",
+		data	 : json,
+		datatype : "json",
+		
+		success	 : function(data){
+			alert(data);
+		},error	: function(){
+			console.log('error from deck');
+		},
+		complete: function(){
+			console.log('complete from deck');
+		}
+	});
+	//$(this).parent().parent().remove();
 });
 
 //덱 전체 삭제 버튼을 누르면 실행 됩니다.
