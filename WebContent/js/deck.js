@@ -106,7 +106,7 @@ $(document).on("click", "#create_deck", function(){
 			}
 			//login한 상태라면 입력한 값을 이용하여 load_deck을 하고 ajax를 이용하여서 검색한 값을 overflow_dev의 deck table에 저장합니다.
 			else{
-				load_deck(deck_cnt+1, "glyphicon glyphicon-search", input_deck_title);
+				load_deck(input_deck_title);
 				var json = {"type":"post","user_id":input_deck_user_id,"deck_title":input_deck_title};
 				$.ajax({
 					url		 :	"jsp/deck.jsp",
