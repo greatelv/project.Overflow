@@ -80,7 +80,7 @@
 	}
 	else if(type.equals("get")){
 		JSONArray 	jsona = new JSONArray();
-		JSONObject 	jsono = new JSONObject();
+		
 		try{
 			String driverName = "com.mysql.jdbc.Driver";
  			Class.forName(driverName);
@@ -95,17 +95,20 @@
 			rs = stat.executeQuery(sql);
 			
 			while(rs.next()){
+				JSONObject 	jsono = new JSONObject();
+				
 				jsono.put("id", rs.getString("user_id"));
 				jsono.put("deck_title", rs.getString("deck_keyword"));
 				jsona.put(jsono);
 			}
+			
 		}catch (ClassNotFoundException e){
 			e.printStackTrace();
 		}catch (SQLException e){
 			e.printStackTrace();
 		}finally{
 			out.println(jsona);
-			System.out.println(jsona);
+			
 		}
 	}
 %>

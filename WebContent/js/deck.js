@@ -32,7 +32,7 @@ var load_deck = function(title){
 	var deck_body_id = title + "_body"; // 덱의 식별자로 사용됩니다.
 
 	var deck = 
-	  "<div id='"+deck_title+"' class='deck'>" +
+	  "<div id='"+deck_title+"' class='deck' keyword='"+deck_title+"'>" +
 		"<div class='deck-header'>" +
 			"<div class='deck-icon glyphicon glyphicon-search'></div>" +
 			"<div class='deck-title'>"+deck_title+"</div>" +
@@ -145,11 +145,9 @@ $(document).on("click", "#create_deck", function(){
 
 //덱 삭제 버튼을 누르면 실행 됩니다.
 $(document).on("click", "div.deck_del", function(){
-	var delete_deck_title = $(this).attr("id");
-	var id = document.getElementById("deck_id").value;
-	alert('삭제한 keyword : ' + delete_deck_title + '||ID : ' + id);
+	var delete_deck_title = $(this).attr("keyword");
 	$delete		= "delete";
-	var json = {"type" : $delete,"deck_title" : delete_deck_title, "user_id" : id};
+	var json = {"type" : $delete,"deck_title" : delete_deck_title, "user_id" : window.sessionId};
 	
 	$.ajax({
 		url		 : "jsp/deck.jsp",
