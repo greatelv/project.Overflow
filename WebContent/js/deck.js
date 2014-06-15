@@ -1,5 +1,10 @@
 var deck_cnt = 0;
 
+var load_user_deck = function(keywords, userInfo){
+
+	
+}
+
 var load_deck = function(order, icon, title){
 	//덱의 내용을 미리 설정합니다.
 	var deck_order = order;

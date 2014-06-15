@@ -96,6 +96,11 @@ body{
 	float: left;
 }
 
+#menubar li.disable a{
+    opacity: 0.3;
+
+}
+
 #nav_container .navbar-header{
 	margin-right: 0px;
 	margin-left:  0px;
@@ -328,4 +333,8 @@ body{
 	display: none;	
     height: 100%;
     background: gray;
+}
+
+#drop_deck_table_disable{
+	display: none;
 }

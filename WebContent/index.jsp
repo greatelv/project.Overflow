@@ -52,8 +52,10 @@
     			<li class="add-deck"><a href="#" data-toggle="modal"
     				data-target="#create_deck_modal" id="create_new_deck"><span
     					class="glyphicon glyphicon-plus"></span> 새로운 덱</a></li>
-    			<li class="del-deck"><a id="drop_deck_table" href="#"><span
-    					class="glyphicon glyphicon-remove"></span> 전체 삭제</a></li>
+    			<li class="del-deck">
+            <a id="drop_deck_table" href="#"><span class="glyphicon glyphicon-remove"></span> 전체 삭제</a>
+            <a id="drop_deck_table_disable" href="#"><span class="glyphicon glyphicon-remove"></span> 전체 삭제</a>
+          </li>
     		</ul>
 
 
@@ -229,7 +231,7 @@
 	<script src="js/ext/jquery-dateFormat.js"></script>
 	<script src="js/ext/bootstrap.js"></script>
 	<script src="js/ext/oauth.js"></script>
-	
+	<script src="js/home.js"></script>
 	<script src="js/global.js"></script>
 	<script src="js/request.js"></script>
 	<script src="js/deck.js"></script>
@@ -240,40 +242,22 @@
     //덱이 늘어나더라도 아래로 float되지 않도록 하는 자바스크립트. 실시간으로 body의 width를 변경하여 줄바꿈이 되지 않도록 합니다.
     $(document).ready(function(){
     	$('#deck_table').show();
+
+      window.sessionId = <%=session.getAttribute("id")%>;
     	
-    	//로그인을 안했을 경우 추가삭제버튼 비활성화
-        //기본 데크 초기화
-        load_deck(1, "glyphicon glyphicon-search", '안드로이드');
-        load_deck(2, "glyphicon glyphicon-search", '걸그룹');
-        
-        if(<%=session.getAttribute("id")%>==null){  //로그인을 하지 않았을 경우
-            
-        	$('.add-deck').hide();
-        	$('.del-deck').hide();
+    	 if(window.sessionId==null){  //로그인을 하지 않았을 경우
+          load_deck(1, "glyphicon glyphicon-search", '안드로이드');
+          load_deck(2, "glyphicon glyphicon-search", '걸그룹');
 
-        	$('#login_guide').show();
-            $('.my_keyword').hide();
-            $('#stats_dim').show();
+          plusMenuToggle(false);
 
-        }else{  //로그인 했을 시 추가 로직ㄴ
+         	$('#login_guide').show();
+          $('.my_keyword').hide();
+          $('#stats_dim').show();
+        }else{  //로그인 했을 시 추가 로직
+
 
         }
-        
-        //홈과 통게 메뉴 핸들링
-        $('#menubar li.home, #menubar li.stats').click(function(){
-            $('.context').hide();
-            var menu = jQuery(this);
-
-            if(menu.attr('class') == 'home'){
-                $('#deck_table').show();
-            }else if(menu.attr('class') == 'stats'){
-                $('#stats_page').show();
-            }
-        })
-    	
-    	$('#logout_btn').click(function(){
-    		location.href = "/o/jsp/logout.jsp";
-    	});
     });
     </script>
 
