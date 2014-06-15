@@ -243,11 +243,11 @@
     $(document).ready(function(){
     	$('#deck_table').show();
 
-      window.sessionId = <%=session.getAttribute("id")%>;
+      window.sessionId = "<%=session.getAttribute("id")%>";
     	
-    	 if(window.sessionId==null){  //로그인을 하지 않았을 경우
-          load_deck(1, "glyphicon glyphicon-search", '안드로이드');
-          load_deck(2, "glyphicon glyphicon-search", '걸그룹');
+    	 if(window.sessionId=="null"){  //로그인을 하지 않았을 경우
+          load_deck('안드로이드');
+          load_deck('걸그룹');
 
           plusMenuToggle(false);
 
@@ -256,7 +256,7 @@
           $('#stats_dim').show();
         }else{  //로그인 했을 시 추가 로직
 
-
+          load_user_deck();
         }
     });
     </script>

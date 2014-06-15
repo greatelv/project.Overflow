@@ -9,6 +9,11 @@
 	String title = request.getParameter("deck_title");
 	String id	 = request.getParameter("user_id");
 	String type  = request.getParameter("type");
+	
+	System.out.println("type : "+type);
+	System.out.println("id : "+id);
+	
+	
 	String message = "success";
 	int result = 1;
 	
@@ -100,6 +105,7 @@
 			e.printStackTrace();
 		}finally{
 			out.println(jsona);
+			System.out.println(jsona);
 		}
 	}
 %>

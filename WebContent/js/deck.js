@@ -1,40 +1,46 @@
 var deck_cnt = 0;
 
-var load_user_deck = function(keywords, userInfo){
+var load_user_deck = function(){
 
+
+	$.ajax({
+		url		 : "jsp/deck.jsp?type=get&user_id="+window.sessionId,
+		type	 : "GET",
+		datatype : "json",
+		success	 : function(data){
+			var user_decks = JSON.parse(data);
+			
+			for(var i=0; i<user_decks.length; i++){
+				load_deck(user_decks[i].deck_title);
+			}
+
+		},error	: function(){
+			console.log('error from deck');
+		},
+		complete: function(){
+			console.log('complete from deck');
+			
+		}
+	});
 	
 }
-
-var load_deck = function(order, icon, title){
+          
+var load_deck = function(title){
 	//덱의 내용을 미리 설정합니다.
-	var deck_order = order;
-	var deck_icon = icon; //"glyphicon glyphicon-search"; // 아이콘 css 입력
-	var deck_title = title; // 덱의 식별자로 사용됩니다.
+	//alert(title);
+	var deck_title = title; 			// 덱의 식별자로 사용됩니다.
 	var deck_body_id = title + "_body"; // 덱의 식별자로 사용됩니다.
 
-
-
-	//미리 설정된 내용으로 덱을 구성합니다.
 	var deck = 
-	  "<div id='"+deck_title+
-	  "' class='deck' order='"+deck_order+"'>" +
-			"<div class='deck-header'>" +
-			"<div class='deck-order'>" +
-			deck_order +
-			"</div>" +
-			"<div class='deck-icon " +
-			deck_icon +
-			"'></div>" +
-			"<div class='deck-title'>" +
-			deck_title +
-			"</div>" +
-			"<div class='glyphicon glyphicon-trash deck_del' id='" + deck_title + "'></div>" +
-			"</div>" +
-			"<div id='" +
-			deck_body_id +
-			"' class='deck-body'>" +
-			"</div>" +
-			"</div>";
+	  "<div id='"+deck_title+"' class='deck'>" +
+		"<div class='deck-header'>" +
+			"<div class='deck-icon glyphicon glyphicon-search'></div>" +
+			"<div class='deck-title'>"+deck_title+"</div>" +
+			"<div class='glyphicon glyphicon-trash deck_del'></div>" +
+		"</div>" +
+		"<div id='"+deck_body_id +"' class='deck-body'>" +"</div>" +
+		"</div>";
+	   "</div>"
 	//덱을 실제로 추가합니다.
   	$("#deck_table").append(deck);
 	deck_cnt = deck_cnt + 1;
@@ -52,9 +58,7 @@ var load_deck = function(order, icon, title){
 			    				'<div class="deck-contents">'+item.text+'</div>'+
 			    			'</div>';
 
-			$("#deck_table").find('.deck[order="'+deck_order+'"]')
-							.find('.deck-body')
-							.append(itemElem);
+			$('#'+deck_title).find('.deck-body').append(itemElem);
   		});
 
 	})
@@ -175,4 +179,3 @@ $(document).on("click", "#drop_deck_table", function(){
 $(document).on("click", "#add_contents", function(){
 	load_deck_article("사진", "아이디", "여기에 본문내용이 표시됩니다.여기에 본문내용이 표시됩니다.여기에 본문내용이 표시됩니다.여기에 본문내용이 표시됩니다.여기에 본문내용이 표시됩니다.여기에 본문내용이 표시됩니다.", "검색단어");
 });
-
