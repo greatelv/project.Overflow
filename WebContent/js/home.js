@@ -43,7 +43,7 @@ $('#menubar li.home, #menubar li.stats').click(function(){
     if(menu.attr('class') == 'home'){
         $('#deck_table').show();
 
-        if(window.sessionId==null){
+        if(window.sessionId=='null'){
         	plusMenuToggle(false);
         }else{
         	plusMenuToggle(true);	
