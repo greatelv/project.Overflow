@@ -118,7 +118,21 @@ $(document).on("click", "#create_deck", function(){
 		alert('Deck는 총 5개 이상 생성이 불가능합니다.');
 	}else{
 		load_deck(input_deck_title);
-
+		$.ajax({
+			url		 : "jsp/deck.jsp",
+			type	 : "POST",
+			data	 : {"type" : 'post',"deck_title" : input_deck_title, "user_id" : window.sessionId},
+			datatype : "json",
+			
+			success	 : function(data){
+				//alert(data);
+			},error	: function(){
+				console.log('error from search');
+			},
+			complete: function(){
+				console.log('complete from search');
+			}
+		});
 	}
 
 	$('#create_deck_modal').modal('hide');

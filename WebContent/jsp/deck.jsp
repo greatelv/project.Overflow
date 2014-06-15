@@ -29,6 +29,8 @@
 			PreparedStatement ps;
 			ps = con.prepareStatement(sql);
 		
+			System.out.println("id : "+id);
+			System.out.println("title : "+title);
 			ps.setString(1, id);
 			ps.setString(2, title);
 		
