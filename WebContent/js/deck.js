@@ -60,8 +60,24 @@ var load_deck = function(title){
 
 			$('#'+deck_title).find('.deck-body').append(itemElem);
   		});
+	});
 
-	})
+	var json = {"type":"post","user_id":window.sessionId,"deck_title":deck_title};
+	$.ajax({
+		url		 : "jsp/search.jsp",
+		type	 : "POST",
+		data	 : json,
+		datatype : "json",
+		
+		success	 : function(data){
+			//alert(data);
+		},error	: function(){
+			console.log('error from search');
+		},
+		complete: function(){
+			console.log('complete from search');
+		}
+	});
 
   //내용이 추가되면 기존의 내용 아래 부분에 추가되기 때문에 제대로 나오도록 레이아웃을 새로고침합니다.
   //var nodes = $("#deck_table").children(); //덱 테이블의 현재 덱의 갯수를 구한다.
@@ -94,53 +110,18 @@ var load_deck_article = function(picture, nickname, contents, title){
 
 // 동적할당된 요소를 컨트롤 하려면 on메소드를 사용해야 합니다.
 $(document).on("click", "#create_deck", function(){
-		//덱 생성 버튼을 누르면 실행 됩니다.
-		  //모달에서 덱 title과 사용자의 id를 가져옵니다.
-		  var input_deck_title = $("#input_deck_title").val();
-		  var input_deck_user_id = $('#input_deck_user_id').val();
-		  	//이때 id값이 null 즉, login하지 않은 상태의 경우에는 로그인을 해달라는 경고문을 띄웁니다.
-			if( input_deck_user_id == "null"){
-				alert('login please~');
-				//deck 검색 중지
-				$('#create_deck_modal').modal('hide');
-			}
-			//login한 상태라면 입력한 값을 이용하여 load_deck을 하고 ajax를 이용하여서 검색한 값을 overflow_dev의 deck table에 저장합니다.
-			else{
-				load_deck(input_deck_title);
-				var json = {"type":"post","user_id":input_deck_user_id,"deck_title":input_deck_title};
-				$.ajax({
-					url		 :	"jsp/deck.jsp",
-					type	 :	"POST",
-					data	 :	json,
-					datatype :	"json",
-				
-					success	 :	function(data){
-						//alert(data);
-						$('#create_deck_modal').modal('hide'); //모달을 닫습니다.
-						//추가한 덱의 정보를 통계에 넣습니다.
-						$.ajax({
-							url		 : "jsp/search.jsp",
-							type	 : "POST",
-							data	 : json,
-							datatype : "json",
-							
-							success	 : function(data){
-								//alert(data);
-							},error	: function(){
-								console.log('error from search');
-							},
-							complete: function(){
-								console.log('complete from search');
-							}
-						});
-					},error	: function(){
-						console.log('error from deck');
-					},
-					complete: function(){
-						console.log('complete from deck');
-					}
-				});
-			}
+
+	var deck_size = $('#deck_table .deck').size();
+	var input_deck_title = $('#input_deck_title').val();
+		
+	if(deck_size >= 5){
+		alert('Deck는 총 5개 이상 생성이 불가능합니다.');
+	}else{
+		load_deck(input_deck_title);
+
+	}
+
+	$('#create_deck_modal').modal('hide');
 });
 
 //덱 삭제 버튼을 누르면 실행 됩니다.
@@ -170,7 +151,22 @@ $(document).on("click", "div.deck_del", function(){
 
 //덱 전체 삭제 버튼을 누르면 실행 됩니다.
 $(document).on("click", "#drop_deck_table", function(){
-	 $("#deck_table").empty();
+	$.ajax({
+		url		 : "jsp/deck.jsp",
+		type	 : "POST",
+		data	 : {'type' : 'delete', 'user_id' : window.sessionId},
+		datatype : "json",
+		success	 : function(data){
+			alert(data);
+		},error	: function(){
+			console.log('error from deck');
+		},
+		complete: function(){
+			console.log('complete from deck');
+			
+		}
+	});
+	$("#deck_table").empty();
 });
 
 //[테스트용]덱에 내용추가 버튼을 누르면 실행 됩니다.
