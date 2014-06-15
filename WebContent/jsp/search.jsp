@@ -28,7 +28,9 @@
 			ps.setString(2, title);
 		
 			ps.executeUpdate();
-		
+			
+			ps.close();
+			con.close();
 		}catch (ClassNotFoundException e){
 			e.printStackTrace();
 			result = 0;

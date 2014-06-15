@@ -33,7 +33,9 @@
 			ps.setString(2, title);
 		
 			ps.executeUpdate();
-		
+			
+			ps.close();
+			con.close();
 		}catch (ClassNotFoundException e){
 			e.printStackTrace();
 			result = 0;
@@ -61,6 +63,8 @@
 			String sql = "delete from deck where user_id = '" + id + "' and deck_keyword = '" + title + "'";
 			stmt.executeUpdate(sql);
 			
+			stmt.close();
+			con.close();
 		}catch (ClassNotFoundException e){
 			e.printStackTrace();
 			result = 0;
@@ -94,6 +98,7 @@
 			Statement stat = con.createStatement();
 			rs = stat.executeQuery(sql);
 			
+			
 			while(rs.next()){
 				JSONObject 	jsono = new JSONObject();
 				jsono.put("id", rs.getString("user_id"));
@@ -101,7 +106,9 @@
 				
 				jsona.put(jsono);
 			}
-			
+			rs.close();
+			stat.close();
+			con.close();
 		}catch (ClassNotFoundException e){
 			e.printStackTrace();
 		}catch (SQLException e){

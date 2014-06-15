@@ -69,6 +69,8 @@
 			
 			//response.sendRedirect("login.jsp?login_id="+id+"&login_password="+pw);
 			
+			ps.close();
+			con.close();
 		}catch (ClassNotFoundException e){
 			e.printStackTrace();
 			result = 0;
@@ -126,6 +128,9 @@
 				jsona.put(jsono); 	 	
 			}
 			
+			rs.close();
+			stat.close();
+			con.close();
 		}catch (ClassNotFoundException e){
 			e.printStackTrace();
 		}catch (SQLException e){
@@ -150,7 +155,9 @@
 			sql = "delete from user where user_id = " + "'" + id + "'";
 
 			stmt.executeUpdate(sql);
-
+			
+			stmt.close();
+			con.close();
 		}catch (ClassNotFoundException e){
 			e.printStackTrace();
 		}catch (SQLException e){
@@ -200,6 +207,9 @@
 				   sql += "where user_id = " + "'" + id + "'";
 				   
 			stmt.executeUpdate(sql);
+			
+			stmt.close();
+			con.close();
 		}catch (ClassNotFoundException e){
 			e.printStackTrace();
 		}catch (SQLException e){

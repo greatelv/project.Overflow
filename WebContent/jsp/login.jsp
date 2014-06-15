@@ -98,7 +98,7 @@
 			document.location.href = "/o/";
 		}
 		else{
-			alert('login success');
+			//alert('login success');
 			document.getElementById("submit_value").click();
 		}		
 	</script>
