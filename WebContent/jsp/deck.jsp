@@ -58,7 +58,6 @@
 					.getConnection("jdbc:mysql://ec2-54-199-180-105.ap-northeast-1.compute.amazonaws.com:3306/overflow_dev?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8",
 					"overflow","overflow");
 			Statement stmt = con.createStatement();
-			
 			String sql = "delete from deck where user_id = '" + id + "' and deck_keyword = '" + title + "'";
 			stmt.executeUpdate(sql);
 			
@@ -75,6 +74,7 @@
 			jsono.put("result", result);
 			jsono.put("message", message);
 			jsono.put("id",id);
+			jsono.put("title",title);
 			
 			out.println(jsono);
 		}

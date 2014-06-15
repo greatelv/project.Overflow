@@ -145,7 +145,7 @@ $(document).on("click", "#create_deck", function(){
 
 //덱 삭제 버튼을 누르면 실행 됩니다.
 $(document).on("click", "div.deck_del", function(){
-	var delete_deck_title = $(this).attr("keyword");
+	var delete_deck_title = $(this).parent().parent().attr("keyword");
 	$delete		= "delete";
 	var json = {"type" : $delete,"deck_title" : delete_deck_title, "user_id" : window.sessionId};
 	
