@@ -134,7 +134,7 @@
 			out.print(jsona);	
 		}
 	}
-	
+	/*특정 유저에 대한 api 호출 기능 추가할것*/
 	else if(type.equals("delete")){
 		String id = request.getParameter("id");
 		String sql = "";

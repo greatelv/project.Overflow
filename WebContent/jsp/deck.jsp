@@ -52,6 +52,7 @@
 			Connection con = DriverManager
 					.getConnection("jdbc:mysql://ec2-54-199-180-105.ap-northeast-1.compute.amazonaws.com:3306/overflow_dev?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8",
 					"overflow","overflow");
+			
 			String sql = "delete from deck where user_id = '" + id + "' and deck_keyword = '" + title + "'";
 			
 			Statement stmt = con.createStatement();
@@ -70,6 +71,35 @@
 			jsono.put("message", message);
 			jsono.put("id",id);
 			out.println(jsono);
+		}
+	}
+	else if(type.equals("get")){
+		JSONArray 	jsona = new JSONArray();
+		JSONObject 	jsono = new JSONObject();
+		try{
+			String driverName = "com.mysql.jdbc.Driver";
+ 			Class.forName(driverName);
+			Connection con = DriverManager
+					.getConnection("jdbc:mysql://ec2-54-199-180-105.ap-northeast-1.compute.amazonaws.com:3306/overflow_dev?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8",
+					"overflow","overflow");
+			
+			String sql = "select * from deck where user_id = '" + id + "'";
+			
+			ResultSet rs;
+			Statement stat = con.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			while(rs.next()){
+				jsono.put("id", rs.getString("user_id"));
+				jsono.put("deck_title", rs.getString("deck_keyword"));
+				jsona.put(jsono);
+			}
+		}catch (ClassNotFoundException e){
+			e.printStackTrace();
+		}catch (SQLException e){
+			e.printStackTrace();
+		}finally{
+			out.println(jsona);
 		}
 	}
 %>

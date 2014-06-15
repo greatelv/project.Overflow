@@ -73,4 +73,8 @@
 			out.println(jsono);
 		}
 	}
+	
+	else if(type.equals("get")){
+		
+	}
 %>
