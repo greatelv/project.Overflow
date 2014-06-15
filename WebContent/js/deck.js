@@ -151,7 +151,22 @@ $(document).on("click", "div.deck_del", function(){
 
 //덱 전체 삭제 버튼을 누르면 실행 됩니다.
 $(document).on("click", "#drop_deck_table", function(){
-	 $("#deck_table").empty();
+	$.ajax({
+		url		 : "jsp/deck.jsp",
+		type	 : "POST",
+		data	 : {'type' : 'delete', 'user_id' : window.sessionId},
+		datatype : "json",
+		success	 : function(data){
+			alert(data);
+		},error	: function(){
+			console.log('error from deck');
+		},
+		complete: function(){
+			console.log('complete from deck');
+			
+		}
+	});
+	$("#deck_table").empty();
 });
 
 //[테스트용]덱에 내용추가 버튼을 누르면 실행 됩니다.
