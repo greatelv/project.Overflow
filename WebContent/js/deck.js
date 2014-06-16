@@ -151,7 +151,7 @@ $(document).on("click", "div.deck_del", function(){
 		datatype : "json",
 		
 		success	 : function(data){
-			alert(data);
+			//alert(data);
 		},error	: function(){
 			console.log('error from deck');
 		},
@@ -171,7 +171,7 @@ $(document).on("click", "#drop_deck_table", function(){
 		data	 : {'type' : 'delete', 'user_id' : window.sessionId},
 		datatype : "json",
 		success	 : function(data){
-			alert(data);
+			//alert(data);
 		},error	: function(){
 			console.log('error from deck');
 		},

@@ -17,7 +17,7 @@ $(function User_CRUD_Handler() {
 			datatype:	"json",
 			
 			success	: function(datapost){
-				alert(datapost);
+				//alert(datapost);
 				$('#register').modal('hide');
 				
 				//회원가입 후 받은 데이터를 이용하여 바로 로그인을 시도합니다.

@@ -49,6 +49,8 @@
 	}
 	
 	else if(type.equals("get")){
+		JSONArray 	jsona = new JSONArray();
+		
 		try{
 			String driverName = "com.mysql.jdbc.Driver";
  			Class.forName(driverName);
@@ -56,21 +58,17 @@
 					.getConnection("jdbc:mysql://ec2-54-199-180-105.ap-northeast-1.compute.amazonaws.com:3306/overflow_dev?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8",
 					"overflow","overflow");
 			
-			String sql = "select * from search";
+			String sql  = "SELECT search_word, COUNT(*) AS count, MAX(search_time) AS count";
+				   sql += "FROM search GROUP BY search_word";
+				   sql += "HAVING search_word != ''";
+				   sql += "ORDER BY count DESC";
 			
-			ResultSet rs;
-			Statement stat = con.createStatement();
-			rs = stat.executeQuery(sql);
-			
-			while(rs.next()){
-				JSONObject jsono = new JSONObject();
-			}
 		}catch (ClassNotFoundException e){
 			e.printStackTrace();
 		}catch (SQLException e){
 			e.printStackTrace();
 		}finally{
-			out.println();
+			out.println(jsona);
 		}
 	}
 %>

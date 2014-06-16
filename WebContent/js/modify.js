@@ -14,7 +14,7 @@ $(function modify_Handler() {
 			datatype:	"json",
 			
 			success	: function(datapost){
-				alert(datapost);
+				//alert(datapost);
 			},
 			error	: function(){
 				console.log('error from post');
