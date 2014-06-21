@@ -85,13 +85,15 @@
 <title>Insert title here</title>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 </head>
+
 <body>
 	<form action="/o/" method="post">
 			<input type = "submit" id="submit_value" value="확인" style="visibility:hidden">
 	</form>
 	
+	
 	 <script>
-
+		
 		var login_check = <%= message%>;
 		if(login_check == 1){
 			alert('login failed');

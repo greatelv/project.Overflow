@@ -25,6 +25,8 @@
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/font.css" rel="stylesheet">
 <link href="css/custom.css" rel="stylesheet">
+<link href="css/alertify.core.css" rel="stylesheet">
+<link href="css/alertify.bootstrap.css" rel="stylesheet">
 <!-- <link href="css/non-responsive.css" rel="stylesheet"> -->
 <!-- Calendar core CSS -->
 <link rel="stylesheet"
@@ -231,6 +233,7 @@
 	<script src="js/ext/jquery-dateFormat.js"></script>
 	<script src="js/ext/bootstrap.js"></script>
 	<script src="js/ext/oauth.js"></script>
+	<script src="js/ext/alertify.js"></script>
 	<script src="js/home.js"></script>
 	<script src="js/global.js"></script>
 	<script src="js/request.js"></script>
@@ -254,9 +257,10 @@
          	$('#login_guide').show();
           $('.my_keyword').hide();
           $('#stats_dim').show();
+          alertify.success("로그인 되지 않은 상태입니다. 로그인이 필요합니다.");
         }else{  //로그인 했을 시 추가 로직
-
           load_user_deck();
+          alertify.success(window.sessionId + "님 로그인 되었습니다.");
         }
     });
     </script>
