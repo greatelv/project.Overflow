@@ -63,25 +63,51 @@ var config = function(){
 		}else{
 			$('body').removeClass().addClass('light');
 		}
-	}
 
+		//폰트사이즈 조절
+		$('.deck-contents').css('font-size', $USER.size);
+	};
+	
+	var updateConfig = function(){
+		
+		
+
+
+		var json = {
+			"type":'update',
+			"thema": elem.theme.find('> label.active > input').val(),
+			"font":  elem.size.find('> select').val(),
+			"id": window.sessionId
+		};
+		
+		$.ajax({
+			url		:	"jsp/user.jsp",
+			type	:	"POST",
+			data	:	json,
+			datatype:	"json",
+			
+			success	: function(datapost){
+				config.update();
+			},
+			error	: function(){
+				console.log('error from post');
+			},
+			complete: function(){
+				console.log('complete from post');
+			}
+		});
+	};
 	return {
-		init : function(){
+		update : function(){
 			load_user_config();
 			syncModal();
+			applyConfig();
 		},
-		syncModal : function(){
-
-		},
-		update : function(){
-
+		submit : function(){
+			updateConfig();
 		}
-	};
-
-	var syncModal = function(){
 		
 	};
-
 }();
 
 

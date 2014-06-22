@@ -224,6 +224,59 @@
 
 	<div id="border_bottom" class="border-container"></div>
 
+
+  <!-- 설정 모달 -->
+    <div class="modal fade" id="config_modal">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true">×</button>
+                    <h4 class="modal-title">Overflow 설정</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">테마</label>
+                            <div class="btn-group col-sm-8 theme" data-toggle="buttons">
+                              <label key="dark" class="btn btn-primary active" >
+                                <input type="radio" name="theme" value="0" > Dark
+                              </label>
+                              <label key="light" class="btn btn-primary" >
+                                <input type="radio" name="theme" value="1"> Light
+                              </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">글자크기</label>
+                            <div class="selectbox col-sm-8 size">
+                                <select class="form-control">
+                                  <option val="12">12</option>
+                                  <option val="13">13</option>
+                                  <option val="14" selected="selected">14</option>
+                                  <option val="15">15</option>
+                                  <option val="16">16</option>
+                                </select>
+                            </div>
+                            
+                        </div>
+                        <input type="text" id="user_id" value="<%= session.getAttribute("id") %>" style="display:none;">
+                        
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+                    <button type="button" id="config_submit" class="btn btn-primary">설정</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+
+
+
 	<!-- JavaScript -->
 	<script
 		src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -240,6 +293,7 @@
 	<script src="js/deck.js"></script>
 	<script src="js/crud.js"></script>
 	<script src="js/config.js"></script>
+  <script src="js/modify.js"></script>s
 	
 	<!-- Custom JavaScript -->
 	<script type="text/javascript">
@@ -261,8 +315,16 @@
           alertify.success("로그인 되지 않은 상태입니다. 로그인이 필요합니다.");
         }else{  //로그인 했을 시 추가 로직
           load_user_deck();
+          config.update();    //설정 초기화
           alertify.success(window.sessionId + "님 로그인 되었습니다.");
         }
+
+
+        //업데이트 핸들러
+        $('#config_submit').click(function(){
+          config.submit();
+          $('#config_modal').modal('hide');
+        });
     });
     </script>
 
@@ -337,68 +399,7 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
-
-
-
-    <!-- 설정 모달 -->
-    <div class="modal fade" id="config_modal">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"
-                        aria-hidden="true">×</button>
-                    <h4 class="modal-title">Overflow 설정</h4>
-                </div>
-                <div class="modal-body">
-                    <form class="form-horizontal" role="form">
-                        <div class="form-group">
-                            <label class="col-sm-4 control-label">테마</label>
-                            <div class="btn-group col-sm-8 theme" data-toggle="buttons">
-                              <label key="dark" class="btn btn-primary active" >
-                                <input type="radio" name="theme" value="0" > Dark
-                              </label>
-                              <label key="light" class="btn btn-primary" >
-                                <input type="radio" name="theme" value="1"> Light
-                              </label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-4 control-label">글자크기</label>
-                            <div class="selectbox col-sm-8 size">
-                                <select class="form-control">
-                                  <option val="12">12</option>
-                                  <option val="13">13</option>
-                                  <option val="14">14</option>
-                                  <option val="15">15</option>
-                                  <option val="16">16</option>
-                                </select>
-                            </div>
-                            
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-4 control-label">자동업데이트</label>
-                            <div class="btn-group col-sm-8 auto" data-toggle="buttons">
-                              <label key="on" class="btn btn-primary" >
-                                <input type="radio" name="auto_update" val="on"> On
-                              </label>
-                              <label key="off" class="btn btn-primary active" >
-                                <input type="radio" name="auto_update" val="off" > Off
-                              </label>
-                            </div>
-                        </div>
-                        <input type="text" id="user_id" value="<%= session.getAttribute("id") %>" style="display:none;">
-                        <script src="js/modify.js"></script>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-                    <button type="button" id="config_submit" class="btn btn-primary">설정</button>
-                </div>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
+   
     <!-- /.modal -->    
 
 </body>
