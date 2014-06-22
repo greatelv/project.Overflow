@@ -133,9 +133,11 @@ $(document).on("click", "#create_deck", function(){
 				//alert(data);
 			},error	: function(){
 				console.log('error from search');
+				alertify.error("오류가 발생하여 " + input_deck_title + " 덱을 삭제하지 못했습니다.");
 			},
 			complete: function(){
 				console.log('complete from search');
+				alertify.success(input_deck_title + " 덱을 새롭게 생성하였습니다.");
 			}
 		});
 	}
@@ -159,9 +161,11 @@ $(document).on("click", "div.deck_del", function(){
 			//alert(data);
 		},error	: function(){
 			console.log('error from deck');
+			alertify.alert("오류로 인해 " + delete_deck_title + " 덱을 삭제하지 못했습니다.");
 		},
 		complete: function(){
 			console.log('complete from deck');
+			alertify.success(delete_deck_title + " 덱을 삭제했습니다.");
 			
 		}
 	});
@@ -179,9 +183,11 @@ $(document).on("click", "#drop_deck_table", function(){
 			//alert(data);
 		},error	: function(){
 			console.log('error from deck');
+			alertify.error("오류가 발생하여 전체 덱을 삭제하지 못했습니다..");
 		},
 		complete: function(){
 			console.log('complete from deck');
+		  	alertify.success("덱이 모두 삭제되었습니다.");
 			
 		}
 	});
