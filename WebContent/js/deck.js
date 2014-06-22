@@ -59,28 +59,6 @@ var load_deck = function(title){
 			$('#'+deck_title).find('.deck-body').append(itemElem);
   		});
 	});
- 	if(sessionStorage.getItem("id") == null){
- 		//alert('로그인 안할시 작동되어야 하는 부분');
- 	}
- 	else{
- 		var json = {"type":"post","user_id":window.sessionId,"deck_title":deck_title};
- 		//alert('로그인 안할시 작동되면 안됨! id=' + sessionStorage.getItem("id"));
-		$.ajax({
-			url		 : "jsp/search.jsp",
-			type	 : "POST",
-			data	 : json,
-			datatype : "json",
-		
-			success	 : function(data){
-				//alert(data);
-			},error	: function(){
-				console.log('error from search');
-			},
-			complete: function(){
-				console.log('complete from search');
-			}
-		});
- 	}
   //내용이 추가되면 기존의 내용 아래 부분에 추가되기 때문에 제대로 나오도록 레이아웃을 새로고침합니다.
   //var nodes = $("#deck_table").children(); //덱 테이블의 현재 덱의 갯수를 구한다.
   //$(".deck").css({"width":nodes.length*255}); //하나의 덱은 255의 width를 가진다.
