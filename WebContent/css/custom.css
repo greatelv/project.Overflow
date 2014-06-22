@@ -231,6 +231,26 @@ body{
 	line-height: 20px;
 }
 
+#deck_table[type="12"] .deck-contents{
+	font-size: 12px;
+}
+
+#deck_table[type="13"] .deck-contents{
+	font-size: 13px;	
+}
+
+#deck_table[type="14"] .deck-contents{
+	font-size: 14px;
+}
+
+#deck_table[type="15"] .deck-contents{
+	font-size: 15px;
+}
+
+#deck_table[type="16"] .deck-contents{
+	font-size: 16px;
+}
+
 
 
 .deck_del{

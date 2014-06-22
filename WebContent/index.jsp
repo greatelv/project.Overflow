@@ -293,7 +293,7 @@
 	<script src="js/deck.js"></script>
 	<script src="js/crud.js"></script>
 	<script src="js/config.js"></script>
-  <script src="js/modify.js"></script>s
+  <script src="js/modify.js"></script>
 	
 	<!-- Custom JavaScript -->
 	<script type="text/javascript">

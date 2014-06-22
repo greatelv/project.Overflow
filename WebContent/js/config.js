@@ -16,10 +16,12 @@ var config = function(){
 			success	 : function(data){
 				var result = JSON.parse(data)[0];
 
-				$USER['font'] = result.config_font_size;
+				$USER['size'] = result.config_font_size;
 				$USER['theme'] = result.config_thema;
 				$USER['auto'] = result.config_auto_stream;
 
+				syncModal();
+				applyConfig();
 			},
 			error	: function(){
 				console.log('error from deck');
@@ -63,16 +65,11 @@ var config = function(){
 		}else{
 			$('body').removeClass().addClass('light');
 		}
-
-		//폰트사이즈 조절
-		$('.deck-contents').css('font-size', $USER.size);
+		$('#deck_table').attr('type', $USER.size);
 	};
 	
 	var updateConfig = function(){
-		
-		
-
-
+	
 		var json = {
 			"type":'update',
 			"thema": elem.theme.find('> label.active > input').val(),
@@ -100,8 +97,8 @@ var config = function(){
 	return {
 		update : function(){
 			load_user_config();
-			syncModal();
-			applyConfig();
+			//syncModal();
+			//applyConfig();
 		},
 		submit : function(){
 			updateConfig();
