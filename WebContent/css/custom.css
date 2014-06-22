@@ -81,6 +81,13 @@ body{
 	position: absolute;
 }
 
+
+body.light nav{
+    background-color: aliceblue;
+	
+    color: grey;
+}
+
 #nav_container > .container {
 	padding : 10px 0px 10px 0px;
 }
@@ -127,6 +134,11 @@ body{
 
 #deck_table{
 	background: #2b3e50;
+}
+
+body.light #deck_table{
+    background: ghostwhite;
+	
 }
 
 
@@ -278,8 +290,10 @@ body{
 	background: #eee;
     width: 100%;
     height: 5px;
-    
 }
+
+body.light .border-container{
+    background: cadetblue;}
 
 #border_bottom {	
 	bottom: 0px;
@@ -359,4 +373,8 @@ body{
 
 #drop_deck_table_disable{
 	display: none;
+}
+
+body.light nav .container li a{
+	color: #000;
 }
