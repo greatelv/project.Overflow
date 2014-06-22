@@ -47,9 +47,9 @@
 
 			ps.setString(5,	email);
 			
-			ps.setInt(6, 1);
-			ps.setInt(7, 1);
-			ps.setInt(8, 1);
+			ps.setInt(6, 0);
+			ps.setInt(7, 14);
+			ps.setInt(8, 0);
 
 			ps.executeUpdate();
 			

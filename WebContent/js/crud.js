@@ -55,22 +55,18 @@ $(function User_CRUD_Handler() {
 			data	: json,
 			datatype: "json",
 			success : function(data){
-				alert(data);
+				//alert(data);
+				
 				var item = [];
 				$.each(data,function(idx, val){
-					item.push( "<li id='" + idx + "'>" 
-							+ val.sequence + "|"
-							+ val.search_word + "|" 
-							+ val.time + "|"
-							+ val.count + "|"
-							+ "</li>");
+					item.push( "<tr id='" + val.sequence + "'>" 
+							+ "<td>" + val.sequence + "</td>"
+							+ "<td>" + val.search_word + "</td>" 
+							+ "<td>" + val.time + "</td>"
+							+ "<td>" + val.count + "</td>"
+							+ "</tr>");
 				});
-				
-				
-				$( "<ul/>", {
-				    "class": "my-new-list",
-				    html: item.join( "" )
-				  }).appendTo( "#total_serach" );
+				alert(item);
 			},error : function(){
 				console.log('error from total_search');
 			},complete : function()

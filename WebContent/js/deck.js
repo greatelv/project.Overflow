@@ -63,11 +63,11 @@ var load_deck = function(title){
   		});
 	});
  	if(sessionStorage.getItem("id") == null){
- 		alert('로그인 안할시 작동되어야 하는 부분');
+ 		//alert('로그인 안할시 작동되어야 하는 부분');
  	}
  	else{
  		var json = {"type":"post","user_id":window.sessionId,"deck_title":deck_title};
- 		alert('로그인 안할시 작동되면 안됨! id=' + sessionStorage.getItem("id"));
+ 		//alert('로그인 안할시 작동되면 안됨! id=' + sessionStorage.getItem("id"));
 		$.ajax({
 			url		 : "jsp/search.jsp",
 			type	 : "POST",
