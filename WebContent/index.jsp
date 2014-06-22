@@ -116,7 +116,7 @@
             <div class="col-xs-6">
                 <h3>전체 키워드 순위</h3>
                 <p>Overflow에서 가장 많이 검색된 키워드 순위를 제공합니다.</p>
-                <table class="table table-striped">
+                <table class="table table-striped" id="total_search">
                       <thead>
                         <tr>
                           <th>순위</th>
@@ -125,56 +125,12 @@
                           <th>최종검색일자</th>
                         </tr>
                       </thead>
-                      <tbody id="total_search">
-                        <!--<tr>
-                          <td>1</td>
-                          <td>세월호</td>
-                          <td>200</td>
-                          <td>2014-05-11</td>
-                        </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>걸그룹</td>
-                          <td>200</td>
-                          <td>2014-05-11</td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>Larry</td>
-                          <td>500</td>
-                          <td>2014-05-11</td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>Larry</td>
-                          <td>500</td>
-                          <td>2014-05-11</td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>Larry</td>
-                          <td>500</td>
-                          <td>2014-05-11</td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>Larry</td>
-                          <td>500</td>
-                          <td>2014-05-11</td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>Larry</td>
-                          <td>500</td>
-                          <td>2014-05-11</td>
-                        </tr>
-                      </tbody>  -->
                 </table>
             </div>
             <div class="col-xs-6">
                 <h3>나의 키워드</h3>
                 <p id="my_keyword">자신이 최근에 검색한 키워드 리스트를 제공합니다.</p>
-                <table class="table table-striped my_keyword">
+                <table class="table table-striped my_keyword" id="user_search">
                       <thead>
                         <tr>
                           <th>번호</th>
@@ -182,23 +138,6 @@
                           <th>검색일짜</th>
                         </tr>
                       </thead>
-                      <tbody id="id_search">
-                       <!-- <tr>
-                          <td>1</td>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                        </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>Larry</td>
-                          <td>the Bird</td>
-                        </tr>
-                      </tbody>  -->
                 </table>
                 <div id="stats_dim">로그인 후에 해당 정보를 확인할 수 있습니다.</div>
             </div>
@@ -207,7 +146,7 @@
             <div class="col-xs-6">
                 <div class="total-v">
                     <span class="glyphicon glyphicon-thumbs-up"></span>
-                    Total Access Count : <b>1200</b>
+                    Total Access Count : <b id="total_count"></b>
 
                 </div>
             </div>
@@ -215,7 +154,7 @@
                 <div class="my-v">
                     <span class="glyphicon glyphicon-user"></span>
                 
-                    My Access Count : <b>300</b>
+                    My Access Count : <b id="user_count"></b>
                 </div>
             </div>
         </div>
