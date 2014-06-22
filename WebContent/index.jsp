@@ -239,6 +239,7 @@
 	<script src="js/request.js"></script>
 	<script src="js/deck.js"></script>
 	<script src="js/crud.js"></script>
+	<script src="js/config.js"></script>
 	
 	<!-- Custom JavaScript -->
 	<script type="text/javascript">
@@ -352,36 +353,36 @@
                     <form class="form-horizontal" role="form">
                         <div class="form-group">
                             <label class="col-sm-4 control-label">테마</label>
-                            <div class="btn-group col-sm-8" data-toggle="buttons">
-                              <label class="btn btn-primary active">
-                                <input type="radio" name="theme" value="dark" > Dark
+                            <div class="btn-group col-sm-8 theme" data-toggle="buttons">
+                              <label key="dark" class="btn btn-primary active" >
+                                <input type="radio" name="theme" value="0" > Dark
                               </label>
-                              <label class="btn btn-primary">
-                                <input type="radio" name="theme" value="light"> Light
+                              <label key="light" class="btn btn-primary" >
+                                <input type="radio" name="theme" value="1"> Light
                               </label>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-4 control-label">글자크기</label>
-                            <div class="selectbox col-sm-8">
+                            <div class="selectbox col-sm-8 size">
                                 <select class="form-control">
-                                  <option>10</option>
-                                  <option>11</option>
-                                  <option>12</option>
-                                  <option>13</option>
-                                  <option>14</option>
+                                  <option val="12">12</option>
+                                  <option val="13">13</option>
+                                  <option val="14">14</option>
+                                  <option val="15">15</option>
+                                  <option val="16">16</option>
                                 </select>
                             </div>
                             
                         </div>
                         <div class="form-group">
                             <label class="col-sm-4 control-label">자동업데이트</label>
-                            <div class="btn-group col-sm-8" data-toggle="buttons">
-                              <label class="btn btn-primary">
-                                <input type="radio" name="auto_update" value="On"> On
+                            <div class="btn-group col-sm-8 auto" data-toggle="buttons">
+                              <label key="on" class="btn btn-primary" >
+                                <input type="radio" name="auto_update" val="on"> On
                               </label>
-                              <label class="btn btn-primary active">
-                                <input type="radio" name="auto_update" value="Off" > Off
+                              <label key="off" class="btn btn-primary active" >
+                                <input type="radio" name="auto_update" val="off" > Off
                               </label>
                             </div>
                         </div>

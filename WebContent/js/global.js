@@ -7,3 +7,11 @@ window.LOG = function(sMsg, sKey, nLevel) {
 };
 
 window.DEV = true;
+
+
+var $USER = {
+	id : '',
+	theme : 0,
+	auto : 0,
+	size : 14
+};
