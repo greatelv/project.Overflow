@@ -12,10 +12,10 @@
 <%
 
 	String type = request.getParameter("type");
-	
+	String id 	 = request.getParameter("id");
 
 	if(type.equals("post")){
-		String id 	 = request.getParameter("id");
+		
 		String pw 	 = request.getParameter("password");
 		String name  = request.getParameter("name");
 		String email = request.getParameter("email");
@@ -137,10 +137,9 @@
 		}finally{
 			out.print(jsona);	
 		}
-	}
-	/*특정 유저에 대한 api 호출 기능 추가할것*/
-	else if(type.equals("delete")){
-		String id = request.getParameter("id");
+		
+	}else if(type.equals("delete")){ /*특정 유저에 대한 api 호출 기능 추가할것*/
+		
 		String sql = "";
 		try{
 			String driverName = "com.mysql.jdbc.Driver";
@@ -169,7 +168,6 @@
 		String thema = request.getParameter("thema");
 		String font = request.getParameter("font");
 		String auto = request.getParameter("auto");
-		String id = request.getParameter("id");
 		int thema_set;
 		int font_size;
 		int auto_set;
@@ -215,6 +213,41 @@
 			e.printStackTrace();
 		}finally{
 				
+		}
+	}else if(type.equals("getOne")){
+		JSONArray 	jsona = new JSONArray();
+		
+		try{
+			
+			String driverName = "com.mysql.jdbc.Driver";
+			
+			Class.forName(driverName);
+			Connection con = DriverManager
+					.getConnection("jdbc:mysql://ec2-54-199-180-105.ap-northeast-1.compute.amazonaws.com:3306/overflow_dev?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8",
+					"overflow","overflow");
+			PreparedStatement ps;
+			ResultSet rs;
+			Statement stat = con.createStatement();
+			rs = stat.executeQuery("select config_thema, config_font_size, config_auto_stream from user where user_id = '"+id+"'");
+			while(rs.next()){
+				JSONObject 	jsono = new JSONObject();
+				
+				jsono.put("config_thema", rs.getString("config_thema"));
+				jsono.put("config_font_size", rs.getString("config_font_size"));
+				jsono.put("config_auto_stream", rs.getString("config_auto_stream"));
+				
+				jsona.put(jsono); 	 	
+			}
+			
+			rs.close();
+			stat.close();
+			con.close();
+		}catch (ClassNotFoundException e){
+			e.printStackTrace();
+		}catch (SQLException e){
+			e.printStackTrace();
+		}finally{
+			out.print(jsona);	
 		}
 	}
 %>

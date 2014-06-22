@@ -2,8 +2,6 @@ var deck_cnt = 0;
 
 //alert(window.sessionId);
 var load_user_deck = function(){
-
-
 	$.ajax({
 		url		 : "jsp/deck.jsp?type=get&user_id="+window.sessionId,
 		type	 : "GET",
@@ -23,7 +21,6 @@ var load_user_deck = function(){
 			
 		}
 	});
-	
 }
           
 var load_deck = function(title){
