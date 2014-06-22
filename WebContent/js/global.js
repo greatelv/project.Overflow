@@ -6,4 +6,4 @@ window.LOG = function(sMsg, sKey, nLevel) {
 // 	jQuery('#debug').prepend('<p>' + sMsg + '</p>');
 };
 
-window.DEV = false;
+window.DEV = true;
