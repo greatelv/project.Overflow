@@ -123,8 +123,8 @@
                           <th>최종검색일자</th>
                         </tr>
                       </thead>
-                      <tbody>
-                        <tr>
+                      <tbody id="total_search">
+                        <!--<tr>
                           <td>1</td>
                           <td>세월호</td>
                           <td>200</td>
@@ -166,7 +166,7 @@
                           <td>500</td>
                           <td>2014-05-11</td>
                         </tr>
-                      </tbody>
+                      </tbody>  -->
                 </table>
             </div>
             <div class="col-xs-6">
@@ -180,8 +180,8 @@
                           <th>검색일짜</th>
                         </tr>
                       </thead>
-                      <tbody>
-                        <tr>
+                      <tbody id="id_search">
+                       <!-- <tr>
                           <td>1</td>
                           <td>Mark</td>
                           <td>Otto</td>
@@ -196,7 +196,7 @@
                           <td>Larry</td>
                           <td>the Bird</td>
                         </tr>
-                      </tbody>
+                      </tbody>  -->
                 </table>
                 <div id="stats_dim">로그인 후에 해당 정보를 확인할 수 있습니다.</div>
             </div>
