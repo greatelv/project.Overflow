@@ -56,5 +56,5 @@ $('#menubar li.home, #menubar li.stats').click(function(){
 })
 
 $('#logout_btn').click(function(){
-	location.href = "/o/jsp/logout.jsp";
+	location.href = "/jsp/logout.jsp";
 });
