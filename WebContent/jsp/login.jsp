@@ -87,7 +87,7 @@
 </head>
 
 <body>
-	<form action="/o/" method="post">
+	<form action="/" method="post">
 			<input type = "submit" id="submit_value" value="확인" style="visibility:hidden">
 	</form>
 	
@@ -97,7 +97,7 @@
 		var login_check = <%= message%>;
 		if(login_check == 1){
 			alert('login failed');
-			document.location.href = "/o/";
+			document.location.href = "/";
 		}
 		else{
 			//alert('login success');
