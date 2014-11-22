@@ -243,8 +243,8 @@
       window.sessionId = "<%=session.getAttribute("id")%>";
     	
     	 if(window.sessionId=="null"){  //로그인을 하지 않았을 경우
-          load_deck('안드로이드');
-          load_deck('걸그룹');
+          load_deck('서울과기대');
+          load_deck('샤오미');
 
           plusMenuToggle(false);
 
