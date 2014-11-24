@@ -13,7 +13,7 @@
 <body>
 	<!-- 그리고 다시 원래 페이지로 이동한다. -->
 	<script type="text/javascript">
-	document.location.href = "/";
+	document.location.href = "/o";
 	</script>
 </body>
 </html>

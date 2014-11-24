@@ -97,7 +97,7 @@
 		var login_check = <%= message%>;
 		if(login_check == 1){
 			alert('login failed');
-			document.location.href = "/";
+			document.location.href = "/o";
 		}
 		else{
 			//alert('login success');
