@@ -28,7 +28,7 @@ $(function User_CRUD_Handler() {
 					data: autologin,	
 					datatype: "json",
 					success : function(data){
-							document.location.href = "/";
+							document.location.href = "/o/";
 						},error : function(){
 							console.log('error from post');
 						},complete : function()

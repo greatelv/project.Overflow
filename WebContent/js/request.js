@@ -8,7 +8,7 @@ var $key = {
 
 var $url = {
 	bearer : 'https://api.twitter.com/oauth2/token',
-	search : window.DEV ? 'http://localhost:8080/api/search/' : 'http://ec2-54-199-180-105.ap-northeast-1.compute.amazonaws.com:8080/api/search/'
+	search : window.DEV ? 'http://localhost:8080/o/api/search/' : 'http://ec2-54-199-180-105.ap-northeast-1.compute.amazonaws.com:8080/o/api/search/'
 };
 
 //키워드로부터 API 데이터 조회
