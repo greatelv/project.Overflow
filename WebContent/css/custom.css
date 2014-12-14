@@ -122,9 +122,10 @@ body.light nav{
     font-size: 27px;
 	
     font-weight: 900;
-}
+}a
 
 .user-info{
+    color: #fff;
 	
 }
 
@@ -385,5 +386,5 @@ body.light .border-container{
 }
 
 body.light nav .container li a{
-	color: #000;
+	/* color: #000; */
 }

@@ -46,7 +46,6 @@ var load_deck = function(title){
 	//API 연동
  	$req.getDataFromKeyword(deck_title, function(res){
 		var articlesELem = "";
-		
 		$.each(res, function(idx, item){
 	  		var itemElem = 	'<div class="deck-article">'+
 			    				'<div class="deck-profile">'+
@@ -57,11 +56,32 @@ var load_deck = function(title){
 			    			'</div>';
 
 			$('#'+deck_title).find('.deck-body').append(itemElem);
-  		});
+		});
 	});
   //내용이 추가되면 기존의 내용 아래 부분에 추가되기 때문에 제대로 나오도록 레이아웃을 새로고침합니다.
   //var nodes = $("#deck_table").children(); //덱 테이블의 현재 덱의 갯수를 구한다.
   //$(".deck").css({"width":nodes.length*255}); //하나의 덱은 255의 width를 가진다.
+};
+
+//parentElem은 실제 바디까지 정의해서 패싱해야함
+var reload_deck = function(title, parentElem){
+	//API 연동
+	parentElem.empty();
+ 	$req.getDataFromKeyword(title, function(res){
+		var articlesELem = "";
+		
+		$.each(res, function(idx, item){
+	  		var itemElem = 	'<div class="deck-article">'+
+			    				'<div class="deck-profile">'+
+			    					'<div class="deck-profile-picture" style="background:url('+item.user.profileImageUrl+')"></div>'+
+			    					'<div class="deck-profile-nickname">'+item.user.screenName+'</div>'+
+			    				'</div>'+
+			    				'<div class="deck-contents">'+item.text+'</div>'+
+			    			'</div>';
+
+			parentElem.append(itemElem);
+  		});
+	});
 };
 
 var load_deck_article = function(picture, nickname, contents, title){
@@ -97,15 +117,13 @@ $(document).on("click", "#create_deck", function(){
 	if(deck_size >= 5){
 		alert('Deck는 총 5개 이상 생성이 불가능합니다.');
 	}else{
-		load_deck(input_deck_title);
 		$.ajax({
 			url		 : "jsp/deck.jsp",
 			type	 : "POST",
 			data	 : {"type" : 'post',"deck_title" : input_deck_title, "user_id" : window.sessionId},
 			datatype : "json",
-			
 			success	 : function(data){
-				//alert(data);
+				location.reload();	
 			},error	: function(){
 				console.log('error from search');
 				alertify.error("오류가 발생하여 " + input_deck_title + " 덱을 삭제하지 못했습니다.");

@@ -59,11 +59,11 @@
 			sql = "INSERT INTO deck(user_id, deck_keyword) values(?,?)";
 			ps = con.prepareStatement(sql);
 			ps.setString(1, id);
-			ps.setString(2, "세월호");
+			ps.setString(2, "커피");
 			ps.executeUpdate();
 			
 			ps.setString(1, id);
-			ps.setString(2, "서울과학기술대학교");
+			ps.setString(2, "조현아");
 			ps.executeUpdate();
 			
 			//response.sendRedirect("login.jsp?login_id="+id+"&login_password="+pw);
@@ -167,9 +167,11 @@
 	else if(type.equals("update")){
 		String thema = request.getParameter("thema");
 		String font = request.getParameter("font");
+		String auto = request.getParameter("auto");
 		
 		System.out.println("thema : "+thema);
 		System.out.println("font : "+font);
+		System.out.println("auto : "+auto);
 		
 		try{
 			String driverName = "com.mysql.jdbc.Driver";
@@ -182,14 +184,13 @@
 			
 			String sql  = "update user set \n ";
 				   sql += "config_thema = " + "'" + thema + "', ";
-				   sql += "config_font_size = " + "'" + font + "' ";
+				   sql += "config_font_size = " + "'" + font + "', ";
+				   sql += "config_auto_stream = " + "'" + auto + "' ";
 				   sql += "where user_id = " + "'" + id + "'";
 				   
 			System.out.println("sql : "+sql );
 			 
 			
-				
-				   
 			stmt.executeUpdate(sql);
 			
 			stmt.close();

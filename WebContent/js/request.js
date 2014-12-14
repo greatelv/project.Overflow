@@ -13,7 +13,6 @@ var $url = {
 
 //키워드로부터 API 데이터 조회
 $req.getDataFromKeyword = function(keyword, callback){
-
 	jQuery.ajax($url.search+keyword, {
 		type: 'GET',
 		dataType : "json",
@@ -21,11 +20,27 @@ $req.getDataFromKeyword = function(keyword, callback){
 		success: function(oRes, sStatus, oXHR){
 			LOG(JSON.stringify(oRes));
 			callback && callback(oRes);
+
+			var json = {
+				"type":"post",
+				"user_id": window.sessionId == 'null' ? 'user' : window.sessionId,
+				"deck_title":keyword
+			};
+
+	 		$.ajax({
+				url		 : "jsp/search.jsp",
+				type	 : "POST",
+				data	 : json,
+				datatype : "json",
+				success	 : function(data){
+					//alert(data);
+				}
+			});
+
 		},
 		error : function(xhr, status, error){
 		}
 	});
-
 };
 
 $req.getBearerKey = function(){

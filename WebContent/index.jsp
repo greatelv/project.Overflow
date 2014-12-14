@@ -176,20 +176,9 @@
                 <div class="modal-body">
                     <form class="form-horizontal" role="form">
                         <div class="form-group">
-                            <label class="col-sm-4 control-label">테마</label>
-                            <div class="btn-group col-sm-8 theme" data-toggle="buttons">
-                              <label key="dark" class="btn btn-primary active" >
-                                <input type="radio" name="theme" value="0" > Dark
-                              </label>
-                              <label key="light" class="btn btn-primary" >
-                                <input type="radio" name="theme" value="1"> Light
-                              </label>
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <label class="col-sm-4 control-label">글자크기</label>
                             <div class="selectbox col-sm-8 size">
-                                <select class="form-control">
+                                <select class="form-control" id="config_font_size">
                                   <option val="12">12</option>
                                   <option val="13">13</option>
                                   <option val="14" selected="selected">14</option>
@@ -197,7 +186,17 @@
                                   <option val="16">16</option>
                                 </select>
                             </div>
-                            
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">자동폴링</label>
+                            <div class="btn-group col-sm-8 auto" data-toggle="buttons">
+                              <label key="off" class="btn btn-primary active" >
+                                <input type="radio" name="auto" value="0" checked="true"> 비활성화
+                              </label>
+                              <label key="on" class="btn btn-primary" >
+                                <input type="radio" name="auto" value="1"> 활성화
+                              </label>
+                            </div>
                         </div>
                         <input type="text" id="user_id" value="<%= session.getAttribute("id") %>" style="display:none;">
                         
@@ -232,8 +231,7 @@
 	<script src="js/deck.js"></script>
 	<script src="js/crud.js"></script>
 	<script src="js/config.js"></script>
-    <script src="js/modify.js"></script>
-	
+    
 	<!-- Custom JavaScript -->
 	<script type="text/javascript">
     //덱이 늘어나더라도 아래로 float되지 않도록 하는 자바스크립트. 실시간으로 body의 width를 변경하여 줄바꿈이 되지 않도록 합니다.
@@ -243,14 +241,14 @@
       window.sessionId = "<%=session.getAttribute("id")%>";
     	
     	 if(window.sessionId=="null"){  //로그인을 하지 않았을 경우
-          /*load_deck('서울과기대');
-          load_deck('샤오미');*/
+          load_deck('조현아');
+          load_deck('취업');
 
           plusMenuToggle(false);
 
-         	$('#login_guide').show();
-          $('.my_keyword').hide();
-          $('#stats_dim').show();
+         	  $('#login_guide').show();
+              $('.my_keyword').hide();
+              $('#stats_dim').show();
           alertify.success("로그인 되지 않은 상태입니다. 로그인이 필요합니다.");
         }else{  //로그인 했을 시 추가 로직
           load_user_deck();
